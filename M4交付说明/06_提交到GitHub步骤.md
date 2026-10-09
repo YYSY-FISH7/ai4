@@ -3,7 +3,52 @@
 > **组长原话**：「现在**已经有 github 仓库**，需要用这个来做，**先 fork**，然后做好后
 > 自己 pull 到 **develop 分支**」。
 >
-> 这份是**照抄就能做**的分步操作。**在虚拟机里做**（代码在那儿跑通过）。
+> 这份是**照抄就能做**的分步操作。
+
+---
+
+## 0. ★ 当前进度（2026-10-10 实测）
+
+| 步骤 | 状态 |
+|---|---|
+| 仓库地址 | `https://github.com/YYSY-FISH7/ai4.git`（组长原仓库 `cranky269/ai4`） |
+| **Fork** | ✅ 已完成（`YYSY-FISH7/ai4`，Public） |
+| **Clone** | ✅ 已完成（宿主机 `_github/ai4`） |
+| **分支** | ✅ 已建 `develop`（从 `master`） |
+| **放文件** | ✅ 已完成：**41 项**（`M4交付说明/` 13 + 代码/脚本/测试 26 + `install_m4_deps.sh` + `.gitignore`/`requirements.txt` 两处改动） |
+| **commit** | ✅ 已创建 `5e71a07`（41 files changed, 8340 insertions） |
+| **push** | ⏳ **只剩这一步**（需要你自己的 GitHub 凭据） |
+
+### ⚠️ 两个只在 Windows 上才会遇到的坑（**已处理，但你要知道**）
+
+1. **仓库里 `lib/*.py` 是 git 软链**（mode `120000` → `../../../../code/xxx.py`）。
+   Windows 建不出真软链，所以 `git status` 一度显示这两个文件"已删除"——
+   **这时候敲 `git add -A` 会把软链从仓库里删掉！**
+   已用 `git update-index --skip-worktree` 保护，现在 `git add -A` 是安全的。
+   > 到 Linux（虚拟机）clone 下来后，git 会自动把这两个变回真软链。
+
+2. **`core.autocrlf=true`**：git 会把 CRLF 存成 LF。
+   所以仓库里组长的文件（LF）和你本地的（CRLF）**"看起来不同"，其实只是换行符**。
+   **不要去"修"它们** —— 那会产生 63 个文件的纯换行符噪音 diff。
+
+### 仓库里**不要碰**的东西（组长已重排过目录）
+
+- 组长把文档移到了 **`skill/`**（`一些暂时设定.md`、`ssh连接.md`、`代码书写原则.md` 等）。
+  工程根目录下同名的旧文件是**重复品，不要提交**。
+- 组长**已有完善的 `.gitignore`**，我们是**追加**（`lib/m4_deps/`、`*.pt`），不是覆盖。
+
+### 你现在只需做这一步
+
+```bash
+cd <你的仓库目录>          # 例如宿主机：...\uav_intercept\_github\ai4
+git push -u origin develop
+```
+
+推的时候会问用户名/密码：**用户名填你的 GitHub 账号，密码处粘贴 Personal Access Token**
+（网页：Settings → Developer settings → Personal access tokens → Generate new token，勾 `repo`）。
+
+> ⚠️ **先别急着 push** —— 需要先跟组长确认一句「develop 分支到底在哪」
+> （他的仓库目前**只有 `master` 一个分支**，见 §3 的说明）。
 
 ---
 
