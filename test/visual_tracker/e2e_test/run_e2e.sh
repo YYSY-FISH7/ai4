@@ -87,8 +87,15 @@ run_phase() {
   wait_topic /detections      || echo "  (警告) /detections 未及时出现"
   wait_topic /visual/tracks   || echo "  (警告) /visual/tracks 未及时出现"
   sleep 0.5
+  # mode=target 时额外要求「航迹中心确实在移动」：
+  #   fake_detections 的默认 ~vx/~vy = 4/3 像素每帧，6 秒约 60 帧 → x 方向跨度约 240 像素。
+  #   只查 ID 稳定是有漏洞的：跟踪器若输出一个**固定不变的框**，照样能过。
+  local extra_move=""
+  if [ "$mode" = "target" ]; then
+    extra_move="_check_move:=true _min_move:=100"
+  fi
   python3 "$E2E/check_tracks.py" _mode:="$mode" _duration:=6.0 _min_msgs:=20 \
-    _frame_w:="$frame_w" _frame_h:="$frame_h"
+    _frame_w:="$frame_w" _frame_h:="$frame_h" $extra_move
   rc=$?
   kill "$FAKE_PID" 2>/dev/null; wait "$FAKE_PID" 2>/dev/null; FAKE_PID=""
   if [ -n "$CAM_PID" ]; then
