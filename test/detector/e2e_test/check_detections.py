@@ -89,8 +89,14 @@ class Checker:
         if self.mode == "empty":
             if self.nonempty > 0:
                 failures.append("mode=empty 却收到 %d 条含目标的消息" % self.nonempty)
-            else:
+            elif self.count >= self.min_msgs:
                 print("PASS: empty 阶段 —— 话题在流且 targets 恒为空（空也发成立）")
+            else:
+                # ★ 不能在这里无脑打印 PASS：count 不足时下面会报 FAIL，
+                #   两行自相矛盾会把排查方向带偏（实测踩到过：明明 0 条却打印
+                #   "话题在流…PASS"，然后摘要又 FAIL）。
+                print("[check] 收到 %d 条空消息，但少于 %d 条，不足以判定「话题在流」"
+                      "（见下方 FAIL）" % (self.count, self.min_msgs))
         elif self.mode == "target":
             if self.nonempty == 0:
                 failures.append("mode=target 但未收到任何目标（模型是否可检出该图？）")

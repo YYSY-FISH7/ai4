@@ -116,9 +116,14 @@ print(i.shape[1], i.shape[0]) if i is not None else print(640, 480)
   wait_topic /detections       || echo "  (警告) /detections 未及时出现"
   sleep 0.5
   # _min_msgs 只用来证明「话题在流」，**不是吞吐指标**：
-  # /detector 是推理受限的（CPU 实测出帧 ~2.5~5.7 Hz，预热期更慢），
-  # 写死 20（=3.3 Hz）会在慢机器或预热期误判成「未在流」。取 5（≈0.8 Hz）即可。
-  python3 "$E2E/check_detections.py" _mode:="$mode" _duration:=6.0 _min_msgs:=5 \
+  # /detector 是推理受限的（CPU 实测出帧 ~2.5~5.7 Hz，预热刚结束那几秒更慢），
+  # 写死 20（=3.3 Hz）会在慢机器或预热期误判；取 5（≈0.8 Hz）实测**仍会踩边界**
+  # （2026-10-11 复跑：阶段A 收到 4 条 → 差 1 条 FAIL；而 10 秒后的阶段B 有 57 条）。
+  # ★ 阶段A 的目的只是「链路连通 + 空也发」，吞吐由阶段B 体现，故阈值再放
+  #   宽到 2（≈0.3 Hz）：只证「有消息」，不测速率，避免慢机器上的假 FAIL。
+  local minm=2 dur=6.0
+  [ "$mode" = "target" ] && minm=5
+  python3 "$E2E/check_detections.py" _mode:="$mode" _duration:=$dur _min_msgs:=$minm \
     _frame_w:="$fw" _frame_h:="$fh"
   rc=$?
   kill "$CAM_PID" 2>/dev/null
