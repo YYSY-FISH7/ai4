@@ -27,7 +27,7 @@ nohup.out
 *.bag
 
 # ----冲突库----
-lib/
+/lib/
 
 # ---- 其他辅助文件（旧设计文档）----
 design_old/    
