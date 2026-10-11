@@ -116,10 +116,10 @@ flowchart LR
     T["on_timer<br/>时钟层总领 · 三选一"] -->|"有航迹"| A["waypoints_from_track<br/>航迹→航点"]
     T -->|"短时无（未超时）"| R["重发上一条<br/>last_cmd"]
     T -->|"长时无（超时）"| C["hover_setpoint<br/>位置保持（自判）"]
-    A -->|"Waypoint"| B["send_waypoint<br/>下发 setpoint"]
-    B -->|"PositionTarget"| P["发布 /ctrl/radar"]
-    R -->|"PositionTarget（on_timer 直接发布，不经 send_waypoint）"| P
-    C -->|"PositionTarget（on_timer 直接发布，不经 send_waypoint）"| P
+    A -->|"Waypoint"| B["send_waypoint<br/>航点→位置指令"]
+    B -->|"PositionCommand"| P["发布 /ctrl/radar"]
+    R -->|"PositionCommand（on_timer 直接发布，不经 send_waypoint）"| P
+    C -->|"PositionCommand（on_timer 直接发布，不经 send_waypoint）"| P
 ```
 
 ### 模块 4：视觉检测（`/detector`）
@@ -183,8 +183,9 @@ flowchart TB
         f18["on_timer"]:::c3 --> f6["waypoints_from_track"]:::c3 --> f7["send_waypoint"]:::c3
         f18 --> f16["hover_setpoint"]:::c3
     end
-    %% 注：hover_setpoint / 重发 last_cmd 的结果为 PositionTarget，由 on_timer 直接发布，
-    %% 不经 send_waypoint（其入参为 Waypoint，类型不符）——与《函数接口》3.4 一致
+    %% 注：hover_setpoint / 重发 last_cmd 的结果为 PositionCommand，由 on_timer 直接发布，
+    %% 不经 send_waypoint（其入参为 Waypoint，类型不符）——与《函数接口》3.4 一致。
+    %% PositionCommand 为纯类型，发布前由节点壳转换为 mavros_msgs/PositionTarget。
     subgraph M4["④ 视觉检测 /detector"]
         f8["detect"]:::c4
     end
