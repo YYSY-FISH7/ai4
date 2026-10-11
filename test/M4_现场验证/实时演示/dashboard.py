@@ -33,7 +33,7 @@ def state_from_log():
     否则面板会一直显示"尚未收到"，看着像没跑起来。
     """
     for path in ("/tmp/m4_live/state.log",
-                 "/home/demo/桌面/ai4/现场验证/实时演示/state.log"):
+                 "/home/demo/桌面/ai4/test/M4_现场验证/实时演示/state.log"):
         try:
             with open(path) as fh:
                 lines = fh.readlines()

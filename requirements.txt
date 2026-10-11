@@ -28,7 +28,7 @@ pytest==8.3.5         # Python 3.8 最后支持档（pytest 8.4+ 起要求 Pytho
 #   其他节点壳只加 lib/，取不到这里的 numpy。
 #
 #   完整命令、隔离验证与回滚方式见：
-#       M4交付说明/组长确认冲突库下载说明文档.md
+#       design_module/M4/交付说明/组长确认冲突库下载说明文档.md
 #
 # torch==2.4.1
 # torchvision==0.19.1

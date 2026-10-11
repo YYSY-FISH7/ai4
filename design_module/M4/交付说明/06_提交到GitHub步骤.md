@@ -15,7 +15,7 @@
 | **Fork** | ✅ 已完成（`YYSY-FISH7/ai4`，Public） |
 | **Clone** | ✅ 已完成（宿主机 `_github/ai4`） |
 | **分支** | ✅ 已建 `develop`（从 `master`） |
-| **放文件** | ✅ 已完成：**41 项**（`M4交付说明/` 13 + 代码/脚本/测试 26 + `install_m4_deps.sh` + `.gitignore`/`requirements.txt` 两处改动） |
+| **放文件** | ✅ 已完成：**41 项**（`design_module/M4/交付说明/` 13 + 代码/脚本/测试 26 + `install_m4_deps.sh` + `.gitignore`/`requirements.txt` 两处改动） |
 | **commit** | ✅ 已创建 `5e71a07`（41 files changed, 8340 insertions） |
 | **push** | ⏳ **只剩这一步**（需要你自己的 GitHub 凭据） |
 
@@ -116,7 +116,7 @@ DST=~/github/<仓库名>            # 刚 clone 下来的
 cd "$DST"
 
 # ① 交付说明（全是新增）
-cp -a "$SRC/M4交付说明" .
+cp -a "$SRC/design_module/M4/交付说明" design_module/M4/
 
 # ② 依赖安装脚本 + gitignore
 cp -a "$SRC/install_m4_deps.sh" .

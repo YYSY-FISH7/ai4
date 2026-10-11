@@ -135,7 +135,7 @@ fi
 echo
 echo "【核对 7】模型与素材是不是真的"
 # --------------------------------------------------------------------------- #
-ASSETS="/home/demo/桌面/ai4/现场验证/实时演示/assets"
+ASSETS="/home/demo/桌面/ai4/test/M4_现场验证/实时演示/assets"
 for f in yolov8n.pt bus.jpg; do
   p="$ASSETS/$f"
   if [ -s "$p" ]; then
