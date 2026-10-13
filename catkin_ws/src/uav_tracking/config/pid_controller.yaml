@@ -1,0 +1,9 @@
+rate_hz: 50.0
+hold_timeout: 0.2
+image_width: 640.0
+image_height: 480.0
+desired_area: 0.10
+min_area: 1.0e-4
+forward_speed_limit: 2.0
+impact_area_threshold: 0.35
+terminal_forward_speed: 0.0
