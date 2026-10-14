@@ -1,0 +1,6 @@
+# /cluster 节点参数（模块 1：点迹聚类）
+# 算法参数一律走 rosparam（launch / 命令行可调，不写死）；
+# 默认值与 scripts/cluster_node.py 中 rospy.get_param 的兜底值一致。
+z_thresh: 0.3      # 地面高度阈值：保留 z > z_thresh 的点（米）
+eps: 0.5           # DBSCAN 邻域半径（米，须 > 0）
+min_samples: 5     # DBSCAN 核心点最小样本数（含自身，正整数）

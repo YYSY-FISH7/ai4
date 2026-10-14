@@ -15,8 +15,10 @@
   ``stop_setpoint`` 与 PX4 OFFBOARD failsafe 两层兜底。
 
 本模块只提供**纯逻辑**（不依赖 ROS/``rospy``），便于单元测试；节点壳
-（订阅 / 发布 / 日志）在集成阶段封装，指令 ``PositionTarget`` 在此按不透明对象
-（``object``）处理。
+（订阅 / 发布 / 日志）在集成阶段封装。mux 为纯转发节点，指令
+``mavros_msgs/PositionTarget`` 在此按**不透明载荷**处理（不生成、不解释指令内容），
+**不涉及** ``PositionCommand``——后者仅存在于 ``/navigator`` / ``/pid_controller``
+的纯逻辑侧（见 ``design/文档修改历史.md`` 1.1）。
 
 阶段化校验（代码书写原则第 1 条）：由 ``config.ONBOARD`` 控制——``dev``
 （默认）非法输入抛 ``ValueError``；``onboard`` 告警并丢弃 / 忽略。

@@ -1,0 +1,10 @@
+# /control_mux 节点参数（模块 7：控制仲裁）
+#
+# 本节点为纯转发：只转发不生成、事件转发无定时器、不做 /state 超时检测
+# （方案 B，见 design/函数接口.md 模块 7 与「决策端设计原则」第 4 条），
+# 安全性由 /pid_controller 的 stop_setpoint 与 PX4 OFFBOARD failsafe 两层兜底。
+#
+# 因此除「初始状态」外没有任何可调参数：仲裁规则固定在 lib/control_mux.py 的
+# select_channel（RADAR_GUIDE→雷达、VISUAL_LOCK→视觉、其他值→回退雷达），
+# 初始状态由节点模块级常量 INITIAL_STATE 兜底、不从此文件读取。
+# 本文件仅作文档说明，launch/control_mux.launch 中不做 rosparam load。

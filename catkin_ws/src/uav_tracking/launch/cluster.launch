@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="uav_tracking" type="cluster_node.py" name="cluster" output="screen">
+    <rosparam command="load" file="$(find uav_tracking)/config/cluster.yaml" />
+  </node>
+</launch>

@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="uav_tracking" type="state_machine_node.py" name="state_machine" output="screen">
+    <rosparam command="load" file="$(find uav_tracking)/config/state_machine.yaml" />
+  </node>
+</launch>

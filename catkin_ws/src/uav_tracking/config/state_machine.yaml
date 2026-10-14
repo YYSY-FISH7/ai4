@@ -1,0 +1,8 @@
+# /state_machine 节点参数（模块 8：状态机）
+# 默认值与 scripts/state_machine_node.py 模块级常量、lib/state_machine.py 一致；
+# N/M/K 为「连续帧」阈值，帧节拍为 /detections 的到达（设计原则第 4 条）。
+conf_thresh: 0.8    # 视觉锁定置信度阈值（> 阈值才算有效检测）
+area_thresh: 0.02   # 视觉锁定 BBox 面积比阈值（> 2% 画面）
+n_visual_lock: 3    # 进入 VISUAL_LOCK：锁定条件连续 N 帧保持
+m_visual_lost: 3    # 退出 VISUAL_LOCK：连续 M 帧丢失目标 → RADAR_GUIDE
+k_radar_lost: 5     # 进入 SEARCH/RTH：RADAR_GUIDE 下连续 K 帧无雷达航迹

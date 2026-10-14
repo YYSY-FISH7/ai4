@@ -25,7 +25,8 @@
 
 范围说明：本模块只提供纯逻辑（不依赖 ROS/``rospy``），节点壳（订阅 / 发布 /
 切换日志）在集成阶段封装；输入的 ``DetectedTarget`` / ``VisualTrack`` /
-``Track`` 均为消息级数据结构（见 ``datatypes``）。
+``Track`` 均为**消息镜像 dataclass**（纯类型，字段与同名 ``.msg`` 一致），
+由节点壳负责 ``.msg`` ↔ 纯 dataclass 拆装包（见 ``datatypes``）。
 """
 from __future__ import annotations
 

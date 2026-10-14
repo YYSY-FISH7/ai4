@@ -15,9 +15,11 @@
 | 纯逻辑库 | `code/cluster.py`、`code/control_mux.py`、`code/state_machine.py` | 已有 |
 | 数据类型 | `code/datatypes.py`（唯一入口，全项目共用） | 已有 |
 | 阶段配置 | `code/config.py`（`UAV_STAGE`：`dev` / `onboard`） | 已有 |
-| 单元测试 | `test/cluster/test_cluster.py`、`test/control_mux/test_control_mux.py` | 已有 |
-| 可视化演示 | `code/cluster.ipynb`、`code/control_mux.ipynb`、`code/state_machine.ipynb` | 已有 |
-| **ROS 节点壳** | —— | **缺失** |
+| 单元测试（pytest） | `test/cluster/test_cluster.py`、`test/control_mux/test_control_mux.py`、`test/cluster/test_cluster_node.py`（节点壳转换） | 已有 |
+| ROS 节点壳 | `catkin_ws/src/uav_tracking/scripts/cluster_node.py` | 已有 |
+| launch + config 文件 | `catkin_ws/src/uav_tracking/launch/cluster.launch`、`catkin_ws/src/uav_tracking/config/cluster.yaml` | 已有 |
+| e2e 测试文件 | `test/cluster/e2e_test/`（`fake_radar.py`、`check_centroid.py`、`run_e2e.sh`、`logs/`） | 已有 |
+| 可视化演示 | `code/cluster.ipynb`、`code/control_mux.ipynb`、`code/state_machine.ipynb`、`code/cluster_node.ipynb`（节点壳消息拆/装包） | 已有 |
 
 ### 1.2 关键判断
 

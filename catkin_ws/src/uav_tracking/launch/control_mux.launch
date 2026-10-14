@@ -1,0 +1,4 @@
+<launch>
+  <!-- 纯转发节点：仲裁规则固定、无可调参数，故不加载 rosparam（见 config/control_mux.yaml） -->
+  <node pkg="uav_tracking" type="control_mux_node.py" name="control_mux" output="screen" />
+</launch>
