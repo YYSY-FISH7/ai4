@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="uav_tracking" type="tracker_node.py" name="tracker" output="screen">
+    <rosparam command="load" file="$(find uav_tracking)/config/tracker.yaml" />
+  </node>
+</launch>

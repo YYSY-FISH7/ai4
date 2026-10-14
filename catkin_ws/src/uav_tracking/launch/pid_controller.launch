@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="uav_tracking" type="pid_controller_node.py" name="pid_controller" output="screen">
+    <rosparam command="load" file="$(find uav_tracking)/config/pid_controller.yaml" />
+  </node>
+</launch>

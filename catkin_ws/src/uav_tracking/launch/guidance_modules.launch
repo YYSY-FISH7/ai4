@@ -1,0 +1,6 @@
+<launch>
+  <!-- This launch file intentionally starts only modules 2, 3, and 6. -->
+  <include file="$(find uav_tracking)/launch/tracker.launch" />
+  <include file="$(find uav_tracking)/launch/navigator.launch" />
+  <include file="$(find uav_tracking)/launch/pid_controller.launch" />
+</launch>
