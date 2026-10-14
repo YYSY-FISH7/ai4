@@ -1,6 +1,11 @@
 <launch>
-  <!-- This launch file intentionally starts only modules 2, 3, and 6. -->
+  <!-- 全链路入口：一次性启动已完成的模块 1/2/3/6/7/8。
+       模块 4（detector）与 5（visual_tracker）尚未实现，视觉链未闭合，
+       /detections 与 /visual/tracks 暂无数据源，状态机将保持 RADAR_GUIDE。 -->
+  <include file="$(find uav_tracking)/launch/cluster.launch" />
   <include file="$(find uav_tracking)/launch/tracker.launch" />
   <include file="$(find uav_tracking)/launch/navigator.launch" />
   <include file="$(find uav_tracking)/launch/pid_controller.launch" />
+  <include file="$(find uav_tracking)/launch/state_machine.launch" />
+  <include file="$(find uav_tracking)/launch/control_mux.launch" />
 </launch>

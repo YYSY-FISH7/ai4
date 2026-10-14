@@ -6,14 +6,16 @@
   不再重复定义。
 - 字段严格照搬 ``design/数据类型.md``，不新增、不虚构。
 
-已定义：
-- 模块 1 · 点迹聚类：:class:`Point3D`（数据类型.md 2.1）、:class:`Cluster`（2.2）；
-- 模块 8 · 状态机（话题消息级输入）：:class:`DetectedTarget`（1.1）、
-  :class:`VisualTrack`（1.3）、:class:`Track`（1.5）。
-- 模块 2 · 跟踪：:class:`TrackState`（内部滤波状态）；:class:`Track`（纯发布类型）。
-- 模块 3 · 导航：:class:`Waypoint`、:class:`Pose`、:class:`PositionCommand`。
+已定义（按 ``design/数据类型.md`` 第二章章节归类）：
+- 2.1 / 2.2 · 模块 1 点迹聚类：:class:`Point3D`、:class:`Cluster`；
+- 2.3 · 模块 2 跟踪：:class:`TrackState`（卡尔曼内部滤波状态）；
+- 2.4 · 消息镜像 dataclass（与 ``.msg`` 同名、字段一致；节点壳负责
+  ``.msg`` ↔ 纯 dataclass 拆装包）：:class:`Track`、:class:`VisualTrack`、
+  :class:`DetectedTarget`；
+- 2.7 / 2.8 / 2.9 · 模块 3 导航与模块 6 PID：:class:`Waypoint`、
+  :class:`Pose`、:class:`PositionCommand`。
 
-后续模块的 ``TrackState``、``Detection`` 等亦应加入本文件。
+新增类型时在本文件统一定义，不在其他 py 重复定义。
 
 Python 3.8 兼容说明
 -------------------
@@ -74,7 +76,7 @@ class Cluster:
 
 @dataclass
 class DetectedTarget:
-    """一次目标检测结果（``design/数据类型.md`` 1.1，消息 ``DetectedTarget.msg``）。
+    """一次目标检测结果（``design/数据类型.md`` 2.4.3，消息 ``DetectedTarget.msg``）。
 
     ``/detections`` 话题元素。字段与消息定义一一对应：
     ``class_id`` / ``confidence`` / ``bbox=[x, y, w, h]``。
@@ -87,7 +89,7 @@ class DetectedTarget:
 
 @dataclass
 class VisualTrack:
-    """视觉航迹（``design/数据类型.md`` 1.3，消息 ``VisualTrack.msg``）。
+    """视觉航迹（``design/数据类型.md`` 2.4.2，消息 ``VisualTrack.msg``）。
 
     ``/visual/tracks`` 话题元素。``area_ratio`` 为 bbox 面积 / 画面总面积。
     """
@@ -99,10 +101,10 @@ class VisualTrack:
 
 @dataclass
 class Track:
-    """雷达航迹（``design/数据类型.md`` 1.5，消息 ``Track.msg``）。
+    """雷达航迹（``design/数据类型.md`` 2.4.1，消息 ``Track.msg``）。
 
     ``/radar/tracks`` 话题元素。注意与模块 2 的**内部滤波结构**
-    :class:`TrackState`（state/cov）区分——本类为消息级、发布用的结构，
+    :class:`TrackState`（state/cov）区分——本类为消息镜像、发布用的结构，
     ``covariance`` 为 6x6 协方差展平的 36 维序列。
     """
 
