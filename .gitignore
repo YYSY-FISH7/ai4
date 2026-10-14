@@ -27,7 +27,7 @@ nohup.out
 *.bag
 
 # ----冲突库----
-lib/
+/lib/
 
 # ---- 其他辅助文件（旧设计文档）----
 design_old/    
@@ -36,3 +36,8 @@ design_old/
 .mcp.json
 mcp_filters/
 mcp使用注意事项/
+
+# ---- M4 追加（2026-10-14，追加式：未删改以上任何一行）----
+# 视觉依赖按组长要求隔离安装在工程内（1.1 GB），必须排除；模型权重同理。
+catkin_ws/src/uav_tracking/lib/m4_deps/
+*.pt

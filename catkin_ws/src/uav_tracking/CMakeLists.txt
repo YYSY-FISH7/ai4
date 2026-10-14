@@ -36,7 +36,22 @@ catkin_package(
 include_directories(${catkin_INCLUDE_DIRS})
 
 ## ------------------------------------------------------------------
-## 安装资源目录（文件就位后取消注释）
+## Python ROS 节点
 ## ------------------------------------------------------------------
-# install(DIRECTORY launch config rviz
-#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+catkin_install_python(PROGRAMS
+  scripts/tracker_node.py
+  scripts/navigator_node.py
+  scripts/pid_controller_node.py
+  ## ---- M4 视觉链（相机驱动 / 检测 / 跟踪）----
+  scripts/camera_node.py
+  scripts/detector_node.py
+  scripts/visual_tracker_node.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+## ------------------------------------------------------------------
+## Launch、参数和 RViz 资源
+## ------------------------------------------------------------------
+install(DIRECTORY launch config rviz
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
