@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="uav_tracking" type="navigator_node.py" name="navigator" output="screen">
+    <rosparam command="load" file="$(find uav_tracking)/config/navigator.yaml" />
+  </node>
+</launch>
