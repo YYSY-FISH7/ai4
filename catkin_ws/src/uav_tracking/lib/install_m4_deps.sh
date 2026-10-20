@@ -2,10 +2,13 @@
 # =============================================================================
 # M4 视觉依赖安装脚本（组长批准方案：装到工程内 lib/m4_deps，严格隔离）
 #
-# 用法：
-#   bash install_m4_deps.sh            # 安装（约下载 300MB，装完 1.1GB）
-#   bash install_m4_deps.sh --check    # 只检查现状，不安装
-#   bash install_m4_deps.sh --uninstall# 删掉 lib/m4_deps（系统不受影响）
+# 归属：本脚本是**冲突库隔离下载脚本**，按《项目要求汇总.md》Q4/A4 放在 lib/ 下，
+#       并在仓库根《冲突库汇总.md》的 M4 段登记（库名、版本、下载指令）。
+#
+# 用法（在任意目录执行，脚本自己定位工程根）：
+#   bash catkin_ws/src/uav_tracking/lib/install_m4_deps.sh            # 安装（约下载 300MB，装完 1.1GB）
+#   bash catkin_ws/src/uav_tracking/lib/install_m4_deps.sh --check    # 只检查现状，不安装
+#   bash catkin_ws/src/uav_tracking/lib/install_m4_deps.sh --uninstall# 删掉 lib/m4_deps（系统不受影响）
 #
 # 设计约束（**不可破坏**）：
 #   1. numpy 锁 1.21.6，且**只装在 m4_deps 里**；系统 numpy 1.17.4 一动不动；
@@ -26,9 +29,10 @@
 
 set -u
 
-# --- 路径：脚本自己定位工程根，不写死 ---
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DIR="$SCRIPT_DIR/catkin_ws/src/uav_tracking/lib/m4_deps"
+# --- 路径：脚本自己定位工程根，不写死（本脚本就在 .../uav_tracking/lib/ 下）---
+LIB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$LIB_DIR/../../../.." && pwd)"
+DIR="$LIB_DIR/m4_deps"
 
 # --- 镜像（可用环境变量覆盖）---
 PYPI="${M4_PYPI_INDEX:-https://mirrors.aliyun.com/pypi/simple/}"
@@ -141,7 +145,7 @@ do_install() {
   python3 -m pip --version >/dev/null 2>&1 || { bad "python3 没有 pip"; exit 1; }
   echo "  python3: $(python3 --version 2>&1)"
   echo "  pip    : $(python3 -m pip --version 2>&1 | cut -d' ' -f1-2)"
-  echo "  磁盘可用: $(df -h "$SCRIPT_DIR" | tail -1 | awk '{print $4}')（需要约 2 GB）"
+  echo "  磁盘可用: $(df -h "$REPO_ROOT" | tail -1 | awk '{print $4}')（需要约 2 GB）"
   echo "  PyPI 镜像: $PYPI"
 
   local SYS_NP_BEFORE
@@ -233,9 +237,9 @@ do_install() {
     echo "  ✅ 隔离成功：系统包未受影响，依赖完整"
     echo
     echo "  下一步（真跑一次检测）："
-    echo "    bash $SCRIPT_DIR/test/detector/e2e_test/run_e2e.sh --help 2>/dev/null || true"
+    echo "    bash $REPO_ROOT/test/detector/e2e_test/run_e2e.sh --help 2>/dev/null || true"
     echo "    MODEL_PATH=<你的.pt> IMAGE=<你的图> \\"
-    echo "        bash $SCRIPT_DIR/test/detector/e2e_test/run_e2e.sh"
+    echo "        bash $REPO_ROOT/test/detector/e2e_test/run_e2e.sh"
   else
     echo "  ❌ 隔离异常，请把上面的输出发给 M4 负责人"
     exit 1

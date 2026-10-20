@@ -118,8 +118,9 @@ cd "$DST"
 # ① 交付说明（全是新增）
 cp -a "$SRC/design_module/M4/交付说明" design_module/M4/
 
-# ② 依赖安装脚本 + gitignore
-cp -a "$SRC/install_m4_deps.sh" .
+# ② 依赖安装脚本（冲突库下载脚本，按规范放 lib/）+ gitignore
+cp -a "$SRC/catkin_ws/src/uav_tracking/lib/install_m4_deps.sh" \
+      catkin_ws/src/uav_tracking/lib/
 cp -a "$SRC/.gitignore" .
 
 # ③ 模块 4/5 的纯逻辑（code/ 与 lib/ 之间有软链，必须 -a）
@@ -202,6 +203,13 @@ git push -u origin develop
 git log --oneline -3
 git ls-files | wc -l                # 总文件数
 git ls-files | grep m4_deps         # 必须为空
+
+# ⚠️ 关键自检：lib/ 下组长原有的 .py 必须仍是软链（mode 120000，内容只有一行路径）
+git ls-files -s catkin_ws/src/uav_tracking/lib/ | grep -v '^120000'
+#   期望只剩两行：.gitkeep（100644）与 install_m4_deps.sh（100755）。
+#   若还出现 cluster.py / config.py / control_mux.py / datatypes.py / state_machine.py，
+#   说明软链被写成了实体文件副本 → 立刻恢复，不要提交：
+git checkout upstream/develop -- catkin_ws/src/uav_tracking/lib/
 ```
 
 到网页上看你的 fork → `develop` 分支，确认文件都在。
