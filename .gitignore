@@ -31,6 +31,7 @@ nohup.out
 
 # ---- 其他辅助文件（旧设计文档）----
 design_old/    
+reports/
 
 # ---- 本地 MCP / 工具配置（不入库）----
 .mcp.json
