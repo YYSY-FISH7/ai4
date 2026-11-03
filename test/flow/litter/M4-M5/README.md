@@ -4,9 +4,9 @@
 先由各模块负责人启动发送方和接收方，再在项目根目录运行：
 
 ```bash
-bash test/flow/M4-M5/run.sh check
+bash test/flow/litter/M4-M5/run.sh check
 ```
 
 需要收到检测与非空航迹，观察同一 ID 至少连续 5 帧，并实际观察到 RADAR_GUIDE → VISUAL_LOCK。已经锁定后才启动检查，不足以证明本次状态切换，请与接收方配合重现完整过程。
 
-看画面与本地独立演示见 [M4 使用文档](../../../design_module/M4/模块使用文档.md)。
+看画面与本地独立演示见 [M4 使用文档](../../../../design_module/M4/模块使用文档.md)。

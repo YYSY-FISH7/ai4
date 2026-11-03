@@ -4,9 +4,9 @@
 先由各模块负责人启动发送方和接收方，再在项目根目录运行：
 
 ```bash
-bash test/flow/M0-M4/run.sh check
+bash test/flow/litter/M0-M4/run.sh check
 ```
 
 图像话题可追加 `--topic /实际图像话题 --no-gui`；明确测试空场景时追加 `--allow-empty`。默认目标场景必须至少检出一个目标。
 
-看画面与本地独立演示见 [M4 使用文档](../../../design_module/M4/模块使用文档.md)。
+看画面与本地独立演示见 [M4 使用文档](../../../../design_module/M4/模块使用文档.md)。
