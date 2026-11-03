@@ -9,6 +9,7 @@
                     - target：话题在流 **且** 至少一条消息含目标，并校验 bbox 合法性
                     - flow  ：只要求话题在流（链路连通即可）
 :~duration   float  观察时长（秒）            默认 6.0
+:~timeout    float  样本不足时的最长观察时长   默认 30.0
 :~min_msgs   int    最少消息数（证明在流）     默认 20
 :~frame_w    int    画面宽（校验 bbox 越界）   默认 640
 :~frame_h    int    画面高                     默认 480
@@ -18,7 +19,7 @@ bbox 合法性的三条断言（**专治 xyxy / xywh 搞混**）
 --------------------------------------------------
 1. ``w > 0 且 h > 0``        —— 若是 ``xywh`` 却按 ``xyxy`` 填，宽高会是负数；
 2. ``x >= -eps 且 y >= -eps`` —— 左上角不应显著为负；
-3. ``x + w <= frame_w * 1.2`` —— 右边界不应远超画面（``x2`` 误填成 ``x`` 时会超）。
+3. ``x + w <= frame_w + EPS`` —— 右边界仅允许少量浮点误差。
 
 退出码：0 = PASS，1 = FAIL（便于 run_e2e.sh 汇总）。
 """
@@ -26,6 +27,7 @@ from __future__ import annotations
 
 import sys
 import math
+import time
 
 import rospy
 from uav_tracking.msg import Detections
@@ -39,6 +41,10 @@ class Checker:
         self.mode = str(rospy.get_param("~mode", "flow")).lower()
         self.duration = float(rospy.get_param("~duration", 6.0))
         self.min_msgs = int(rospy.get_param("~min_msgs", 20))
+        self.timeout = float(rospy.get_param("~timeout", 30.0))
+        if (not math.isfinite(self.duration) or not math.isfinite(self.timeout)
+                or self.duration <= 0 or self.timeout < self.duration or self.min_msgs < 2):
+            raise ValueError("duration/timeout 必须有限且 0 < duration <= timeout，min_msgs 至少为 2")
         self.frame_w = int(rospy.get_param("~frame_w", 640))
         self.frame_h = int(rospy.get_param("~frame_h", 480))
         self.conf_min = float(rospy.get_param("~conf_min", 0.0))
@@ -79,7 +85,13 @@ class Checker:
 
     def run(self):
         rospy.loginfo("[check] mode=%s 观察 %.1fs ...", self.mode, self.duration)
-        rospy.sleep(self.duration)
+        started = time.monotonic()
+        while not rospy.is_shutdown():
+            elapsed = time.monotonic() - started
+            if elapsed >= self.timeout or (elapsed >= self.duration and self.count >= self.min_msgs):
+                break
+            rospy.sleep(0.1)
+        print("[check] 实际观察 %.1fs，上限 %.1fs" % (time.monotonic() - started, self.timeout))
 
         print("[check] 收到 %d 条 %s（期望 >= %d）" % (self.count, TOPIC, self.min_msgs))
         failures = []
