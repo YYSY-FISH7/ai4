@@ -43,6 +43,7 @@ try:
 except ImportError:  # pragma: no cover - 环境相关
     CvBridge = None
 
+from config import ONBOARD
 from datatypes import DetectedTarget  # noqa: E402
 from visual_tracker import DEFAULT_FRAME_SIZE  # noqa: E402
 from visual_tracker import setup as setup_tracker  # noqa: E402  纯逻辑，零改动
@@ -180,6 +181,9 @@ class VisualTrackerNode:
             detections = detections_from_msg(msg)
         except Exception as exc:
             rospy.logerr("[visual_tracker] 检测消息解析失败: %s", exc)
+            if not ONBOARD:
+                rospy.signal_shutdown("开发阶段跟踪处理失败，请检查日志")
+                return
             self.pub.publish(visual_tracks_to_msg([]))
             return
 
@@ -189,6 +193,9 @@ class VisualTrackerNode:
             tracks = self.tracker.track(detections, self.latest_image)
         except Exception as exc:
             rospy.logerr("[visual_tracker] 跟踪失败: %s", exc)
+            if not ONBOARD:
+                rospy.signal_shutdown("开发阶段跟踪处理失败，请检查日志")
+                return
             self.pub.publish(visual_tracks_to_msg([]))
             return
 

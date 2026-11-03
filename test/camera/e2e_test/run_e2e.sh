@@ -26,8 +26,13 @@ echo "仓库根目录: $REPO"
 # 故 source 期间临时关闭 nounset —— 否则从干净终端直接跑本脚本会失败。
 set +u
 source /opt/ros/noetic/setup.bash
-source "$WS/devel/setup.bash"
+source "$WS/devel/setup.bash" || exit 1
 set -u
+export ROS_MASTER_URI="${M4_TEST_MASTER_URI:-http://127.0.0.1:11331}"
+TEST_PORT="$(python3 -c 'import os,urllib.parse; print(urllib.parse.urlparse(os.environ["ROS_MASTER_URI"]).port)')"
+if ! [[ "$ROS_MASTER_URI" =~ ^http://(127\.0\.0\.1|localhost):[0-9]+/?$ ]]; then
+  echo "FAIL: E2E 仅允许使用独立的本机 master"; exit 2
+fi
 
 CORE_PID=""
 NODE_PID=""
@@ -38,6 +43,7 @@ cleanup() {
   wait 2>/dev/null
 }
 trap cleanup EXIT
+trap 'exit 130' INT TERM
 
 wait_master() { for _ in $(seq 1 50); do rosnode list >/dev/null 2>&1 && return 0; sleep 0.2; done; return 1; }
 
@@ -48,9 +54,9 @@ python3 "$E2E/make_media.py" "$TMPDIR" "$AFPS" || { echo "FAIL: 素材生成失�
 
 echo "=== [2/4] 启动 roscore ==="
 if rosnode list >/dev/null 2>&1; then
-  echo "  master 已在运行，复用"
+  echo "FAIL: 测试端口已有 master，拒绝复用，避免污染结果"; exit 2
 else
-  nohup roscore > "$LOGDIR/roscore.log" 2>&1 &
+  nohup roscore -p "$TEST_PORT" > "$LOGDIR/roscore.log" 2>&1 &
   CORE_PID=$!
   if wait_master; then
     echo "  roscore 已启动 (pid=$CORE_PID)"

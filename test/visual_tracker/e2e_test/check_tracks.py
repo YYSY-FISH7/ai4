@@ -26,6 +26,7 @@
 from __future__ import annotations
 
 import sys
+import math
 
 import rospy
 from uav_tracking.msg import VisualTrackArray
@@ -69,7 +70,8 @@ class Checker:
             expect = (w * h) / float(self.frame_w * self.frame_h)
             got = float(t.area_ratio)
             self.area_samples.append(got)
-            if expect > 0 and abs(got - expect) / expect > self.area_tol:
+            if (not all(math.isfinite(v) for v in [x,y,w,h,got]) or w <= 0 or h <= 0
+                    or got < 0 or (expect > 0 and abs(got - expect) / expect > self.area_tol)):
                 self.area_bad += 1
 
     def run(self):
@@ -85,7 +87,7 @@ class Checker:
         if self.mode == "empty":
             if self.nonempty > 0:
                 failures.append("mode=empty 却收到 %d 条含航迹的消息" % self.nonempty)
-            else:
+            elif self.count >= self.min_msgs:
                 print("PASS: empty 阶段 —— 话题在流且 tracks 恒为空（空也发成立）")
         else:
             if self.nonempty == 0:

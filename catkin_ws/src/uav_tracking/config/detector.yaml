@@ -4,7 +4,7 @@
 #   roslaunch uav_tracking detector.launch conf_thres:=0.8
 
 model_path: "yolov8n.pt"   # 相对路径按「启动时的工作目录」解析，建议给绝对路径
-conf_thres: 0.5            # 刻意低于 /state_machine 的 0.8 判据，保证 0.8~1.0 区间不被截断
+conf_thres: 0.1            # 保留跟踪器低分关联所需的检测；状态机锁定门槛独立设置
 iou_thres: 0.45            # NMS 的 IoU 阈值
 imgsz: 640                 # 推理输入边长；4 核 CPU 实测 320→约22FPS、416→约16FPS、640→约10FPS
 device: cpu                # 仿真机无 CUDA；有 GPU 时改 "0"

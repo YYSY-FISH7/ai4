@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
+exec bash "$ROOT/test/M4_现场验证/实时演示/demo.sh" "$@"

@@ -25,6 +25,7 @@ bbox 合法性的三条断言（**专治 xyxy / xywh 搞混**）
 from __future__ import annotations
 
 import sys
+import math
 
 import rospy
 from uav_tracking.msg import Detections
@@ -52,11 +53,11 @@ class Checker:
 
     def _check_bbox(self, x, y, w, h):
         """返回 True 表示 bbox 合法。"""
-        if w <= 0 or h <= 0:
+        if not all(math.isfinite(v) for v in [x,y,w,h]) or w <= 0 or h <= 0:
             return False                                   # 断言 1
         if x < -EPS or y < -EPS:
             return False                                   # 断言 2
-        if x + w > self.frame_w * 1.2 or y + h > self.frame_h * 1.2:
+        if x + w > self.frame_w + EPS or y + h > self.frame_h + EPS:
             return False                                   # 断言 3
         return True
 
@@ -70,7 +71,7 @@ class Checker:
             x, y, w, h = [float(v) for v in t.bbox]
             if not self._check_bbox(x, y, w, h):
                 self.bbox_bad += 1
-            if float(t.confidence) < self.conf_min:
+            if not math.isfinite(t.confidence) or not self.conf_min <= t.confidence <= 1:
                 self.conf_bad += 1
             if len(self.samples) < 3:
                 self.samples.append("cls%d conf=%.2f bbox=(%.0f,%.0f,%.0f,%.0f)"
@@ -111,8 +112,11 @@ class Checker:
                     print("PASS: bbox 全部合法（xywh 约定，未越界）")
                 if self.conf_bad:
                     failures.append("有 %d 个目标置信度 < %.2f" % (self.conf_bad, self.conf_min))
+        elif self.mode == "flow":
+            if self.count >= self.min_msgs:
+                print("PASS: flow 阶段 —— 话题在流")
         else:
-            print("PASS: flow 阶段 —— 话题在流")
+            failures.append("未知检查模式：" + self.mode)
 
         if failures:
             for f in failures:

@@ -13,7 +13,7 @@
   保证「空 = 没目标（业务正常）、静默 = 故障」语义成立，同时为 ``/state_machine``
   的 N/M/K 帧计数提供节拍（设计原则第 5 条）；
 - **队列策略**：图像是大消息、旧帧无意义 → ``queue_size=1`` 只保最新。
-  配合 rospy 单线程 spinner，慢推理期间到达的帧会覆盖队列中的旧帧，
+  订阅回调只缓存最新帧，独立推理线程每次取当前最新帧，
   即「处理尽可能快、永远吃最新帧」，天然抑制延迟累积；
 - **参数外置**：模型路径、阈值、类别等一律走 ``rosparam``，不写死；
 - **可视化交付物**：方案书要求「在画面上绘制 Bounding Box 并输出坐标数据」，
@@ -33,13 +33,14 @@
 - ``lib/m4`` 不在任何默认搜索路径上，也不会被写进 ``.pth`` / ``PYTHONPATH``；
 - 本节点启动时会打印实际加载的 numpy 版本与路径，便于核对。
 
-下载/安装命令见 ``M4交付说明/组长确认冲突库下载说明文档.md``。
+下载/安装命令见 ``design_module/M4/模块使用文档.md``。
 """
 from __future__ import annotations
 
 import os
 import sys
 import traceback
+import threading
 
 # --------------------------------------------------------------------------- #
 # ★★ 路径注入必须发生在 `import rospy` 之前 ★★
@@ -68,10 +69,11 @@ from sensor_msgs.msg import Image  # noqa: E402
 
 import numpy as np  # noqa: E402
 
+from config import ONBOARD
 from detector import setup as setup_detector  # noqa: E402  纯逻辑，零改动
 from uav_tracking.msg import DetectedTarget, Detections  # noqa: E402
 
-try:  # 调试图需要 cv_bridge；缺失时不影响主链路
+try:  # 图像转换和调试图都需要 cv_bridge；缺失时启动失败
     from cv_bridge import CvBridge
 except ImportError:  # pragma: no cover - 环境相关
     CvBridge = None
@@ -178,7 +180,7 @@ class DetectorNode:
     def __init__(self):
         # --- 参数一律走 rosparam（launch 可调，不写死）---
         self.model_path = rospy.get_param("~model_path", DEFAULT_MODEL_PATH)
-        self.conf_thres = rospy.get_param("~conf_thres", 0.5)
+        self.conf_thres = rospy.get_param("~conf_thres", 0.1)
         self.iou_thres = rospy.get_param("~iou_thres", 0.45)
         self.imgsz = rospy.get_param("~imgsz", 640)
         self.device = rospy.get_param("~device", "cpu")   # 仿真机无 CUDA
@@ -198,13 +200,21 @@ class DetectorNode:
             max_det=self.max_det,
         )
 
-        self.bridge = CvBridge() if CvBridge is not None else None
+        if CvBridge is None:
+            raise RuntimeError("检测节点需要 ROS cv_bridge，请先检查系统环境")
+        self.bridge = CvBridge()
+        self._condition = threading.Condition()
+        self._pending_image = None
+        self._stopping = False
         self.pub = rospy.Publisher(DETECTIONS_TOPIC, Detections, queue_size=QUEUE_SIZE)
         self.pub_debug = (
             rospy.Publisher(DEBUG_IMAGE_TOPIC, Image, queue_size=QUEUE_SIZE)
             if self.publish_debug else None
         )
-        rospy.Subscriber(self.image_topic, Image, self.on_image, queue_size=QUEUE_SIZE)
+        self._worker = threading.Thread(target=self._run_worker, daemon=True)
+        self._worker.start()
+        rospy.on_shutdown(self.shutdown)
+        rospy.Subscriber(self.image_topic, Image, self.on_image, queue_size=QUEUE_SIZE, buff_size=2**24)
 
         rospy.loginfo(
             "[detector] ready: model=%s conf=%.2f imgsz=%d device=%s in=%s out=%s",
@@ -229,20 +239,49 @@ class DetectorNode:
             rospy.logwarn(
                 "[detector] 未找到隔离目录 %s，改用系统 numpy %s。"
                 "若推理报 'integer argument expected, got float'，请按 "
-                "《组长确认冲突库下载说明文档.md》安装视觉依赖。",
+                "design_module/M4/模块使用文档.md 安装视觉依赖。",
                 _M4_DEPS, np.__version__)
 
     # ---- 事件层：收到一帧图像处理一帧（本模块无定时器）----
     def on_image(self, msg):
+        """Only retain the newest image; inference never blocks the subscriber."""
+        with self._condition:
+            self._pending_image = msg
+            self._condition.notify()
+
+    def shutdown(self):
+        with self._condition:
+            self._stopping = True
+            self._condition.notify_all()
+
+    def _run_worker(self):
+        while True:
+            with self._condition:
+                while self._pending_image is None and not self._stopping:
+                    self._condition.wait()
+                if self._stopping:
+                    return
+                message, self._pending_image = self._pending_image, None
+            try:
+                self._process_image(message)
+            except Exception:
+                rospy.logerr("[detector] 工作线程异常: %s", traceback.format_exc())
+                rospy.signal_shutdown("检测线程异常，请检查日志")
+                return
+
+    def _process_image(self, msg):
         """一帧图像 → 检测 → 发布。
 
         流程严格按「壳」的四件事：拆包 → 调核 → 装包 → 发布。
-        任何异常都不得让节点静默：出错时仍发布**空** ``Detections``。
+        开发阶段处理异常明确退出；上机阶段转换/推理失败告警并发布空消息。
         """
         try:
             image = image_msg_to_array(msg, self.bridge)
         except Exception as exc:  # 图像转换失败：记日志并发空
             rospy.logerr("[detector] 图像转换失败: %s", exc)
+            if not ONBOARD:
+                rospy.signal_shutdown("开发阶段图像转换失败")
+                return
             self.pub.publish(detections_to_msg([]))
             return
 
@@ -253,6 +292,9 @@ class DetectorNode:
             # 只打一行 exc 看不到根因，这里补上完整堆栈（节流，避免刷屏）
             rospy.logerr_throttle(
                 5.0, "[detector] 推理失败: %s\n%s", exc, traceback.format_exc())
+            if not ONBOARD:
+                rospy.signal_shutdown("开发阶段推理失败，请检查日志")
+                return
             self.pub.publish(detections_to_msg([]))
             return
 

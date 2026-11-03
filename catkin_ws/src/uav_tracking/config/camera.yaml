@@ -14,7 +14,7 @@ loop: true                 # video / image 源播完是否循环
 video_path: ""             # source=video：视频文件路径
 image_path: ""             # source=image：单张图片路径
 device_id: 0               # source=usb：摄像头序号
-gazebo_topic: "/camera/image_raw"   # source=gazebo：从该话题中转（与 image_topic 相同则空转）
+gazebo_topic: "/uav/front_camera/image_raw"   # source=gazebo：从该话题中转（与 image_topic 解析后相同时拒绝启动，避免消息循环）
 
 # 没有测试素材时，可先生成一段：
 #   python3 test/camera/e2e_test/make_media.py /tmp 15.0

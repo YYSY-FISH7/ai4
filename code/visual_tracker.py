@@ -6,26 +6,11 @@
 
 算法说明
 --------
-本实现覆盖 **BoT-SORT 的核心思想**（ReID 关闭、GMC 为可插拔钩子）：
-
-1. **卡尔曼滤波**（匀速模型，状态 ``[cx, cy, w, h, vcx, vcy, vw, vh]``）逐航迹预测；
-2. **两阶段关联**（BoT-SORT 的标志性特征）：
-   - 阶段一：高分检测（``conf >= track_high_thresh``）与全部航迹做 IoU 匹配；
-   - 阶段二：低分检测（``track_low_thresh <= conf < track_high_thresh``）与阶段一
-     未匹配的航迹再匹配——目标被遮挡、分数掉下来时借此**保住 ID**，
-     而不是当成新目标（这是相对原版 SORT 的主要收益）；
-3. 匹配代价用 IoU，采用**贪心分配**（决策文档第八章第 5 条：前期用最近邻，
-   真机或高机动场景再换匈牙利分配）；
-4. 未匹配航迹进入 buffer，连续 ``track_buffer`` 帧未更新才删除。
-
-关于 GMC（可选优化）
---------------------
-BoT-SORT 原版的 GMC（全局运动补偿）需要**原始图像**估计背景运动，依赖
-``boxmot`` / ``ultralytics`` 的 ``update(dets, img)`` 接口。而本模块签名
-``track(detections)`` 无图像入参，且 ``/visual_tracker`` 按节点图谱**只订阅
-``/detections``**、不订阅图像。故 GMC **默认关闭**，仅保留 :meth:`set_gmc`
-钩子——这与决策文档第九章第 3 条「GMC 列为可选优化项；若不上 BoT-SORT，
-纯 SORT 即可」一致，即：**守住签名与图谱，不为此新增订阅**。
+这是已有的简化多目标跟踪实现：匀速卡尔曼滤波、两阶段 IoU 关联、
+贪心分配及丢失缓冲；不宣称完整复现标准 BoT-SORT。
+ReID 和 GMC 暂不启用，遵守组长当前的基础功能范围。
+跟踪内部保存类别，禁止不同类别的检测继承同一航迹。
+图像入参为组长已确认的兼容补充，用于取得实际画面尺寸。
 
 设计约束
 --------
@@ -51,6 +36,7 @@ BoT-SORT 原版的 GMC（全局运动补偿）需要**原始图像**估计背景
 from __future__ import annotations
 
 import logging
+import math
 import warnings
 from typing import Optional
 
@@ -102,7 +88,7 @@ def _reject(message: str) -> bool:
 
 def _is_number(value: object) -> bool:
     """判断是否为实数（``bool`` 不算）。"""
-    return isinstance(value, (int, float)) and not isinstance(value, bool)
+    return isinstance(value, (int, float, np.integer, np.floating)) and not isinstance(value, (bool, np.bool_)) and math.isfinite(value)
 
 
 def _cxcywh_to_xywh(box) -> tuple[float, float, float, float]:
@@ -233,15 +219,16 @@ class KalmanBoxFilter:
 class _Track:
     """单条内部航迹（不属于对外数据类型，故不放入 ``datatypes.py``）。"""
 
-    __slots__ = ("track_id", "kf", "hits", "age", "time_since_update", "last_score")
+    __slots__ = ("track_id", "kf", "hits", "age", "time_since_update", "last_score", "class_id")
 
-    def __init__(self, track_id: int, kf: KalmanBoxFilter, score: float) -> None:
+    def __init__(self, track_id: int, kf: KalmanBoxFilter, score: float, class_id: int) -> None:
         self.track_id = track_id
         self.kf = kf
         self.hits = 1
         self.age = 0
         self.time_since_update = 0
         self.last_score = score
+        self.class_id = class_id
 
 
 class BotSortTracker:
@@ -295,17 +282,21 @@ class BotSortTracker:
             "min_area_ratio": DEFAULT_MIN_AREA_RATIO,
         }
         for name, value in numeric.items():
-            if not _is_number(value):
+            if not _is_number(value) or not 0 <= value <= 1:
                 if _reject(
                     "BotSortTracker: %s 必须为数值，实际为 %r" % (name, value)
                 ):
                     numeric[name] = fallback[name]
 
-        if not isinstance(track_buffer, int) or isinstance(track_buffer, bool):
+        if not isinstance(track_buffer, int) or isinstance(track_buffer, bool) or track_buffer < 0:
             if _reject(
                 "BotSortTracker: track_buffer 必须为整数，实际为 %r" % (track_buffer,)
             ):
                 track_buffer = DEFAULT_TRACK_BUFFER
+
+        if not numeric["track_low_thresh"] <= numeric["track_high_thresh"] <= numeric["new_track_thresh"]:
+            if _reject("阈值必须满足 low <= high <= new"):
+                numeric.update(fallback)
 
         self.track_high_thresh = float(numeric["track_high_thresh"])
         self.track_low_thresh = float(numeric["track_low_thresh"])
@@ -400,7 +391,7 @@ class BotSortTracker:
             本帧原始图像（``bgr8``），**与模块 4 ``detect`` 的入参同类型**。
 
             - **传入**：用它取实际画面尺寸（``image.shape``）作为 ``area_ratio``
-              的计算基准；同时为 GMC（全局运动补偿）提供输入。
+              的计算基准；保留图像兼容入参；当前不启用 GMC。
             - **不传**（``None``）：沿用 :meth:`set_frame_size` 或模块常量
               :data:`DEFAULT_FRAME_SIZE` 设定的尺寸，仍可正常工作。
 
@@ -416,10 +407,28 @@ class BotSortTracker:
             if _reject("track: detections 必须为序列，实际为 %r" % (type(detections),)):
                 return []
 
+        valid = []
+        for detection in detections:
+            box = getattr(detection, "bbox", None)
+            score = getattr(detection, "confidence", None)
+            category = getattr(detection, "class_id", None)
+            good = (isinstance(box, (list, tuple, np.ndarray))
+                    and np.shape(box) == (4,)
+                    and all(_is_number(v) for v in box) and box[2] > 0 and box[3] > 0
+                    and _is_number(score) and 0 <= score <= 1
+                    and isinstance(category, (int, np.integer))
+                    and not isinstance(category, (bool, np.bool_)) and category >= 0)
+            if not good:
+                if _reject("track: 检测框、置信度或类别非法"):
+                    continue
+            valid.append(detection)
+        detections = valid
+
         # 0) 画面尺寸：有图像就用图像的实际尺寸（更准），否则沿用已设定值
         if image is not None:
             self._apply_image_size(image)
 
+        self._tracks = [t for t in self._tracks if t.time_since_update <= self.track_buffer]
         # 1) 预测：全部航迹推进一步，丢失计数 +1
         for trk in self._tracks:
             trk.kf.predict(1.0)
@@ -444,7 +453,7 @@ class BotSortTracker:
         for det in high:
             if id(det) not in matched_dets and det.confidence >= self.new_track_thresh:
                 self._tracks.append(
-                    _Track(self._next_id, KalmanBoxFilter(*_detection_to_cxcywh(det)), det.confidence)
+                    _Track(self._next_id, KalmanBoxFilter(*_detection_to_cxcywh(det)), det.confidence, det.class_id)
                 )
                 self._next_id += 1
 
@@ -477,6 +486,11 @@ class BotSortTracker:
         t_boxes = np.array([self._tracks[i].kf.box for i in pool], dtype=float)
         d_boxes = np.array([_detection_to_cxcywh(d) for d in dets], dtype=float)
         iou = iou_matrix(t_boxes, d_boxes)
+        # Different object classes must never inherit the same track.
+        for r, index in enumerate(pool):
+            for c, det in enumerate(dets):
+                if self._tracks[index].class_id != det.class_id:
+                    iou[r, c] = -np.inf
 
         for r, c in greedy_match(iou, self.match_thresh):
             trk = self._tracks[pool[r]]

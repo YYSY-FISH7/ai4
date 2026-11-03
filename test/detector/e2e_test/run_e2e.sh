@@ -1,28 +1,8 @@
 #!/usr/bin/env bash
-# 模块 4 视觉检测 —— 实际数据流全打通 E2E 测试
-#
-# 编排：roscore → detector_node → [阶段A: fake_camera(纯色图) + 断言 empty]
-#                              → [阶段B: fake_camera(真实图片) + 断言 target]（可选）
-# 跑完自动清理后端进程；日志落在 test/detector/e2e_test/logs/。
-#
-# 用法：
-#   bash test/detector/e2e_test/run_e2e.sh                  # 只跑阶段A
-#   IMAGE=/path/to/target.jpg bash test/detector/e2e_test/run_e2e.sh   # 跑两阶段
-#
-#   > 阶段B 的 bbox 越界断言用的是**图片的真实像素尺寸**：fake_camera 提供
-#   > `~image_path` 时是原样发布该图、**不按 `_width/_height` 缩放**，
-#   > 所以不能写死 640x480（否则非该尺寸的图片会被误判越界）。
-#
-# 前置条件
-# --------
-#   1. 已 catkin_make 并 source（脚本内已 source）；
-#   2. 模型权重可访问：默认 `~model_path:=yolov8n.pt`。
-#      ultralytics 联网时会自动下载；**离线环境请先把权重放到本地**再用
-#      `~model_path:=/abs/path/yolov8n.pt` 指定（否则本脚本阶段A仍会通过，
-#      但走的是"推理异常 → 发空消息"分支，不能证明正常检出）。
-#
-# 与 cluster / control_mux / state_machine 的 run_e2e.sh 保持一致的结构；
-# REPO 路径自动推导，不硬编码。
+# 实际 YOLO + ROS E2E：纯色空场景与真实图片两阶段均必须通过。
+# 默认读取实时演示/assets 下的权重与公交车图；可用 MODEL_PATH / IMAGE 覆盖。
+# 缺少素材立即失败，不接受推理失败时发空消息代替空场景验证。
+# 独立 master 11332；日志 logs/，退出只清理自己启动的进程。
 set -u
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -32,8 +12,9 @@ E2E="$SCRIPT_DIR"
 LOGDIR="$E2E/logs"
 mkdir -p "$LOGDIR"
 
-MODEL_PATH="${MODEL_PATH:-yolov8n.pt}"
-IMAGE="${IMAGE:-}"
+MODEL_PATH="${MODEL_PATH:-$REPO/test/M4_现场验证/实时演示/assets/yolov8n.pt}"
+IMAGE="${IMAGE:-$REPO/test/M4_现场验证/实时演示/assets/bus.jpg}"
+[ -s "$MODEL_PATH" ] && [ -s "$IMAGE" ] || { echo "FAIL: 必须提供真实权重和测试图 IMAGE/MODEL_PATH"; exit 2; }
 
 echo "仓库根目录: $REPO"
 echo "模型权重  : $MODEL_PATH"
@@ -43,8 +24,13 @@ echo "阶段B 图片: ${IMAGE:-（未提供，将跳过）}"
 # 故 source 期间临时关闭 nounset —— 否则从干净终端直接跑本脚本会失败。
 set +u
 source /opt/ros/noetic/setup.bash
-source "$WS/devel/setup.bash"
+source "$WS/devel/setup.bash" || exit 1
 set -u
+export ROS_MASTER_URI="${M4_TEST_MASTER_URI:-http://127.0.0.1:11332}"
+TEST_PORT="$(python3 -c 'import os,urllib.parse; print(urllib.parse.urlparse(os.environ["ROS_MASTER_URI"]).port)')"
+if ! [[ "$ROS_MASTER_URI" =~ ^http://(127\.0\.0\.1|localhost):[0-9]+/?$ ]]; then
+  echo "FAIL: E2E 仅允许使用独立的本机 master"; exit 2
+fi
 
 CORE_PID=""
 CAM_PID=""
@@ -57,15 +43,16 @@ cleanup() {
   wait 2>/dev/null
 }
 trap cleanup EXIT
+trap 'exit 130' INT TERM
 
 wait_master() { for _ in $(seq 1 50); do rosnode list >/dev/null 2>&1 && return 0; sleep 0.2; done; return 1; }
 wait_topic()  { for _ in $(seq 1 50); do rostopic list 2>/dev/null | grep -qx "$1" && return 0; sleep 0.2; done; return 1; }
 
 echo "=== [1/4] 启动 roscore ==="
 if rosnode list >/dev/null 2>&1; then
-  echo "  master 已在运行，复用"
+  echo "FAIL: 测试端口已有 master，拒绝复用，避免污染结果"; exit 2
 else
-  nohup roscore > "$LOGDIR/roscore.log" 2>&1 &
+  nohup roscore -p "$TEST_PORT" > "$LOGDIR/roscore.log" 2>&1 &
   CORE_PID=$!
   if wait_master; then
     echo "  roscore 已启动 (pid=$CORE_PID)"
@@ -77,19 +64,13 @@ fi
 
 echo "=== [2/4] 启动 detector_node ==="
 rosrun uav_tracking detector_node.py \
-  _model_path:="$MODEL_PATH" _conf_thres:=0.5 _imgsz:=640 _device:=cpu \
+  _model_path:="$MODEL_PATH" _conf_thres:=0.1 _imgsz:=320 _device:=cpu \
   > "$LOGDIR/detector.log" 2>&1 &
 NODE_PID=$!
 sleep 2
 echo "  detector_node pid=$NODE_PID"
 
-# --- warmup：CPU 上首次推理要加载模型并预热，这段必须等 ---
-# 预热期内出帧很慢（实测 3Hz，热后 ~5.7Hz），若立刻跑 6 秒定时断言，
-# 会把「出帧慢」误判成「话题未在流（仅 N 条 < 20）」。
-# 这里用固定等待：确定性最好，且预热时长与机器性能无关地足够。
-wait_topic /detections || echo "  (警告) /detections 未及时出现"
-echo "  等 detector 预热（CPU 首次推理较慢，20s）..."
-sleep 20
+# 推理要在收到图像后才会预热；各阶段等待第一条实际检测消息。
 
 run_phase() {
   local phase="$1" mode="$2" img="$3" pattern="$4" rc=0
@@ -114,7 +95,9 @@ print(i.shape[1], i.shape[0]) if i is not None else print(640, 480)
   CAM_PID=$!
   wait_topic /camera/image_raw || echo "  (警告) /camera/image_raw 未及时出现"
   wait_topic /detections       || echo "  (警告) /detections 未及时出现"
-  sleep 0.5
+  if ! timeout 60 rostopic echo -n 1 /detections >/dev/null 2>&1; then
+    echo "FAIL: 推理未产生实际消息，请查看 detector.log"; return 1
+  fi
   # _min_msgs 只用来证明「话题在流」，**不是吞吐指标**：
   # /detector 是推理受限的（CPU 实测出帧 ~2.5~5.7 Hz，预热刚结束那几秒更慢），
   # 写死 20（=3.3 Hz）会在慢机器或预热期误判；取 5（≈0.8 Hz）实测**仍会踩边界**

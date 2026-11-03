@@ -44,3 +44,7 @@ catkin_ws/src/uav_tracking/lib/m4_deps/
 /data/
 /.venv-sensors/
 /lib/venv/sensor_python/
+
+# M4 generated dependencies and demo assets
+/lib/m4/
+/test/M4_现场验证/实时演示/assets/

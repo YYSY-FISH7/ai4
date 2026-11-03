@@ -38,6 +38,7 @@
 from __future__ import annotations
 
 import logging
+import math
 import warnings
 from typing import Optional
 
@@ -60,7 +61,7 @@ _LOG = logging.getLogger(__name__)
 
 # --- 默认参数（代码书写原则第 6 条：默认值集中定义）---
 DEFAULT_MODEL_PATH = "yolov8n.pt"
-DEFAULT_CONF_THRES = 0.5   # 低于状态机 0.8 判据，保证 0.8~1.0 区间不被截断
+DEFAULT_CONF_THRES = 0.1   # 保留跟踪第二阶段需要的低分检测；锁定门槛由状态机决定
 DEFAULT_IOU_THRES = 0.45
 DEFAULT_IMGSZ = 640
 DEFAULT_DEVICE = "cpu"     # 仿真机无 CUDA，只能 CPU 推理
@@ -88,7 +89,7 @@ def _reject(message: str) -> bool:
 
 def _is_number(value: object) -> bool:
     """判断是否为实数（``bool`` 不算）。"""
-    return isinstance(value, (int, float)) and not isinstance(value, bool)
+    return isinstance(value, (int, float, np.integer, np.floating)) and not isinstance(value, (bool, np.bool_)) and math.isfinite(value)
 
 
 def _xyxy_to_xywh(x1: float, y1: float, x2: float, y2: float):
@@ -137,15 +138,26 @@ class YoloDetector:
         if not isinstance(model_path, str) or not model_path:
             if _reject("YoloDetector: model_path 必须为非空 str，实际为 %r" % (model_path,)):
                 model_path = DEFAULT_MODEL_PATH
-        if not _is_number(conf_thres):
+        if not _is_number(conf_thres) or not 0 <= conf_thres <= 1:
             if _reject("YoloDetector: conf_thres 必须为数值，实际为 %r" % (conf_thres,)):
                 conf_thres = DEFAULT_CONF_THRES
-        if not _is_number(iou_thres):
+        if not _is_number(iou_thres) or not 0 <= iou_thres <= 1:
             if _reject("YoloDetector: iou_thres 必须为数值，实际为 %r" % (iou_thres,)):
                 iou_thres = DEFAULT_IOU_THRES
         if not isinstance(imgsz, int) or isinstance(imgsz, bool) or imgsz <= 0:
             if _reject("YoloDetector: imgsz 必须为正整数，实际为 %r" % (imgsz,)):
                 imgsz = DEFAULT_IMGSZ
+
+        if not isinstance(max_det, int) or isinstance(max_det, bool) or max_det <= 0:
+            if _reject("max_det 必须为正整数"):
+                max_det = DEFAULT_MAX_DET
+        if classes is not None and (not isinstance(classes, (list, tuple)) or
+                any(not isinstance(c, int) or isinstance(c, bool) or c < 0 for c in classes)):
+            if _reject("classes 必须为非负整数列表或 None"):
+                classes = None
+        if not isinstance(device, (str, int)) or isinstance(device, bool) or str(device).strip() == "":
+            if _reject("device 必须为非空设备名或设备序号"):
+                device = DEFAULT_DEVICE
 
         self.model_path = model_path
         self.conf_thres = float(conf_thres)
@@ -167,7 +179,7 @@ class YoloDetector:
             except ImportError as exc:
                 raise RuntimeError(
                     "[detector] 未安装 ultralytics，无法进行检测；"
-                    "请先安装视觉依赖（见 requirements.txt）"
+                    "请先运行 bash scripts/冲突库下载/install_m4_deps.sh（隔离依赖）"
                 ) from exc
             self._model = YOLO(self.model_path)
             _LOG.info("[detector] 模型已加载: %s", self.model_path)
@@ -199,6 +211,11 @@ class YoloDetector:
             if _reject("detect: image 维数应为 2 或 3，实际为 %d" % image.ndim):
                 return []
 
+        if image.dtype != np.uint8 or (image.ndim == 3 and image.shape[2] != 3):
+            if _reject("detect: 需要 uint8 灰度图或三通道 BGR 图像"):
+                return []
+        if image.ndim == 2:
+            image = np.repeat(image[:, :, None], 3, axis=2)
         model = self._ensure_model()
         results = model.predict(
             source=image,
@@ -229,6 +246,11 @@ class YoloDetector:
             confs = boxes.conf.cpu().numpy()
             classes = boxes.cls.cpu().numpy()
             for (x1, y1, x2, y2), conf, cls_id in zip(xyxy, confs, classes):
+                values = [x1, y1, x2, y2, conf, cls_id]
+                if (not all(_is_number(v) for v in values) or x2 <= x1 or y2 <= y1
+                        or not 0 <= conf <= 1 or cls_id < 0 or int(cls_id) != cls_id):
+                    if _reject("模型输出包含非法坐标、置信度或类别"):
+                        continue
                 detections.append(
                     DetectedTarget(
                         bbox=_xyxy_to_xywh(x1, y1, x2, y2),

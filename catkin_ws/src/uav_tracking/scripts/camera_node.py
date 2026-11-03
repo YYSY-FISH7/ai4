@@ -36,6 +36,7 @@
 from __future__ import annotations
 
 import os
+import math
 import sys
 
 import rospy
@@ -102,7 +103,8 @@ class FrameSource:
         ok, frame = self.cap.read()
         if not ok:
             if self.loop and self.source == "video":
-                self.cap.set(1 if sys.platform == "win32" else 0, 0)  # 回到首帧
+                import cv2
+                self.cap.set(cv2.CAP_PROP_POS_FRAMES, 0)  # 与操作系统无关的首帧定位
                 ok, frame = self.cap.read()
             if not ok:
                 return None
@@ -121,6 +123,10 @@ class CameraNode:
     def __init__(self):
         self.source = str(rospy.get_param("~source", DEFAULT_SOURCE)).lower()
         self.fps = float(rospy.get_param("~fps", DEFAULT_FPS))
+        if not math.isfinite(self.fps) or self.fps <= 0:
+            raise ValueError("camera fps 必须为有限正数")
+        if CvBridge is None:
+            raise RuntimeError("相机节点需要 ROS cv_bridge，请先检查系统环境")
         self.width = rospy.get_param("~width", DEFAULT_WIDTH)
         self.height = rospy.get_param("~height", DEFAULT_HEIGHT)
         self.frame_id = rospy.get_param("~frame_id", "camera_optical_frame")
@@ -171,10 +177,11 @@ class CameraNode:
     def _init_gazebo_relay(self):
         """gazebo：订阅既有图像话题做中转，事件驱动、无定时器。"""
         gazebo_topic = rospy.get_param("~gazebo_topic", self.image_topic)
-        if gazebo_topic == self.image_topic:
+        if rospy.resolve_name(gazebo_topic) == rospy.resolve_name(self.image_topic):
             rospy.logwarn(
                 "[camera_node] gazebo_topic 与 image_topic 相同（%s）；"
                 "此时无需本节点中转，建议直接不启动 /camera_node", gazebo_topic)
+            raise ValueError("Gazebo relay input and output resolve to the same topic")
         rospy.Subscriber(gazebo_topic, Image, self.on_image, queue_size=QUEUE_SIZE)
 
     # ------------------------------------------------------------------ #
