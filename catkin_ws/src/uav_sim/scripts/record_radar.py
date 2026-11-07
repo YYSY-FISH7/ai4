@@ -15,7 +15,6 @@ from sensor_msgs.msg import PointCloud2, Image, CameraInfo
 from geometry_msgs.msg import PoseStamped
 from tf2_msgs.msg import TFMessage
 from rosgraph_msgs.msg import Clock
-from uav_tracking.msg import CentroidArray
 from PIL import Image as PILImage
 
 
@@ -49,13 +48,8 @@ class Recorder:
         (self.root/'frames').mkdir(exist_ok=True)
         self.camera_root = self.root/'interfaces/node__detector/images'
         self.camera_root.mkdir(parents=True,exist_ok=True)
-        radar_interface = self.root/'interfaces/node__cluster'
-        radar_interface.mkdir(parents=True,exist_ok=True)
-        if not (radar_interface/'points').exists():
-            (radar_interface/'points').symlink_to('../../frames',target_is_directory=True)
         (self.root/'interfaces/mapping.json').write_text(json.dumps({
-            '/detector': {'directory':'node__detector','topic':'/camera/image_raw','message_type':'sensor_msgs/Image','status':'已本地暂存，未完成节点接收','reason':'上游已有detector代码与launch；本入口未启动detector，未验证模型权重与实际接收'},
-            '/cluster': {'directory':'node__cluster','topic':'/radar/points','message_type':'sensor_msgs/PointCloud2','receipt':'见cluster_received.csv和接口验收报告'}},ensure_ascii=False,indent=2))
+            '/detector': {'directory':'node__detector','topic':'/camera/image_raw','message_type':'sensor_msgs/Image','status':'已本地暂存，未完成节点接收','reason':'上游已有detector代码与launch；本入口未启动detector，未验证模型权重与实际接收'}},ensure_ascii=False,indent=2))
         self.camera_file=(self.root/'camera_frames.csv').open('w',newline='')
         self.camera_index=csv.writer(self.camera_file)
         self.camera_index.writerow(['frame','source_seq','stamp_sec','stamp_nsec','frame_id','encoding','width','height','file'])
@@ -85,7 +79,7 @@ class Recorder:
                   ('/target/ground_truth/pose',PoseStamped),('/clock',Clock),
                   ('/uav/front_camera/image_raw',Image),('/uav/front_camera/camera_info',CameraInfo),
                   ('/camera/image_raw',Image),('/camera/camera_info',CameraInfo),
-                  ('/target/pose',PoseStamped),('/radar/centroid',CentroidArray)]
+                  ('/target/pose',PoseStamped)]
         self.stats['topics'] = {t: cls._type for t,cls in topics}
         self.stats['config'] = self.config
         self.stats['mount'] = dict(parent='uav_base_link', child='radar_link', xyz_m=[.30,0,.12], quaternion_xyzw=[0,0,0,1])

@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[3];OUT=ROOT/'reports/sensor-recording-vali
 assert (ROOT/'catkin_ws/devel/setup.bash').is_file(), 'Build this workspace first'
 (ROOT/'data/radar').mkdir(parents=True,exist_ok=True)
 before=set((ROOT/'data/radar').glob('*'))
-command=['bash',str(ROOT/'catkin_ws/src/uav_sim/scripts/start_static_scene.sh'),'gui:=true','dynamic_target:=true','markers:=false','camera_view:=true','lidar:=false','radar:=true']
+command=['bash',str(ROOT/'catkin_ws/src/uav_sim/scripts/start_static_scene.sh'),'gui:=true','dynamic_target:=true','markers:=false','camera_view:=true','lidar:=false','radar:=true','record:=true']
 log=(OUT/'live.log').open('w');p=subprocess.Popen(command,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
 run=None;reason='timeout'
 duration=float(sys.argv[1]) if len(sys.argv)>1 else 12

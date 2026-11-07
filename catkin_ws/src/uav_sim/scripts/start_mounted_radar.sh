@@ -20,15 +20,8 @@ for ARG in "$@"; do
 done
 set -- "${FORWARD_ARGS[@]}"
 source "$REPO/lib/venv/env.bash"
-if [[ -z "${AI4_CLUSTER_PYTHON:-}" ]]; then
-  export AI4_CLUSTER_PYTHON=/usr/bin/python3
-fi
-if [[ "$SCENE_ONLY" != true || "$CHECK_ENV" == true ]] && ! "$AI4_CLUSTER_PYTHON" -c 'import rospy, sklearn, scipy, numpy; from uav_tracking.msg import CentroidArray' ; then
-  echo "cluster依赖不可用：$AI4_CLUSTER_PYTHON。请执行 scripts/冲突库下载/install_m0_deps.sh，说明见 design_module/M0/模块使用文档.md。" >&2
-  exit 1
-fi
 if [[ "$CHECK_ENV" == true ]]; then
-  "$AI4_CLUSTER_PYTHON" -c 'import sys, numpy, scipy, sklearn; print("Python:", sys.executable); print("numpy:", numpy.__version__, numpy.__file__); print("scipy:", scipy.__version__, scipy.__file__); print("sklearn:", sklearn.__version__, sklearn.__file__)'
+  /usr/bin/python3 -c 'import sys, numpy, scipy, sklearn; print("Python:", sys.executable); print("numpy:", numpy.__version__, numpy.__file__); print("scipy:", scipy.__version__, scipy.__file__); print("sklearn:", sklearn.__version__, sklearn.__file__)'
   exit 0
 fi
 mkdir -p "$REPO/data/radar"

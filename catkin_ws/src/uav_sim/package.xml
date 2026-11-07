@@ -39,5 +39,4 @@
   <exec_depend>xacro</exec_depend>
   <exec_depend>robot_state_publisher</exec_depend>
   <exec_depend>uav_description</exec_depend>
-  <exec_depend>uav_tracking</exec_depend>
 </package>

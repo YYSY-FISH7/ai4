@@ -66,7 +66,7 @@ if __name__ == '__main__':
             rospy.Subscriber('/camera/image_raw', Image, lambda m: note('camera', m.header.stamp), queue_size=1, buff_size=4*1024*1024),
             rospy.Subscriber('/radar/points', PointCloud2, lambda m: note('radar', m.header.stamp), queue_size=1),
             rospy.Subscriber('/gazebo/model_states', ModelStates, models, queue_size=1)]
-    required = ['/cluster/ready', '/sensor_interfaces/ready', '/sensor_source_audit/ready']
+    required = ['/sensor_interfaces/ready', '/sensor_source_audit/ready']
     if rospy.get_param('~recorder_required', False): required.append('/radar_recorder/ready')
     if rospy.get_param('~viewer_required', False): required.append('/sensor_viewer/ready')
     try:

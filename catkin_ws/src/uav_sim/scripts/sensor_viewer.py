@@ -148,6 +148,7 @@ class Window(QtWidgets.QMainWindow):
    before=float(view.subProp('Yaw').getValue());view.subProp('Yaw').setValue(before+.4)
    view.subProp('Distance').setValue(5.5);view.subProp('Focal Point').subProp('Y').setValue(.2)
    QtCore.QTimer.singleShot(500,self.capture)
+   (self.root/'viewer_evidence').mkdir(exist_ok=True)
    (self.root/'viewer_evidence/offline_controls.json').write_text(json.dumps(dict(previous_next=True,play_advanced=advanced,paused=not self.playing,radar_step=True,rotation=float(view.subProp('Yaw').getValue())!=before,zoom_distance=float(view.subProp('Distance').getValue()),pan_y=float(view.subProp('Focal Point').subProp('Y').getValue()),latest=self.latest),indent=2))
    assert advanced
   QtCore.QTimer.singleShot(1500,finish)

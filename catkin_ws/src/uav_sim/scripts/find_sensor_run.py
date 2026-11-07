@@ -18,7 +18,7 @@ def complete(root):
             return False
         if any(stats[k] for k in ('queue_drops','sequence_gaps','timestamp_gaps','write_errors')):
             return False
-        if not all(checked.get(k) for k in ('camera_complete','radar_complete','cluster_complete')):
+        if not all(checked.get(k) for k in ('camera_complete','radar_complete')):
             return False
         bag = root/'raw.bag'
         if not bag.is_file() or bag.stat().st_size == 0:

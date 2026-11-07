@@ -43,7 +43,5 @@ target_link_libraries(sensor_source_audit ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES
 install(TARGETS sensor_source_audit RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 install(PROGRAMS scripts/sensor_interfaces.py scripts/sensor_session.py scripts/start_sensor_clock.py scripts/sensor_viewer.py scripts/open_sensor_run.sh scripts/check_sensor_run.py scripts/find_sensor_run.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
-install(PROGRAMS scripts/audited_cluster.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-
 install(PROGRAMS scripts/sensor_live.sh scripts/find_active_sensor_run.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
