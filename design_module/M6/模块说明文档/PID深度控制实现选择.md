@@ -16,8 +16,12 @@ depth_output = depth_pid.compute(desired_area, safe_area, dt)
 
 官方设计中保留的倒数面积示例仍是设计参考。直接面积误差是当前模块 6 的实现
 选择，原因是符号直观、远目标正向逼近且限幅容易验证；它与倒数面积示例的差异
-需在后续团队评审中单独确认。本实现未改变消息字段、话题、坐标帧或 MAVROS
-转换责任。
+需在后续团队评审中单独确认。本实现未改变消息字段、话题或坐标帧。FLU/FRD 描述
+机体坐标轴语义，ENU/NED 描述局部地理坐标轴语义。输出使用
+`FRAME_BODY_OFFSET_NED=9` 的 MAVROS 机体坐标处理路径，由 MAVROS 负责
+body/base_link FLU 到 aircraft FRD 的下发转换；这不等同于 `FRAME_LOCAL_NED=1`
+的全局 ENU→NED 路径，项目节点提供 ROS body FLU 数值，不手动进行 FLU→FRD 或
+ENU→NED 转换。
 
 ## 保护与测试约定
 
