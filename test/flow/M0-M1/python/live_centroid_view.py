@@ -1,19 +1,23 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""M0-M1 小联调：实时查看 ``/cluster`` 的聚类结果（radar_link 三维散点）。
+"""M0-M1 小联调：实时查看 ``/cluster`` 的聚类结果（world 三维散点）。
 
 数据来源
 --------
 - ``/radar/centroid``（``uav_tracking/CentroidArray``）：每帧的聚类质心，
-  坐标在 ``radar_link`` 下（x 前、y 左、z 上）；
-- 可选 ``/radar/points``：原始点云，降采样后叠加，用于核对质心是否落在点簇上；
-- 可选 ``/radar/uav_pose_world`` + ``/target/ground_truth/pose``：把目标真值
-  近似换算到 ``radar_link``，作为「聚类是否符合预期」的参照。
+  坐标在 ``world`` 下（x 东、y 北、z 上，与 Gazebo 世界系一致）；
+- 可选 ``/radar/points``：原始点云，同为 ``world``，降采样后叠加，用于核对
+  质心是否落在点簇上；
+- 可选 ``/target/ground_truth/pose``：目标真值，本身就在 ``world``，直接叠加。
+
+三个话题同属世界系，脚本内不做任何坐标变换。收到非 ``world`` 数据时（例如
+``ray_cloud_bridge`` 的世界坐标改造尚未编译生效），质心整帧会被拒绝、画面清空
+并在标题中提示，避免画出参照错误的图。
 
 用法
 ----
-M0 使用独立 ROS master（端口随机），启动后先记下它打印的运行目录，
-再在新终端里 source 该目录的 ``connection.bash``：
+M0 使用独立 ROS master（端口随机），启动后先记下它打印的运行目录。M0 与 M1
+分别在另外的终端启动，本脚本只订阅、不启动任何节点：
 
 .. code-block:: bash
 
@@ -28,7 +32,7 @@ M0 使用独立 ROS master（端口随机），启动后先记下它打印的运
     --with-cloud             叠加降采样后的原始点云
     --show-truth             叠加目标真值（橙色星）
     --save out.png           退出前保存最后画面
-    --xlim -2 12 --ylim -6 6 --zlim -2 3
+    --xlim -2 12 --ylim -8 8 --zlim -1 4
 
 注意
 ----
@@ -42,7 +46,6 @@ M0 使用独立 ROS master（端口随机），启动后先记下它打印的运
 from __future__ import annotations
 
 import argparse
-import math
 import threading
 import time
 
@@ -65,8 +68,14 @@ from sensor_msgs.msg import PointCloud2  # noqa: E402
 
 from uav_tracking.msg import CentroidArray  # noqa: E402
 
-# 雷达相对机体原点的固定安装（mounted_radar.launch: 0.30 0 0.12）。
-MOUNT_XYZ = (0.30, 0.0, 0.12)
+
+def require_world(frame_id, kind):
+    """拒绝非世界系数据，避免数据源改造未生效时画出参照错误的图。"""
+    if frame_id != "world":
+        raise ValueError(
+            "%s frame is %r, expected 'world'; "
+            "ray_cloud_bridge world transform not compiled or not active"
+            % (kind, frame_id))
 
 
 class LiveCentroidView:
@@ -75,9 +84,9 @@ class LiveCentroidView:
     def __init__(self, args):
         self.args = args
         self.latest = None  # (stamp_s, [(x, y, z), ...])
-        self.latest_cloud = None  # (N, 3) ndarray
-        self.uav_pose = None
-        self.target_pose = None
+        self.latest_cloud = None  # (N, 3) ndarray，world
+        self.truth = None  # (x, y, z)，world
+        self.error = ""  # 质心帧的拒绝原因；非空时标题改为提示
         self.frames = 0
         self.t_first = None
         self.t_last = None
@@ -89,19 +98,32 @@ class LiveCentroidView:
                 "/radar/points", PointCloud2, self.on_cloud, queue_size=1)
         if args.show_truth:
             rospy.Subscriber(
-                "/radar/uav_pose_world", PoseStamped, self.on_uav, queue_size=1)
-            rospy.Subscriber(
                 "/target/ground_truth/pose", PoseStamped, self.on_target,
                 queue_size=1)
 
     # ---- 事件层：只缓存最新值，不做任何绘图 ----
     def on_centroid(self, msg):
-        # CentroidArray 外层没有 header，时间戳取第一个元素（空数组时置 0）。
-        stamp = msg.centroids[0].header.stamp.to_sec() if msg.centroids else 0.0
-        self.latest = (
-            stamp,
-            [(p.point.x, p.point.y, p.point.z) for p in msg.centroids],
-        )
+        try:
+            if msg.centroids:
+                # CentroidArray 外层没有 header，frame 与时间戳取首个元素。
+                first = msg.centroids[0]
+                require_world(first.header.frame_id, "/radar/centroid")
+                stamps = {p.header.stamp.to_nsec() for p in msg.centroids}
+                if len(stamps) > 1:
+                    raise ValueError(
+                        "/radar/centroid frame mixes acquisition stamps")
+                stamp = first.header.stamp.to_sec()
+            else:
+                stamp = 0.0  # 空数组无 header，按「空也发」约定正常接收
+            self.latest = (
+                stamp,
+                [(p.point.x, p.point.y, p.point.z) for p in msg.centroids],
+            )
+            self.error = ""
+        except ValueError as exc:
+            self.latest = (0.0, [])
+            self.error = str(exc)
+
         now = time.monotonic()
         if self.t_first is None:
             self.t_first = now
@@ -109,10 +131,16 @@ class LiveCentroidView:
         self.frames += 1
 
     def on_cloud(self, msg):
+        try:
+            require_world(msg.header.frame_id, "/radar/points")
+        except ValueError as exc:
+            self.latest_cloud = np.empty((0, 3))
+            rospy.logerr_throttle(2, str(exc))
+            return
         rows = pc2.read_points(msg, field_names=("x", "y", "z"), skip_nans=True)
         cloud = np.asarray(list(rows), dtype=float)
         if cloud.size == 0:
-            self.latest_cloud = cloud.reshape(0, 3)
+            self.latest_cloud = np.empty((0, 3))
             return
         limit = self.args.max_cloud_points
         if len(cloud) > limit:
@@ -120,11 +148,15 @@ class LiveCentroidView:
             cloud = cloud[idx]
         self.latest_cloud = cloud
 
-    def on_uav(self, msg):
-        self.uav_pose = msg
-
     def on_target(self, msg):
-        self.target_pose = msg
+        try:
+            require_world(msg.header.frame_id, "/target/ground_truth/pose")
+        except ValueError as exc:
+            self.truth = None
+            rospy.logerr_throttle(2, str(exc))
+            return
+        point = msg.pose.position
+        self.truth = (point.x, point.y, point.z)
 
     # ---- 统计 ----
     def rate_hz(self):
@@ -133,34 +165,14 @@ class LiveCentroidView:
         span = self.t_last - self.t_first
         return self.frames / span if span > 0 else 0.0
 
-    def truth_in_radar(self):
-        """把目标世界坐标近似换算到 radar_link（仅按 yaw + 固定安装）。"""
-        if self.uav_pose is None or self.target_pose is None:
-            return None
-        u, t = self.uav_pose, self.target_pose
-        q = u.pose.orientation
-        yaw = math.atan2(
-            2.0 * (q.w * q.z + q.x * q.y),
-            1.0 - 2.0 * (q.y * q.y + q.z * q.z),
-        )
-        dx = t.pose.position.x - u.pose.position.x
-        dy = t.pose.position.y - u.pose.position.y
-        dz = t.pose.position.z - u.pose.position.z
-        c, s = math.cos(yaw), math.sin(yaw)
-        return (
-            c * dx + s * dy - MOUNT_XYZ[0],
-            -s * dx + c * dy,
-            dz - MOUNT_XYZ[2],
-        )
-
-    # ---- 主循环：固定频率重绘 ----
+    # ---- 主循环：新帧驱动重绘 ----
     def run(self):
         plt.ion()
         fig = plt.figure(figsize=(8, 6))
         ax = fig.add_subplot(111, projection="3d")
-        ax.set_xlabel("x (m, forward)")
-        ax.set_ylabel("y (m, left)")
-        ax.set_zlabel("z (m, up)")
+        ax.set_xlabel("world X (m)")
+        ax.set_ylabel("world Y (m)")
+        ax.set_zlabel("world Z (m)")
         ax.set_xlim(*self.args.xlim)
         ax.set_ylim(*self.args.ylim)
         ax.set_zlim(*self.args.zlim)
@@ -189,7 +201,7 @@ class LiveCentroidView:
             if self.args.duration > 0 else None
         )
         rospy.loginfo(
-            "[live_view] ready: cloud=%s truth=%s duration=%s",
+            "[live_view] ready: world frame required; cloud=%s truth=%s duration=%s",
             self.args.with_cloud, self.args.show_truth, self.args.duration)
 
         try:
@@ -213,15 +225,18 @@ class LiveCentroidView:
                         else:
                             cloud_scatter._offsets3d = ([], [], [])
                     if truth_scatter is not None:
-                        truth = self.truth_in_radar()
-                        if truth is None:
+                        if self.truth is None:
                             truth_scatter._offsets3d = ([], [], [])
                         else:
                             truth_scatter._offsets3d = (
-                                [truth[0]], [truth[1]], [truth[2]])
-                    title_artist.set_text(
-                        "recv %d frames | sim %.2fs | %d centroids"
-                        % (self.frames, stamp, len(points)))
+                                [self.truth[0]], [self.truth[1]],
+                                [self.truth[2]])
+                    if self.error:
+                        title_artist.set_text("DATA REJECTED: " + self.error)
+                    else:
+                        title_artist.set_text(
+                            "recv %d frames | sim %.2fs | %d centroids"
+                            % (self.frames, stamp, len(points)))
                     fig.canvas.draw_idle()
                     last_drawn = self.frames
                 fig.canvas.flush_events()
@@ -236,20 +251,20 @@ class LiveCentroidView:
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="实时显示 /radar/centroid 的三维聚类结果")
+        description="实时显示 /radar/centroid 的三维聚类结果（world 系）")
     parser.add_argument("--duration", type=float, default=0.0,
                         help="运行秒数，0 表示直到 Ctrl+C")
     parser.add_argument("--with-cloud", action="store_true",
-                        help="叠加降采样后的原始点云")
+                        help="叠加降采样后的原始点云（world）")
     parser.add_argument("--show-truth", action="store_true",
-                        help="叠加目标真值（需 /target/ground_truth/pose）")
+                        help="叠加目标真值（world，需 /target/ground_truth/pose）")
     parser.add_argument("--max-cloud-points", type=int, default=500,
                         help="点云叠加时的最大点数")
     parser.add_argument("--save", default="",
                         help="退出前保存图片的路径")
     parser.add_argument("--xlim", nargs=2, type=float, default=[-2.0, 12.0])
-    parser.add_argument("--ylim", nargs=2, type=float, default=[-6.0, 6.0])
-    parser.add_argument("--zlim", nargs=2, type=float, default=[-2.0, 3.0])
+    parser.add_argument("--ylim", nargs=2, type=float, default=[-8.0, 8.0])
+    parser.add_argument("--zlim", nargs=2, type=float, default=[-1.0, 4.0])
     return parser.parse_args()
 
 
