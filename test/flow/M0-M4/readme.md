@@ -1,46 +1,42 @@
-# M4 检测器单线程启动
+# M0 → M4 联调与复现
 
-此入口适用于 Ubuntu 20.04、ROS Noetic、系统 Python 3.8 和 CPU 推理。本次使用已编译的 Catkin 工作空间、现有隔离 M4 Python 依赖和 ONNX Runtime 1.19.2。继续使用已验证的 YOLO11s ONNX 权重，SHA-256 为 `320ec090ff91a333116d120479f2ad2a9f97a1893e5826e99cf2ad7fd2ca1bd7`。权重及 Python 依赖保存在实验环境中。
+本目录对应团队固定 e6a5328 的接收方 M4。原检测器和跟踪器代码沿用已验证版本，单线程入口来自44c89c8。现有内容分为 python/ 辅助脚本、image/ 真实截图、log/ 测试结果和本说明。
 
-原版用默认 ONNX Runtime 会话线程配置。可选脚本仅将 `SessionOptions.intra_op_num_threads` 和 `inter_op_num_threads` 都设为 1，然后在同一 Python 进程执行原 `detector_node.py`。节点参数原样转发。模型、阈值、图像尺寸、话题、消息格式和原跟踪器均沿用原配置。
+## 真实联调启动
 
-## 启动
+先按 M0 使用文档启动 Gazebo。已有会话直接复用。进入本工程根目录，用 M0 本次运行生成的 connection.bash 启动 M4：
 
-先使用团队 M0 启动入口，保留它生成的 `connection.bash`。在本次 M0 会话下仅运行一个 `/detector`。已运行的检测节点可在其终端按 Ctrl+C 后切换。跟踪器继续使用原有启动方式。
+```bash
+bash test/flow/M0-M4/run.sh \
+  --connection /本次M0运行目录/connection.bash \
+  --model /绝对路径/yolo11s-drone.onnx
+```
 
-在已编译的工程目录执行以下命令，将 `RUN_DIR` 替换为本次 M0 的实际数据目录。如隔离依赖或模型放在其他位置，调整对应变量。
+该命令检查同一Master的相机发布者，并启动原版visual_tracker与单线程detector。模型和依赖准备、预检、参数及可视化方法见 `design_module/M4/模块使用文档.md`。若消息复用其他已编译工作空间，设置 M4_ROS_SETUP。M0相机已有发布者时，无需启动camera_node。
+
+## 历史真实数据的离线 ROS 回放
+
+已执行下列命令。它回放真实Gazebo原图，不等于新一轮Gazebo测试。脚本创建独立Master，覆盖离场前、无目标停留和重入。消息由本交付中的检测器和原跟踪器重新产生，Ctrl+C可中止。
 
 ```bash
 source /opt/ros/noetic/setup.bash
 source catkin_ws/devel/setup.bash
-RUN_DIR=/path/to/current/m0/run
-source "$RUN_DIR/connection.bash"
-
-MODEL_DIR=/home/demo/m4-yolo11s-validation.8b694G
-export PYTHONPATH="$PWD/lib/m4:$MODEL_DIR/onnx-deps${PYTHONPATH:+:$PYTHONPATH}"
-export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
-rosparam load catkin_ws/src/uav_tracking/config/detector.yaml /detector
-
-/usr/bin/python3 -B -u test/flow/M0-M4/python/run-detector-ort1.py \
-  "$PWD/catkin_ws/src/uav_tracking/scripts/detector_node.py" \
-  _model_path:="$MODEL_DIR/yolo11s-drone.onnx" _imgsz:=640 _conf_thres:=0.50
+/usr/bin/python3 test/flow/M0-M4/python/replay-acceptance.py \
+  --bag /绝对路径/20261110原始离场重入/live.bag \
+  --model /绝对路径/yolo11s-drone.onnx --ort-deps "$PWD/lib/m4_onnx"
 ```
 
-比较原版时，移除命令中的 `test/flow/M0-M4/python/run-detector-ort1.py`，直接运行同一个节点文件，保留其余参数与环境变量。检测时序诊断可在两组同时设置 `M4_TIMING_LOG=1`。若已编译的工程仍检出基线，也可以把命令中的脚本替换为本分支脚本的绝对路径，继续复用当前工程的构建产物。
+本次回放使用原包偏移110秒、时长50秒，实际结果见 log/replay-summary.json。收到原图356张，检测、航迹、调试图各129条，含108条空检测、113条空航迹，drone类编号0，全部调试图对应已接收原图，最大图像时龄约0.646秒仿真时间。回放使用真实模型，转换失败和推理失败会由节点报错，测试不会将其计为正常空目标。
 
-## 2026-11-10 人工 Gazebo A/B
+## 真实证据
 
-两组共用 M0 会话、320×240 原图、同一 ONNX 权重、CPU、`imgsz=640`、`conf_thres=0.50` 和原跟踪器。检测频率以墙钟计算。
+- 用户2026-11-10在 /home/demo/ai4-m4-integration-e6a5328 人工联调，代码a1ffd9e。两段原始录像与6个关键文件的哈希核验保留在附件。image/manual-detection.png、manual-tracks.png 是这两段人工录屏的截图，不用于证明后续新启动脚本已实测。
+- 原始单线程 A/B 在 /home/demo/m4-ort1-ab/，0.985→2.135Hz，推理中位979.41→459.21ms。
+- 单线程离场/重入包 /home/demo/m4-ort1-exit-reentry.NeAllp/live.bag，SHA-256 139009ec869407a1871a4b2b0fa8f1f7420b6bd68b054d06d301320e0af912ea。无目标222张原图及83条检测/航迹均为空，重入建立新ID。该数据为原跟踪器与单线程方案，不混用优先级跟踪实验。
+- 2026-11-11完整ABBA补采 /home/demo/m4-ort-live-recovery-abba.JMeDfU/。A1/A2均为单线程，B1/B2为两线程。单线程2.575Hz，推理中位/P95 379.8/458.7ms，图像时龄413/532ms仿真时间，相机6.125Hz，RTF0.856，VM总CPU75.2%。两线程2.308Hz及94.6%VM CPU，未采用。log/live-abba-metrics.json 保留四组原始统计，CPU总利用率以VM四核为分母。
 
-| 指标 | A 默认线程 | B 单线程 |
-| --- | ---: | ---: |
-| 检测输出频率 | 0.985 Hz | 2.135 Hz |
-| 推理耗时中位数 | 979.41 ms | 459.21 ms |
-| 正确匹配／已处理可见帧 | 23／56 | 55／123 |
-| 正确匹配／全部可确认可见原图 | 23／367 | 55／324 |
-| 相邻正确检出最长间隔（仿真时间） | 7.10 s | 3.20 s |
-| 空航迹／全部航迹 | 40／57 | 79／124 |
+原始视频、模型和bag作为独立附件交接，不放入Git。具体文件与哈希见 log/evidence-manifest.json。人工录像证明用户操作版本；本次回放证明新交付入口，来源分别记录。
 
-正确匹配采用源图、Gazebo 位姿投影及像素参考框核对，要求类别为 drone 且 IoU ≥ 0.30。检测与航迹消息没有 Header，使用调试图源时间戳和日志关联，无法配对的样本排除。两段录包未覆盖可确认的离场，且没有人工框标注，表中的比例只描述这两段数据，不能用来宣称模型准确率或 ID 稳定性通过。
+## 已知限制
 
-证据文件保留在 Ubuntu 的 `/home/demo/m4-ort1-ab/`，包括 `A-default.bag`、`B-ort1.bag` 和两组检测日志。
+本场景存在漏检、空航迹和ID重建。检出统计使用真值投影与像素参考框，未提供人工标注精度。输出跟随推理节拍，故不满足逐相机帧输出的字面节拍要求，待组长确认。两路数组无Header符合既有消息结构，跨帧配对需参考调试图和时序日志。没有最低检测Hz或零ID切换的明确验收门槛，不能据此把性能限制写成接口失败；也不能将链路跑通写成稳定身份跟踪已通过。
