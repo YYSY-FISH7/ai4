@@ -1,14 +1,9 @@
 {
-  "base": "431c049408f323580a351d6e3532daba8c6742f5",
+  "base": "3e3a5d57f8e59ceecf35cbf5fa8a78c41d8b347d",
   "runtime_dependency": "PR18/c421ec7",
   "no_overlap_with_PR18": true,
   "relocation_note": "run-week2.sh updated only to locate the relocated M0-M4 helper; no experiment rerun",
   "files_excluding_this_manifest": [
-    {
-      "path": "design_module/M4/模块说明文档/week2-20261114/PID尺寸与方向核验.md",
-      "bytes": 6973,
-      "sha256_working_copy": "62e53893876cfec7e27c81fd29e5931c6869c337b2a922bc7af03688066ca42d"
-    },
     {
       "path": "design_module/M4/模块说明文档/week2-20261114/bag-index.json",
       "bytes": 3512,
@@ -16,63 +11,38 @@
     },
     {
       "path": "design_module/M4/模块说明文档/week2-20261114/readme.md",
-      "bytes": 4334,
-      "sha256_working_copy": "9fedb09a76aaceb462c81bfb403da4ae2607756dc30baf9be1a81e6884892293"
+      "bytes": 1491,
+      "sha256_working_copy": "32692800eb174d38090f2cfe3aa17307fcd3c9c5d8e2497cf7d08b51e0ee594b"
     },
     {
       "path": "design_module/M4/模块说明文档/week2-20261114/source-manifest.json",
-      "bytes": 18417,
-      "sha256_working_copy": "2302b99bc557f8ed3dfffe63f1a0edcbe83a4d06e4e99835b4c9bbb2263ca38c"
+      "bytes": 10926,
+      "sha256_working_copy": "0b0560b1a5cdb679edafad5dd376408dbe37ff88ea34779cb4c26b7dc442800d"
     },
     {
       "path": "design_module/M4/模块说明文档/week2-20261114/video-index.json",
-      "bytes": 1326,
-      "sha256_working_copy": "c091c9a94c547eac2ddc535e33302fe7f02b477ec9df2053723a6a5c0eed9813"
+      "bytes": 878,
+      "sha256_working_copy": "b50643ad3173d2c47a61ba1206cb7bc77c99e830686da0a043ca2c41221b3bfd"
     },
     {
       "path": "design_module/M4/模块说明文档/week2-20261114/历史基础联调报告.md",
-      "bytes": 6667,
-      "sha256_working_copy": "806c7f51c4282c21b87566e9fa27e0500e9ee291f382a9b2764578d751b2cdf5"
+      "bytes": 6878,
+      "sha256_working_copy": "0a3e6fe81562272e5b34fa4be41ae9bf3d71b7d6476a28d1eda608a9ab443e2f"
     },
     {
       "path": "design_module/M4/模块说明文档/week2-20261114/历史自动化汇总.md",
-      "bytes": 9851,
-      "sha256_working_copy": "6562dd083d8da0057db5538217caa7ead62434db307ecd41640c5c8d49de6870"
+      "bytes": 10062,
+      "sha256_working_copy": "f800f00c2d7380329c0815bfad60a39f97d4a98e088ed56428cee1b9dbe57821"
     },
     {
       "path": "design_module/M4/模块说明文档/week2-20261114/正式视频验收审计.md",
-      "bytes": 6250,
-      "sha256_working_copy": "7a3879c7aab9f78bf1fdec48dfc143bd626d7acdc7844314932c1871fa78de22"
-    },
-    {
-      "path": "test/detector/week2/away-interior.json",
-      "bytes": 183,
-      "sha256_working_copy": "15b36fedf2aec561c2274579de7ead8226d01f3628a74b542896f48040c518ac"
-    },
-    {
-      "path": "test/detector/week2/m8-steps.json",
-      "bytes": 65984,
-      "sha256_working_copy": "3cf4624e60cbd39c0df67af2cd581f71e55508dc1425d99ce279b9c98cbd07f6"
+      "bytes": 991,
+      "sha256_working_copy": "56f19be90aa3e7b82406f8776bfcd7b8511c175de6e9006acb63c8aa68f5eac4"
     },
     {
       "path": "test/flow/M4-M5/image/20261114-video2-contact-sheet.jpg",
       "bytes": 288342,
       "sha256_working_copy": "7f00a6aeab04956470d6f11487e493acbb3ba4213c14d906a403c4700449dc85"
-    },
-    {
-      "path": "test/detector/week2/manual/image/video3-contact-sheet.jpg",
-      "bytes": 277389,
-      "sha256_working_copy": "d4011151a19dee85603d28515e7d2e49d2e4e0f1c17e85d900f735b91e5a02c6"
-    },
-    {
-      "path": "test/detector/week2/manual/log/N3原始消息序列.log",
-      "bytes": 1300,
-      "sha256_working_copy": "21600f080c5e1522b8fb1734c4d856620e4e95707ccd98b6d58cfb374d4fb67d"
-    },
-    {
-      "path": "test/detector/week2/manual/log/T1环境与录包盘点.json",
-      "bytes": 6162,
-      "sha256_working_copy": "e2931a614f9693d3c3145fe66e9b254e173aef73612d384593c6d88fea9d474a"
     },
     {
       "path": "test/detector/week2/manual/log/detector.log",
@@ -105,29 +75,9 @@
       "sha256_working_copy": "6b40049c6b623f59f5f59080c12f06fe4761886b4a5d7642708cd57bf831fb8f"
     },
     {
-      "path": "test/detector/week2/manual/log/停止已核实.json",
-      "bytes": 186,
-      "sha256_working_copy": "f70c726c22071b023963c4c29890ee3b869cb02dc385c8a869d4ca123d23da24"
-    },
-    {
       "path": "test/detector/week2/manual/log/原始录包核验.json",
-      "bytes": 1522,
-      "sha256_working_copy": "c84ced303c06dbd35e974907ad12e8f52f3de14e0fd65858ca13c5371b25dd3d"
-    },
-    {
-      "path": "test/detector/week2/manual/log/第三项/events.json",
-      "bytes": 3967,
-      "sha256_working_copy": "9c3ea11f48b7afdeb8f57f5beb7c3700d0437fc739c4cc49c7f299e77b3d189a"
-    },
-    {
-      "path": "test/detector/week2/manual/log/第三项/phase.json",
-      "bytes": 197,
-      "sha256_working_copy": "bec251b019b0d642fe35b64b4fbd089c9eef8cd556c5118235ad80dd0cf18113"
-    },
-    {
-      "path": "test/detector/week2/manual/log/第三项/viewer-status.json",
-      "bytes": 56,
-      "sha256_working_copy": "2dfbdbe2294ca623cff9ba7df1a1bebfa386abd0105798e874c49aa3da8487ed"
+      "bytes": 859,
+      "sha256_working_copy": "0f47db30930340f1928cc96323f5a29ff7c6801c1de3e39200e27d74dc392ddc"
     },
     {
       "path": "test/detector/week2/manual/log/第二项/controller.log",
@@ -160,99 +110,9 @@
       "sha256_working_copy": "c2a3da8973951fd1ee0eac4969172bfcbf19c8aa38c12ab8f436dcd5b85bed3b"
     },
     {
-      "path": "test/detector/week2/manual/python/manual_receiver_demo.py",
-      "bytes": 8383,
-      "sha256_working_copy": "fd07f0db1ce29b6eef432f3cce68f58de249021460075c8cf5b22f257508bb42"
-    },
-    {
-      "path": "test/detector/week2/manual/readme.md",
-      "bytes": 1046,
-      "sha256_working_copy": "6d1df7908b880022f05a7e4037e6ae569ed8ea2e20452861ad766016cccdd6ce"
-    },
-    {
-      "path": "test/detector/week2/phases.json",
-      "bytes": 622,
-      "sha256_working_copy": "181d964d4a81b960f94fa305607f327c8283b03119ed98d51bfbd5a63e7ecffb"
-    },
-    {
       "path": "test/detector/week2/pid-geometry/confidence-size-summary.json",
       "bytes": 1845,
       "sha256_working_copy": "ba7528cb48ba417a43777053282ff602eb65ebdfec0c1098187c811cf6ae637e"
-    },
-    {
-      "path": "test/detector/week2/pid-geometry/controlled-pid-geometry.py",
-      "bytes": 3002,
-      "sha256_working_copy": "6ec18233482d55c3399437c20c2e19b063c519ccbd70bdf65636501c96e7273f"
-    },
-    {
-      "path": "test/detector/week2/pid-geometry/results.json",
-      "bytes": 6341,
-      "sha256_working_copy": "c44747011313ca08ade3d6fc2f0a5b894d92959f7b142c41733f87b7ed587a4e"
-    },
-    {
-      "path": "test/detector/week2/pid-geometry/最终问题清单与复现.md",
-      "bytes": 6734,
-      "sha256_working_copy": "dd7e2dcf3c41f7133e2ea70fe73710af014c6ea37a0806fb56226e283d8d3af1"
-    },
-    {
-      "path": "test/detector/week2/readme.md",
-      "bytes": 572,
-      "sha256_working_copy": "945d92b5a7b7af5022eee34df36dc3ca2c47204ebcb80361c6ee4c47c03ce5f5"
-    },
-    {
-      "path": "test/detector/week2/receiver-completeness/mux-results.json",
-      "bytes": 369,
-      "sha256_working_copy": "bf56191773b6bbb920a32248a2820136b10e85b8f0ed764d5817e4cd7ae1e4b7"
-    },
-    {
-      "path": "test/detector/week2/receiver-completeness/readme.md",
-      "bytes": 7617,
-      "sha256_working_copy": "823d71cfcc85dda64071ecffa1a6b6d2b836a74f2b22fdedaf9ad4d0d28dc793"
-    },
-    {
-      "path": "test/detector/week2/receiver-completeness/receiver-results.json",
-      "bytes": 2835,
-      "sha256_working_copy": "05b4a05fe812d9922c77d5d4ae7d5477bee858b73ee017443f7807a20b7f2ae8"
-    },
-    {
-      "path": "test/detector/week2/receiver-completeness/run.sh",
-      "bytes": 313,
-      "sha256_working_copy": "b7f64f41429a8814dd40d29b06f3e3aeacbc8a4b35fb0a77ee6270e98d14ce54"
-    },
-    {
-      "path": "test/detector/week2/receiver-completeness/week2_mux_check.py",
-      "bytes": 4189,
-      "sha256_working_copy": "d31abf2146fb7c6dce16837395ebe5e839c89be1ce98e8f48d94e2a469919b79"
-    },
-    {
-      "path": "test/detector/week2/receiver-completeness/week2_receiver_checks.py",
-      "bytes": 8549,
-      "sha256_working_copy": "9acfdf51ace49dd21802038d391d9ac539eec774fc5486412258c109eab5bdd0"
-    },
-    {
-      "path": "test/detector/week2/ros-graph-before.json",
-      "bytes": 1802,
-      "sha256_working_copy": "f121ee9bc06eeb916785d273fd7846e8fd6aaecac65edb2e96fbc78d392ba47b"
-    },
-    {
-      "path": "test/detector/week2/run-week2.sh",
-      "bytes": 444,
-      "sha256_working_copy": "4279ccfc69ababd718e29b8175d655c6a7a4122c2c76e6cb03ec3de9d40f9dbe"
-    },
-    {
-      "path": "test/detector/week2/script-identity.json",
-      "bytes": 608,
-      "sha256_working_copy": "eb63843323d96d3f5c049e96243d7491f9e5e65d2ea1a799e4fa825ac1e689cf"
-    },
-    {
-      "path": "test/detector/week2/sender-replay-audit.py",
-      "bytes": 5527,
-      "sha256_working_copy": "127c389d3a03604aa78e9b60a6ce242284d79c0ecd305babb18454608b1903e1"
-    },
-    {
-      "path": "test/detector/week2/summary.json",
-      "bytes": 1217,
-      "sha256_working_copy": "6c932bbb9b37378c2f646fbc4396a4d0ef69c950ce994d9fff7a2e413cdf9eaf"
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/image/manual-video1-contact-sheet.jpg",
@@ -365,8 +225,8 @@
       "sha256_working_copy": "663e11a42cb5c3b96aacb944d1e6b1fd90bab16d29d3b9991866833bfef28b21"
     }
   ],
-  "scope": "Current retained week2 artifacts; full official video set is01/02/03/05/06; original source hashes preserve capture provenance",
+  "scope": "M4/M5 realtime input/algorithm/output; only01/02; offline own-module tests are auxiliary, receiver algorithms excluded",
   "historical_base": "e6a53289f0d58431c3149978787b9c7754fea1d3",
-  "official_video_count": 5,
+  "official_video_count": 2,
   "code_reused_from_merged_PR20": true
 }

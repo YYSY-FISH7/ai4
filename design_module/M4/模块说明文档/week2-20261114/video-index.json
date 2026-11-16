@@ -24,18 +24,5 @@
     "delivery": "由项目成员另行通过团队群聊交付；不上传GitHub",
     "link": null,
     "owner_module": "M5"
-  },
-  {
-    "bytes": 9195600,
-    "sha256": "9c0971a5d527b18bac0c5c4f0c71974dff53e9db855ac1266dad7b92fc024da6",
-    "fps": 60.0,
-    "expected_frames": 4659,
-    "decoded_frames": 4659,
-    "duration": 77.65,
-    "video_stream_complete": true,
-    "name": "03_M4-M8_状态机切换.mp4",
-    "delivery": "由项目成员另行通过团队群聊交付；不上传GitHub",
-    "link": null,
-    "owner_module": "M4/M5→M8受控参考"
   }
 ]

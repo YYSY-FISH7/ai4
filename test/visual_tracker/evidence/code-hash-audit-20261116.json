@@ -1,0 +1,82 @@
+[
+  {
+    "path": "code/detector.py",
+    "windows_sha256": "ffdf3dfcc213d509bcadfc62f7ebd2b0f50e995207573bddc47a4092e4b73349",
+    "baseline_available": true,
+    "baseline_sha256": "dbe087847a1f3a76be1e60d4a4a6fc145ced70586b0f5874eb931e4ca399bed6",
+    "matches_c421_exact": false,
+    "matches_c421_normalized_LF": true,
+    "vm_formal_sha256": "dbe087847a1f3a76be1e60d4a4a6fc145ced70586b0f5874eb931e4ca399bed6",
+    "vm_matches_c421_blob": true
+  },
+  {
+    "path": "code/visual_tracker.py",
+    "windows_sha256": "5dc2454b48591b3193a2cf2cb20cd569612b8204e7f226c72a300c75636bec78",
+    "baseline_available": true,
+    "baseline_sha256": "ee0494bb7cca76cb2eed04ab75faaf01355074fb8df2f89c0650ba37f20e981f",
+    "matches_c421_exact": false,
+    "matches_c421_normalized_LF": true,
+    "vm_formal_sha256": "ee0494bb7cca76cb2eed04ab75faaf01355074fb8df2f89c0650ba37f20e981f",
+    "vm_matches_c421_blob": true
+  },
+  {
+    "path": "catkin_ws/src/uav_tracking/scripts/detector_node.py",
+    "windows_sha256": "95dc3354f39ef9b68656208260742770733d52141bc485641367735c2072a721",
+    "baseline_available": true,
+    "baseline_sha256": "e33f87fc4afe8ec4757a9ed711086572c08926134f391231b934cfd7e2b1545c",
+    "matches_c421_exact": false,
+    "matches_c421_normalized_LF": true,
+    "vm_formal_sha256": "e33f87fc4afe8ec4757a9ed711086572c08926134f391231b934cfd7e2b1545c",
+    "vm_matches_c421_blob": true
+  },
+  {
+    "path": "catkin_ws/src/uav_tracking/scripts/visual_tracker_node.py",
+    "windows_sha256": "bf94cbb694c4c8cd6add6c1afe20a2f1ad21df10a0c59a6b6c4b3e8f14fc5df3",
+    "baseline_available": true,
+    "baseline_sha256": "1a7bc195fb650e5e37bf07252677b813405d577819c2ef596c4fe54bdaa6c85e",
+    "matches_c421_exact": false,
+    "matches_c421_normalized_LF": true,
+    "vm_formal_sha256": "1a7bc195fb650e5e37bf07252677b813405d577819c2ef596c4fe54bdaa6c85e",
+    "vm_matches_c421_blob": true
+  },
+  {
+    "path": "catkin_ws/src/uav_tracking/launch/detector.launch",
+    "windows_sha256": "74c84391b460b35373aed91070719011a05fed6e2ec4a06a5de75f317fe33510",
+    "baseline_available": true,
+    "baseline_sha256": "0746ad4f6bcb703f8ea0694151fb2e426d58cd7d7c88b2ec679feb077c8bd802",
+    "matches_c421_exact": false,
+    "matches_c421_normalized_LF": true,
+    "vm_formal_sha256": "0746ad4f6bcb703f8ea0694151fb2e426d58cd7d7c88b2ec679feb077c8bd802",
+    "vm_matches_c421_blob": true
+  },
+  {
+    "path": "catkin_ws/src/uav_tracking/launch/visual_tracker.launch",
+    "windows_sha256": "197926213b6c93b9ef5cde0ac68b78a553d0b929ea1ded2eae0f3d77aba66507",
+    "baseline_available": true,
+    "baseline_sha256": "a855bbd03b10d159593fb884497c6369ed69a8acc9906d9603180b38dea69dce",
+    "matches_c421_exact": false,
+    "matches_c421_normalized_LF": true,
+    "vm_formal_sha256": "a855bbd03b10d159593fb884497c6369ed69a8acc9906d9603180b38dea69dce",
+    "vm_matches_c421_blob": true
+  },
+  {
+    "path": "catkin_ws/src/uav_tracking/config/visual_tracker.yaml",
+    "windows_sha256": "3caa5171f0d7cb9965132842e75ee00d8ff3d992d646909241cbd4dc18104517",
+    "baseline_available": true,
+    "baseline_sha256": "6e3e8ee2f3721266f2954e8f2f3f96265f3d11bde21f6d6b27e6beb4c948b273",
+    "matches_c421_exact": false,
+    "matches_c421_normalized_LF": true,
+    "vm_formal_sha256": "6e3e8ee2f3721266f2954e8f2f3f96265f3d11bde21f6d6b27e6beb4c948b273",
+    "vm_matches_c421_blob": true
+  },
+  {
+    "path": "test/flow/M0-M4/python/run-detector-ort1.py",
+    "windows_sha256": "1ca3b7035c67f20c4b8e166a0bf0affc094bd442f5972b9a0b7c6c2412f3f2d9",
+    "baseline_available": true,
+    "baseline_sha256": "65db86486ff796006381c37907b3167e4220f1e8358f8140f1aa0c891b5406e2",
+    "matches_c421_exact": false,
+    "matches_c421_normalized_LF": true,
+    "vm_formal_sha256": "65db86486ff796006381c37907b3167e4220f1e8358f8140f1aa0c891b5406e2",
+    "vm_matches_c421_blob": true
+  }
+]

@@ -27,34 +27,5 @@
       "/visual/tracks": 91
     },
     "seconds": 35.36999999999989
-  },
-  {
-    "item": "item3",
-    "path": "/home/demo/m4-manual-item3-74o73_05/live.bag",
-    "topics": {
-      "/detections": 13,
-      "/radar/tracks": 3,
-      "/state": 4,
-      "/visual/tracks": 2
-    },
-    "seconds": 41.92766523361206,
-    "state_transitions": [
-      {
-        "state": "VISUAL_LOCK",
-        "detections_since_last_state": 4
-      },
-      {
-        "state": "RADAR_GUIDE",
-        "detections_since_last_state": 3
-      },
-      {
-        "state": "SEARCH/RTH",
-        "detections_since_last_state": 5
-      },
-      {
-        "state": "RADAR_GUIDE",
-        "detections_since_last_state": 1
-      }
-    ]
   }
 ]

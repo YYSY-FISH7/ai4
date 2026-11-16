@@ -1,0 +1,11 @@
+{
+  "capture_date": "2026-11-14",
+  "scope_confirmation_date": "2026-11-16",
+  "source": "用户确认只读核查报告后授权按实时M4/M5边界整改",
+  "formal_videos": [
+    "01_M0-M4_相机检测.mp4",
+    "02_M4-M5_视觉跟踪.mp4"
+  ],
+  "finding": "basic realtime detector/tracker input, algorithm execution and output evidence sufficient; stability limitations retained",
+  "original_capture_verdict": "preserved unchanged; this is later scope/evidence confirmation, not a new test"
+}

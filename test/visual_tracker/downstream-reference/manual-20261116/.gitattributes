@@ -1,5 +1,0 @@
-# Evidence archive: retain captured bytes across Windows/Linux checkouts.
-* -text whitespace=cr-at-eol
-# Terminal progress logs intentionally retain carriage returns and spaces.
-M5-M6/log/** -whitespace
-M5-M8/log/** -whitespace
