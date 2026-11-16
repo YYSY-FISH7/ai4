@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-16",
+  "basis": "User confirmed the final M4/M5 audit report and authorized evidence archival and PR20 update; no new experiment",
+  "M5_M6": "historical real Gazebo detection replay -> actual original M5 -> original M6 node-level receive/zero/recovery supported",
+  "M5_M8": "historical real detections -> actual original M5 -> official unchanged M8 __main__; internal cache update/read/recovery supported",
+  "not_accepted": [
+    "natural VISUAL_LOCK",
+    "M6/M8 formal receiver sign-off",
+    "T1 flight prerequisite",
+    "T2/T3-V/T4/T5 full flight",
+    "stable identity accuracy"
+  ],
+  "original_raw_verdict_files": "preserved unchanged; later acceptance recorded here rather than overwriting original events"
+}

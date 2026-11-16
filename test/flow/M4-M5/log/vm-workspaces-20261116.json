@@ -1,0 +1,260 @@
+[
+  {
+    "path": "/home/demo/M4-M5维护资料",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/ai4-formal-e6a5328",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": true,
+    "moved": false,
+    "HEAD": "e6a53289f0d58431c3149978787b9c7754fea1d3",
+    "branch": "",
+    "status": "",
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/ai4-m4-acceptance-44c89c8",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": true,
+    "moved": false,
+    "HEAD": "44c89c808fa7119d71517e4902a19beb2627b384",
+    "branch": "m4/acceptance-single-thread-44c89c8",
+    "status": "M \"scripts/\\345\\206\\262\\347\\252\\201\\345\\272\\223\\344\\270\\213\\350\\275\\275/install_m4_deps.sh\"\n?? lib/.m4_onnx.install.lock\n?? lib/acceptance-wheelhouse/\n?? lib/m4_onnx.initial-no-onnx/\n?? lib/m4_pip.pending.XybdFi/\n?? lib/m4_pip.pending.u6w4Z3/\n?? \"scripts/\\345\\206\\262\\347\\252\\201\\345\\272\\223\\344\\270\\213\\350\\275\\275/install_m4_onnx_deps.sh\"\n?? test/detector/test_latest_frame_contract.py\n?? test/flow/M0-M4/python/replay-acceptance.py\n?? test/flow/M0-M4/python/run-m4.py\n?? test/flow/M0-M4/run.sh",
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/ai4-m4-acceptance-c421ec7",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": true,
+    "moved": false,
+    "HEAD": "c421ec789bda573a1d8fd6ad2227d1584f08a389",
+    "branch": "",
+    "status": "",
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/ai4-m4-integration-e6a5328",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": true,
+    "moved": false,
+    "HEAD": "a1ffd9ec90c7b6c1da3610c45a124512370843ff",
+    "branch": "m4/latest-frame-e6a5328",
+    "status": "?? lib/venv/sensor_python",
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/ai4-m4-m5-delivery-20261116",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": true,
+    "moved": false,
+    "HEAD": "f540ae4e82ad614c8fb8560d7dad50675d66ad76",
+    "branch": "",
+    "status": "?? catkin_ws/devel\n?? test/flow/M4-M5/",
+    "recommended": true
+  },
+  {
+    "path": "/home/demo/ai4-m4-track-priority-a1ffd9e",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": true,
+    "moved": false,
+    "HEAD": "a1ffd9ec90c7b6c1da3610c45a124512370843ff",
+    "branch": "m4/active-track-priority-20261110",
+    "status": "M code/visual_tracker.py\n M test/visual_tracker/test_visual_tracker.py\n?? run_m4_priority_retest.py\n?? run_m4_priority_retest.sh",
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/ai4-m4-track-recovery-a1ffd9e",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": true,
+    "moved": false,
+    "HEAD": "a1ffd9ec90c7b6c1da3610c45a124512370843ff",
+    "branch": "",
+    "status": "M code/visual_tracker.py\n M test/visual_tracker/test_visual_tracker.py",
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-appearance-offline.fl6lVE",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-delivery.MY0uHa",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-dual-identity.ToKvPb",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-dual-identity.eeghNF",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-latest-frame.X0CTog",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-manual-acceptance-20261114-154957",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-manual-acceptance-20261114-160747",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-manual-item2-20261114-162027",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-manual-item3-74o73_05",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-manual-item4-sgofeq9e",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-ort-live-abba.kTX5kO",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-ort-live-recovery-abba.JMeDfU",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-ort-recovery.i44xyvzx",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-ort-thread-sweep.haYwmN",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-ort1-ab",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-ort1-exit-reentry.NeAllp",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-parameter-audit.Qy8pXf",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-priority-retest.5by9duhv",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-radar-visual-oneclick.e6MA8p",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-radar-visual-prep.jcDwiC",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-track-conservative.GryaGX",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-track-id.96tHEc",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4-yolo11s-validation.8b694G",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/m4_assets",
+    "ownership": "M4/M5共同或跨模块历史资料",
+    "git": false,
+    "moved": false,
+    "recommended": false
+  },
+  {
+    "path": "/home/demo/桌面/ai4",
+    "ownership": "历史共同工程，保留原位",
+    "moved": false,
+    "HEAD": "83e0f46915b95f13b806d8a012f59d29313af289"
+  }
+]

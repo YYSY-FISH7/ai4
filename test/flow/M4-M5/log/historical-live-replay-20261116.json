@@ -1,0 +1,23 @@
+{
+  "source": "/home/demo/m4-manual-item2-20261114-162027/manual-item2-162032/live.bag",
+  "provenance": "historical real Gazebo detection replay; tracker recomputed, not fresh Gazebo",
+  "frame_size": [
+    320,
+    240
+  ],
+  "detections": 91,
+  "empty_detections": 63,
+  "empty_tracks": 72,
+  "ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "passed": true,
+  "identity_accuracy": "not established by this replay"
+}

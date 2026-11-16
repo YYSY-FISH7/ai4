@@ -1,0 +1,111 @@
+[
+  {
+    "path": "/home/demo/m5-m6-auto-20261116-25uf5ylg/stage1.bag",
+    "exists": true,
+    "bytes": 246293,
+    "sha256": "4a92ce7ebb468a1ec3849c493159120aed5aafa8b2686c16f39fd420a21894d3",
+    "seconds": 18.505271911621094,
+    "topics": {
+      "/ctrl/visual": 926,
+      "/detections": 38,
+      "/camera/image_raw": 106,
+      "/visual/tracks": 38
+    },
+    "nonempty": {
+      "/visual/tracks": 11
+    },
+    "nonzero_control": 110,
+    "readable": true
+  },
+  {
+    "path": "/home/demo/m5-m6-auto-20261116-25uf5ylg/stage2.bag",
+    "exists": true,
+    "bytes": 193775,
+    "sha256": "aed71053409af2f51d7ab6c355082648e6e7959278a8d68bc192eb0660e62890",
+    "seconds": 18.678831338882446,
+    "topics": {
+      "/ctrl/visual": 935,
+      "/detections": 41,
+      "/visual/tracks": 41,
+      "/camera/image_raw": 106
+    },
+    "nonempty": {
+      "/visual/tracks": 0
+    },
+    "nonzero_control": 0,
+    "readable": true
+  },
+  {
+    "path": "/home/demo/m5-m6-auto-20261116-25uf5ylg/stage3.bag",
+    "exists": true,
+    "bytes": 244952,
+    "sha256": "7c1b964214829cb6379987e002ed91cd911139007282e959881f2d4ab0000872",
+    "seconds": 18.33862018585205,
+    "topics": {
+      "/ctrl/visual": 918,
+      "/detections": 38,
+      "/visual/tracks": 38,
+      "/camera/image_raw": 105
+    },
+    "nonempty": {
+      "/visual/tracks": 13
+    },
+    "nonzero_control": 131,
+    "readable": true
+  },
+  {
+    "path": "/home/demo/m5-m8-manual-20261116-iv3atpid/stage1.bag",
+    "exists": true,
+    "bytes": 227082,
+    "sha256": "305a26fe12f9d35ad0ddf3ac0a43bb8fffbb8b69c853437b0ff88ab957ffc302",
+    "seconds": 14.89791750907898,
+    "topics": {
+      "/visual/tracks": 38,
+      "/camera/image_raw": 106,
+      "/audit/m8_internal": 75,
+      "/detections": 37,
+      "/state": 1
+    },
+    "nonempty": {
+      "/visual/tracks": 11
+    },
+    "nonzero_control": 0,
+    "readable": true
+  },
+  {
+    "path": "/home/demo/m5-m8-manual-20261116-iv3atpid/stage2.bag",
+    "exists": true,
+    "bytes": 175203,
+    "sha256": "1506a3f6329afb9808a9f607d71322bbea03a423fb1fe6158b9197d1b48adf82",
+    "seconds": 16.352630853652954,
+    "topics": {
+      "/audit/m8_internal": 83,
+      "/detections": 41,
+      "/visual/tracks": 41,
+      "/camera/image_raw": 106
+    },
+    "nonempty": {
+      "/visual/tracks": 0
+    },
+    "nonzero_control": 0,
+    "readable": true
+  },
+  {
+    "path": "/home/demo/m5-m8-manual-20261116-iv3atpid/stage3.bag",
+    "exists": true,
+    "bytes": 225433,
+    "sha256": "f0a33ec61ebe4abe96acae268924b562c2b4de2b717db05ebda947907ebc49a1",
+    "seconds": 16.384016275405884,
+    "topics": {
+      "/audit/m8_internal": 77,
+      "/visual/tracks": 38,
+      "/camera/image_raw": 105,
+      "/detections": 37
+    },
+    "nonempty": {
+      "/visual/tracks": 13
+    },
+    "nonzero_control": 0,
+    "readable": true
+  }
+]

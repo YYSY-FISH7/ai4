@@ -1,0 +1,6 @@
+{
+  "method": "Python profile return-event observation; unchanged formal main executed by runpy",
+  "source": "/home/demo/ai4-m4-m5-formal-20261116/catkin_ws/src/uav_tracking/scripts/state_machine_node.py",
+  "sha256": "988fd418a91ae3572a700bf1c0d857e0861bf88527b26bf15fcf41e55d3733f6",
+  "limits": "step_return records actual visual_tracks function argument used in decision; on_visual_tracks_return records cache after callback; concurrent callbacks not causally paired by observer topic arrival; no natural VISUAL_LOCK or flight claim"
+}

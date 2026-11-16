@@ -1,0 +1,72 @@
+[
+  {
+    "wall": 1794819978.0229342,
+    "phase": "ready",
+    "message": "\u51c6\u5907\u5b8c\u6210\uff1a\u5386\u53f2\u771f\u5b9e\u6570\u636e\u56de\u653e\uff1b\u7b49\u5f85\u7528\u6237\u201c\u5f00\u59cb\u201d",
+    "deadline": 1794819978.0228791,
+    "completed": 0
+  },
+  {
+    "wall": 1794820164.9131472,
+    "phase": "countdown",
+    "message": "\u8bf7\u542f\u52a8OBS\uff1a10\u79d2\u540e\u81ea\u52a8\u6f14\u793a\u5168\u90e8\u4e09\u4e2a\u9636\u6bb5",
+    "deadline": 1794820174.9131303,
+    "completed": 0
+  },
+  {
+    "wall": 1794820174.9594417,
+    "phase": "stage1",
+    "message": "\u9636\u6bb51\uff1a\u771f\u5b9e\u76ee\u6807\u5b58\u5728/\u79fb\u52a8 \u2192 \u539fM5\u822a\u8ff9 \u2192 \u539fM6\u8f93\u51fa",
+    "deadline": 1794820189.9594185,
+    "completed": 0
+  },
+  {
+    "wall": 1794820197.1503031,
+    "phase": "hold1",
+    "message": "\u9636\u6bb51\u5b8c\u6210\uff1b\u5373\u5c06\u81ea\u52a8\u8fdb\u5165\u4e0b\u4e00\u9636\u6bb5",
+    "deadline": 1794820197.1502798,
+    "completed": 1
+  },
+  {
+    "wall": 1794820197.152317,
+    "phase": "transition",
+    "message": "\u4e0a\u4e00\u9636\u6bb5\u5b8c\u6210\uff0c3\u79d2\u540e\u81ea\u52a8\u8fdb\u5165\u9636\u6bb52",
+    "deadline": 1794820200.1522949,
+    "completed": 1
+  },
+  {
+    "wall": 1794820200.175372,
+    "phase": "stage2",
+    "message": "\u9636\u6bb52\uff1a\u5386\u53f2\u771f\u5b9e\u79bb\u573a\u7a7a\u68c0\u6d4b \u2192 M5\u7a7a\u822a\u8ff9 \u2192 PID\u5f52\u96f6",
+    "deadline": 1794820215.1753442,
+    "completed": 1
+  },
+  {
+    "wall": 1794820222.2403343,
+    "phase": "hold2",
+    "message": "\u9636\u6bb52\u5b8c\u6210\uff1b\u5373\u5c06\u81ea\u52a8\u8fdb\u5165\u4e0b\u4e00\u9636\u6bb5",
+    "deadline": 1794820222.2403061,
+    "completed": 2
+  },
+  {
+    "wall": 1794820222.2421591,
+    "phase": "transition",
+    "message": "\u4e0a\u4e00\u9636\u6bb5\u5b8c\u6210\uff0c3\u79d2\u540e\u81ea\u52a8\u8fdb\u5165\u9636\u6bb53",
+    "deadline": 1794820225.242143,
+    "completed": 2
+  },
+  {
+    "wall": 1794820225.2551503,
+    "phase": "stage3",
+    "message": "\u9636\u6bb53\uff1a\u5386\u53f2\u771f\u5b9e\u91cd\u5165 \u2192 M5\u91cd\u65b0\u5efa\u8f68 \u2192 PID\u6062\u590d",
+    "deadline": 1794820240.2550912,
+    "completed": 2
+  },
+  {
+    "wall": 1794820246.8761764,
+    "phase": "hold3",
+    "message": "\u9636\u6bb53\u5b8c\u6210\uff1b\u6d4b\u8bd5\u5b8c\u6210\uff0c\u53ef\u4ee5\u505c\u6b62OBS\u5f55\u5236\uff1b\u7b49\u5f85\u4f60\u786e\u8ba4\u672c\u9879\u7ed3\u679c",
+    "deadline": 1794820246.876139,
+    "completed": 3
+  }
+]

@@ -1,0 +1,22 @@
+rosdistro: 'noetic
+
+  '
+roslaunch:
+  uris:
+    host_127_0_0_1__34329: http://127.0.0.1:34329/
+rosversion: '1.16.0
+
+  '
+run_id: f8ed4efe-e19c-11f1-a732-c36d403db9ec
+visual_tracker:
+  detections_topic: /detections
+  height: 240
+  image_topic: /camera/image_raw
+  match_thresh: 0.8
+  min_area_ratio: 0.0
+  new_track_thresh: 0.6
+  track_buffer: 30
+  track_high_thresh: 0.5
+  track_low_thresh: 0.1
+  use_image: true
+  width: 320

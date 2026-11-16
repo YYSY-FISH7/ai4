@@ -1,0 +1,100 @@
+{
+  "M5-M6": {
+    "stage1": {
+      "tracks": 38,
+      "nonempty": 11,
+      "IDs": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "commands": 1110,
+      "nonzero": 110
+    },
+    "stage2": {
+      "tracks": 41,
+      "nonempty": 0,
+      "IDs": [],
+      "commands": 1103,
+      "nonzero": 0
+    },
+    "stage3": {
+      "tracks": 38,
+      "nonempty": 13,
+      "IDs": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "commands": 1081,
+      "nonzero": 131
+    }
+  },
+  "M5-M8": {
+    "stage1": {
+      "tracks": 38,
+      "nonempty": 11,
+      "IDs": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "observed_audit": {
+        "on_visual_tracks_return": {
+          "total": 38,
+          "nonempty": 11
+        },
+        "step_return": {
+          "total": 37,
+          "nonempty": 10
+        }
+      }
+    },
+    "stage2": {
+      "tracks": 41,
+      "nonempty": 0,
+      "IDs": [],
+      "observed_audit": {
+        "on_visual_tracks_return": {
+          "total": 41,
+          "nonempty": 0
+        },
+        "step_return": {
+          "total": 41,
+          "nonempty": 1
+        }
+      }
+    },
+    "stage3": {
+      "tracks": 38,
+      "nonempty": 13,
+      "IDs": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "observed_audit": {
+        "on_visual_tracks_return": {
+          "total": 38,
+          "nonempty": 13
+        },
+        "step_return": {
+          "total": 38,
+          "nonempty": 12
+        }
+      }
+    }
+  },
+  "M8_raw_audit_totals": {
+    "step_return": 117,
+    "on_visual_tracks_return": 117
+  }
+}

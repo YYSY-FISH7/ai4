@@ -1,0 +1,6 @@
+{
+  "test/detector/week2/manual/image/video2-contact-sheet.jpg": "test/flow/M4-M5/image/20261114-video2-contact-sheet.jpg",
+  "test/detector/week2/manual/python/manual_m4_track_view.py": "test/flow/M4-M5/python/manual_track_view.py",
+  "test/detector/week2/manual/python/manual_m4_item2_armed.py": "test/flow/M4-M5/python/manual_track_sequence.py",
+  "test/detector/week2/manual/log/item2-run": "test/flow/M4-M5/log/live-20261114"
+}
