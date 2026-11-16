@@ -54,12 +54,6 @@
     "delivery": "原始bag保留本地，未上传源码；可按需由成员另行交付"
   },
   {
-    "archive_relative_path": "20261114-M4人工验收/第四项/live.bag",
-    "bytes": 75398,
-    "sha256": "330ace41376f0f3dd19238044e968dc3a00e28fa6b1c83be24bfaa23e4de067e",
-    "delivery": "原始bag保留本地，未上传源码；可按需由成员另行交付"
-  },
-  {
     "archive_relative_path": "20261114-M4人工验收/第二项/manual-item2-162032/live.bag",
     "bytes": 1437570,
     "sha256": "0226425163ea6adc30f192aefc37b50b71be21ef3d7b24f4e733ef4c0d6e6094",

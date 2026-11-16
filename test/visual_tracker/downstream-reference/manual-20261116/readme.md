@@ -4,12 +4,12 @@
 
 - [M5→M6 PID接收、归零与恢复](M5-M6/readme.md)：视频05。
 - [M5→M8视觉缓存接收、读取与恢复](M5-M8/readme.md)：视频06。
-- [六段视频名称/原名/大小/时长/SHA索引](../../../../design_module/M5/模块说明文档/六段视频证据索引-20261116.json)。原视频由用户另行发群，不在Git；相同SHA即可核对原件，不把本机绝对路径当分享链接。
+- [五段正式视频名称/原名/大小/时长/SHA索引](../../../../design_module/M5/模块说明文档/五段视频证据索引-20261116.json)。原视频由用户另行发群，不在Git；相同SHA即可核对原件，不把本机绝对路径当分享链接。
 - bag-index.json记录六个原bag的VM路径、SHA和全部消息读出统计，bag原件在Windows维护归档及原VM会话，不放Git。
 - event-recount.json是原始事件独立重计数；code-hash-audit.json区分VM文件哈希、Windows CRLF与c421 Git blob。source-script-hashes.json记录实际运行辅助脚本SHA，提交脚本与VM原/tmp文件逐字节一致。
 - acceptance-record.json记录用户已确认最终核验报告并授权归档。原始日志中的human_verdict=null及旧PR状态保留其原时点，不能据此覆盖最新确认，也不能反向改旧日志伪造签认。
 
-本目录只提供M5发送侧资料，不替代接收方test/flow/M5-M6或M5-M8的正式验收签认。M6默认尺寸、M8自然锁定/T4、T1及完整飞行仍待对应负责人。历史04是人工航迹驱动M6，不能替代05。
+本目录只提供M5发送侧资料，不替代接收方test/flow/M5-M6或M5-M8的正式验收签认。M6默认尺寸、M8自然锁定/T4、T1及完整飞行仍待对应负责人。实际M5→M6录像以05为准，旧人工输入节点记录不计入正式录像。
 
 ## 证据边界
 

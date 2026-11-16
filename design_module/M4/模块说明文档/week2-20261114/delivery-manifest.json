@@ -1,53 +1,53 @@
 {
-  "base": "e6a53289f0d58431c3149978787b9c7754fea1d3",
+  "base": "431c049408f323580a351d6e3532daba8c6742f5",
   "runtime_dependency": "PR18/c421ec7",
   "no_overlap_with_PR18": true,
   "relocation_note": "run-week2.sh updated only to locate the relocated M0-M4 helper; no experiment rerun",
   "files_excluding_this_manifest": [
     {
       "path": "design_module/M4/模块说明文档/week2-20261114/PID尺寸与方向核验.md",
-      "bytes": 6734,
-      "sha256_working_copy": "dd7e2dcf3c41f7133e2ea70fe73710af014c6ea37a0806fb56226e283d8d3af1"
+      "bytes": 6973,
+      "sha256_working_copy": "62e53893876cfec7e27c81fd29e5931c6869c337b2a922bc7af03688066ca42d"
     },
     {
       "path": "design_module/M4/模块说明文档/week2-20261114/bag-index.json",
-      "bytes": 3795,
-      "sha256_working_copy": "8467b8ac86132328665213173c9c883e0311d29353e167e8bd1e73f3b6fb8287"
+      "bytes": 3512,
+      "sha256_working_copy": "1cc40036d7cd95689f23b1c2262245ffb32ff2324122113b96eab2b56c0a6765"
     },
     {
       "path": "design_module/M4/模块说明文档/week2-20261114/readme.md",
-      "bytes": 4289,
-      "sha256_working_copy": "85f4b31b3e6dda8c6ca13d9ad2395a9ae5f0313bd5d9ab4ad299324e88a52f68"
+      "bytes": 4334,
+      "sha256_working_copy": "9fedb09a76aaceb462c81bfb403da4ae2607756dc30baf9be1a81e6884892293"
     },
     {
       "path": "design_module/M4/模块说明文档/week2-20261114/source-manifest.json",
-      "bytes": 19261,
-      "sha256_working_copy": "db0d6194b624533ab40bad1b2e844f6d7618944ab8926214f2cf0d436a8492d2"
+      "bytes": 18417,
+      "sha256_working_copy": "2302b99bc557f8ed3dfffe63f1a0edcbe83a4d06e4e99835b4c9bbb2263ca38c"
     },
     {
       "path": "design_module/M4/模块说明文档/week2-20261114/video-index.json",
-      "bytes": 1637,
-      "sha256_working_copy": "a177746ffa68ca4a168a16ec5d5a95c7bbe03acfe848df96f2dec040e67e7fc9"
+      "bytes": 1326,
+      "sha256_working_copy": "c091c9a94c547eac2ddc535e33302fe7f02b477ec9df2053723a6a5c0eed9813"
     },
     {
       "path": "design_module/M4/模块说明文档/week2-20261114/历史基础联调报告.md",
-      "bytes": 6428,
-      "sha256_working_copy": "3b6a2a6ff9e19ea13635afa1ca67c89bdc49949aa5eab703ca06eeadd0801909"
+      "bytes": 6667,
+      "sha256_working_copy": "806c7f51c4282c21b87566e9fa27e0500e9ee291f382a9b2764578d751b2cdf5"
     },
     {
       "path": "design_module/M4/模块说明文档/week2-20261114/历史自动化汇总.md",
-      "bytes": 9612,
-      "sha256_working_copy": "55d88228495558ebb5dd99c95eaf1457892105eba6bcc89b78260a2dc897f1c0"
+      "bytes": 9851,
+      "sha256_working_copy": "6562dd083d8da0057db5538217caa7ead62434db307ecd41640c5c8d49de6870"
     },
     {
-      "path": "design_module/M4/模块说明文档/week2-20261114/四项人工验收审计.md",
-      "bytes": 6775,
-      "sha256_working_copy": "7c9110246b39ddc58afddd30234acaca930737336beb3cc900fc77cdc5f1f452"
+      "path": "design_module/M4/模块说明文档/week2-20261114/正式视频验收审计.md",
+      "bytes": 6250,
+      "sha256_working_copy": "7a3879c7aab9f78bf1fdec48dfc143bd626d7acdc7844314932c1871fa78de22"
     },
     {
       "path": "test/detector/week2/away-interior.json",
-      "bytes": 170,
-      "sha256_working_copy": "68c86503c3726b5b5be4d2a53c274d643e7f5ad13143525b65100225d51ec36a"
+      "bytes": 183,
+      "sha256_working_copy": "15b36fedf2aec561c2274579de7ead8226d01f3628a74b542896f48040c518ac"
     },
     {
       "path": "test/detector/week2/m8-steps.json",
@@ -65,39 +65,34 @@
       "sha256_working_copy": "d4011151a19dee85603d28515e7d2e49d2e4e0f1c17e85d900f735b91e5a02c6"
     },
     {
-      "path": "test/detector/week2/manual/image/video4-contact-sheet.jpg",
-      "bytes": 314142,
-      "sha256_working_copy": "a41ded55e922c79188b656462d05ea5db450346f25987a1b085d3de7f789062f"
-    },
-    {
       "path": "test/detector/week2/manual/log/N3原始消息序列.log",
-      "bytes": 1298,
-      "sha256_working_copy": "052eff4f3b1197169f28326d1eca968f4e4d287340a122bdd00d698ac4d38338"
+      "bytes": 1300,
+      "sha256_working_copy": "21600f080c5e1522b8fb1734c4d856620e4e95707ccd98b6d58cfb374d4fb67d"
     },
     {
       "path": "test/detector/week2/manual/log/T1环境与录包盘点.json",
-      "bytes": 5993,
-      "sha256_working_copy": "282a5dbfdc3210a34bf7decc7bed2acc8f3717ea7d954f828803d2cde736c3f2"
+      "bytes": 6162,
+      "sha256_working_copy": "e2931a614f9693d3c3145fe66e9b254e173aef73612d384593c6d88fea9d474a"
     },
     {
       "path": "test/detector/week2/manual/log/detector.log",
-      "bytes": 771418,
-      "sha256_working_copy": "fb0f5c2ffbb6504dbb89264677cbe1bd280d5a239e437826a5279988605138e1"
+      "bytes": 776749,
+      "sha256_working_copy": "8d084a57fcb3d413507601d66ac139f8addea9049b40e45bd418ecc37cc96981"
     },
     {
       "path": "test/flow/M4-M5/log/live-20261114/bag.log",
-      "bytes": 1761,
-      "sha256_working_copy": "991edfc57c7536239a0eb18a4945e7bb106408ab9bb7892974bf8b121d2d9465"
+      "bytes": 1788,
+      "sha256_working_copy": "c0800a4b67f54351fdc36d970f36665c0a05254717cf8548ed27a539e30b193d"
     },
     {
       "path": "test/flow/M4-M5/log/live-20261114/events.json",
-      "bytes": 38398,
-      "sha256_working_copy": "6caf4bd8b62b84dfdfc61dad40395034dd10581a15aef2fe8870f61d7e8eacf3"
+      "bytes": 40379,
+      "sha256_working_copy": "1e6dc9e48bc50c785c60dd95e14d584572e08cace7cd59e89c203a189400db56"
     },
     {
       "path": "test/flow/M4-M5/log/live-20261114/restore-state.yaml",
-      "bytes": 289,
-      "sha256_working_copy": "b137a481b19c0adb2516dc1dea007e923a4580a677d60e914600d0de6f767473"
+      "bytes": 309,
+      "sha256_working_copy": "f1936d67623b83aba0153b7ea3608d2c3372e0fa3c692faff1df60f16f58a034"
     },
     {
       "path": "test/flow/M4-M5/log/live-20261114/verdict.json",
@@ -106,8 +101,8 @@
     },
     {
       "path": "test/detector/week2/manual/log/tracker.log",
-      "bytes": 181,
-      "sha256_working_copy": "4dfcf993780ae025d01ba3bd27968bccdfaf0a2b2ce8f1f75a839b7136f05db5"
+      "bytes": 182,
+      "sha256_working_copy": "6b40049c6b623f59f5f59080c12f06fe4761886b4a5d7642708cd57bf831fb8f"
     },
     {
       "path": "test/detector/week2/manual/log/停止已核实.json",
@@ -116,8 +111,8 @@
     },
     {
       "path": "test/detector/week2/manual/log/原始录包核验.json",
-      "bytes": 1730,
-      "sha256_working_copy": "a1a5f38a9bf450ac2a5e72256c82e406f460f4ac3024f817784e3ed4519bcd30"
+      "bytes": 1522,
+      "sha256_working_copy": "c84ced303c06dbd35e974907ad12e8f52f3de14e0fd65858ca13c5371b25dd3d"
     },
     {
       "path": "test/detector/week2/manual/log/第三项/events.json",
@@ -136,8 +131,8 @@
     },
     {
       "path": "test/detector/week2/manual/log/第二项/controller.log",
-      "bytes": 599,
-      "sha256_working_copy": "111c47076605071167afc09b2b56ff0378512e4bf7caf5eadf67e43a698bd3f3"
+      "bytes": 605,
+      "sha256_working_copy": "0480f02ed0390a393d5ca2bcb258d92363fd9408b49c9f5abeed1f2d64356e4e"
     },
     {
       "path": "test/detector/week2/manual/log/第二项/phase-review.json",
@@ -146,38 +141,13 @@
     },
     {
       "path": "test/detector/week2/manual/log/第二项/session.json",
-      "bytes": 605,
-      "sha256_working_copy": "47ff025710fc08993655d3cb29ed669762591f49bb455bf6fcbdfcc810052b82"
+      "bytes": 624,
+      "sha256_working_copy": "17c2501268adab4c539dc54fb69db18f666ea5b3f4a6acb32a3382130a8738f7"
     },
     {
       "path": "test/detector/week2/manual/log/第二项/viewer-status.json",
       "bytes": 1886,
       "sha256_working_copy": "c7b29d82f4f752a956b4789d3ff1b208962b20b3aa4fd35bd1486e3e65e191a0"
-    },
-    {
-      "path": "test/detector/week2/manual/log/第四项/events.json",
-      "bytes": 748258,
-      "sha256_working_copy": "68ab9741ab759ed8643cd1dda76e1ca2c9a64715c2bcd7c8fe59ec90e0377a47"
-    },
-    {
-      "path": "test/detector/week2/manual/log/第四项/parameters.yaml",
-      "bytes": 219,
-      "sha256_working_copy": "8a14b5039a1200e71b9b32e80abb99f2bfb83b53dd9ec7250e28a6e42a684528"
-    },
-    {
-      "path": "test/detector/week2/manual/log/第四项/phase.json",
-      "bytes": 219,
-      "sha256_working_copy": "4730cf3d6e00fe1798099192aa03fce6286d0338e9102fbe6a414103a31ab67b"
-    },
-    {
-      "path": "test/detector/week2/manual/log/第四项/session.json",
-      "bytes": 202,
-      "sha256_working_copy": "8966a30d37c2be52c648d6d9916dcf5396a6dc5ca530e061dfe86edfb4ba204d"
-    },
-    {
-      "path": "test/detector/week2/manual/log/第四项/viewer-status.json",
-      "bytes": 99,
-      "sha256_working_copy": "05c51ef59f55c7a6babc1adba28c72ea0bccfcd63b1d4a65c4b23fc61a9b614c"
     },
     {
       "path": "test/flow/M4-M5/python/manual_track_sequence.py",
@@ -186,8 +156,8 @@
     },
     {
       "path": "test/flow/M4-M5/python/manual_track_view.py",
-      "bytes": 4651,
-      "sha256_working_copy": "768cfd08801b8adbf1a6d174ceb4326ba02226303bd4dc24585aacd13d0e922b"
+      "bytes": 4698,
+      "sha256_working_copy": "c2a3da8973951fd1ee0eac4969172bfcbf19c8aa38c12ab8f436dcd5b85bed3b"
     },
     {
       "path": "test/detector/week2/manual/python/manual_receiver_demo.py",
@@ -196,13 +166,13 @@
     },
     {
       "path": "test/detector/week2/manual/readme.md",
-      "bytes": 1790,
-      "sha256_working_copy": "80d5102ed34b5dff83ba9b200c4f447ceeec1d7498e5d5cad351cd9df8c93dd8"
+      "bytes": 1046,
+      "sha256_working_copy": "6d1df7908b880022f05a7e4037e6ae569ed8ea2e20452861ad766016cccdd6ce"
     },
     {
       "path": "test/detector/week2/phases.json",
-      "bytes": 573,
-      "sha256_working_copy": "4c7b6704d28949ea4337d914c12c494be6ba105e6a11e52b7f528138cd946aca"
+      "bytes": 622,
+      "sha256_working_copy": "181d964d4a81b960f94fa305607f327c8283b03119ed98d51bfbd5a63e7ecffb"
     },
     {
       "path": "test/detector/week2/pid-geometry/confidence-size-summary.json",
@@ -211,13 +181,13 @@
     },
     {
       "path": "test/detector/week2/pid-geometry/controlled-pid-geometry.py",
-      "bytes": 2958,
-      "sha256_working_copy": "d344dbdb1e5643453f50db86bdd8fe2fc4e9c62208c4f5e6d9561fce0acfc7df"
+      "bytes": 3002,
+      "sha256_working_copy": "6ec18233482d55c3399437c20c2e19b063c519ccbd70bdf65636501c96e7273f"
     },
     {
       "path": "test/detector/week2/pid-geometry/results.json",
-      "bytes": 6010,
-      "sha256_working_copy": "4188585df1a5407c7487920a7456d41834b4c6bc3463e9538a155efafa86c60b"
+      "bytes": 6341,
+      "sha256_working_copy": "c44747011313ca08ade3d6fc2f0a5b894d92959f7b142c41733f87b7ed587a4e"
     },
     {
       "path": "test/detector/week2/pid-geometry/最终问题清单与复现.md",
@@ -231,8 +201,8 @@
     },
     {
       "path": "test/detector/week2/receiver-completeness/mux-results.json",
-      "bytes": 362,
-      "sha256_working_copy": "a5c1eb6349e3c8768a07cda53080c108e74e9bfc7a47f249d15273b303b22a3b"
+      "bytes": 369,
+      "sha256_working_copy": "bf56191773b6bbb920a32248a2820136b10e85b8f0ed764d5817e4cd7ae1e4b7"
     },
     {
       "path": "test/detector/week2/receiver-completeness/readme.md",
@@ -241,8 +211,8 @@
     },
     {
       "path": "test/detector/week2/receiver-completeness/receiver-results.json",
-      "bytes": 2716,
-      "sha256_working_copy": "716fe00537af4cacf385c2cd88c9680038ba96c739296899487c18e6ab54220d"
+      "bytes": 2835,
+      "sha256_working_copy": "05b4a05fe812d9922c77d5d4ae7d5477bee858b73ee017443f7807a20b7f2ae8"
     },
     {
       "path": "test/detector/week2/receiver-completeness/run.sh",
@@ -251,18 +221,18 @@
     },
     {
       "path": "test/detector/week2/receiver-completeness/week2_mux_check.py",
-      "bytes": 4129,
-      "sha256_working_copy": "53a6792ea74be86e166cb2c74ab0989f92374b476e46d45d13c0a377572742d6"
+      "bytes": 4189,
+      "sha256_working_copy": "d31abf2146fb7c6dce16837395ebe5e839c89be1ce98e8f48d94e2a469919b79"
     },
     {
       "path": "test/detector/week2/receiver-completeness/week2_receiver_checks.py",
-      "bytes": 8446,
-      "sha256_working_copy": "3ea3f7e590c2497ecf198bb2cba88dc39a83edac32851966a708ea6068d5f185"
+      "bytes": 8549,
+      "sha256_working_copy": "9acfdf51ace49dd21802038d391d9ac539eec774fc5486412258c109eab5bdd0"
     },
     {
       "path": "test/detector/week2/ros-graph-before.json",
-      "bytes": 1689,
-      "sha256_working_copy": "52712f43323b7c59d8fa747a7fe086bb42b8a0f5197dbf791a41208423372e1d"
+      "bytes": 1802,
+      "sha256_working_copy": "f121ee9bc06eeb916785d273fd7846e8fd6aaecac65edb2e96fbc78d392ba47b"
     },
     {
       "path": "test/detector/week2/run-week2.sh",
@@ -276,8 +246,8 @@
     },
     {
       "path": "test/detector/week2/sender-replay-audit.py",
-      "bytes": 5460,
-      "sha256_working_copy": "a48618ad87ab8c0a67373e367e1b64710ca0ceecb34cfec0d8fc299fe03a6852"
+      "bytes": 5527,
+      "sha256_working_copy": "127c389d3a03604aa78e9b60a6ce242284d79c0ecd305babb18454608b1903e1"
     },
     {
       "path": "test/detector/week2/summary.json",
@@ -301,18 +271,18 @@
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/log/manual-item1/bag.log",
-      "bytes": 1695,
-      "sha256_working_copy": "0701dba7effb805823edc5d4392476554ba468b2b435abce9aec7204fe011004"
+      "bytes": 1721,
+      "sha256_working_copy": "0b5c57906e5cf0b476ab5472886a86e466f39dac9d426dee286c7a11cb045b5c"
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/log/manual-item1/events.json",
-      "bytes": 18479,
-      "sha256_working_copy": "e3f63dc6f4b936f77f78c336e23383b976df8e116bb98833e37984f933aa0ff5"
+      "bytes": 19427,
+      "sha256_working_copy": "ca69078d338d0b02a5b8372bd617daaedef677085357b889ad5cf7290bc75339"
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/log/manual-item1/restore-state.yaml",
-      "bytes": 292,
-      "sha256_working_copy": "6354f2e3eee0fd0d936501fc85de1792bb4ae57d5366f3ea26857cb17b2bde52"
+      "bytes": 312,
+      "sha256_working_copy": "78f21984ed2b78e3dd0431069562ea9072d57c2eb24aa0de9ccd4147838987f7"
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/log/manual-item1/verdict.json",
@@ -321,8 +291,8 @@
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/log/manual-m4.log",
-      "bytes": 885,
-      "sha256_working_copy": "6b983e0068f8d3af3b95c47d2f0bb81ad2d028c904be0135f90776529306cea4"
+      "bytes": 888,
+      "sha256_working_copy": "3db7f1f22a39ac42a20c57da2d5fd448ca01b639865ae2874915ecbc387b06f3"
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/log/manual-manual-control.json",
@@ -331,8 +301,8 @@
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/log/manual-session.json",
-      "bytes": 572,
-      "sha256_working_copy": "9e83878706620857bddc705628b8e109f54a83c50d51015e8c4f5881501d61fe"
+      "bytes": 594,
+      "sha256_working_copy": "9699f0ca273851966104c4103f17d55ab33d0b5a67df3acc35dc8949524f5f04"
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/log/manual-viewer-status.json",
@@ -341,8 +311,8 @@
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/log/week2-bag-audit.json",
-      "bytes": 416,
-      "sha256_working_copy": "6edb8825f41b8c7e46737f92ffb955a0f582b2c19c771f82191db6746b4556b0"
+      "bytes": 429,
+      "sha256_working_copy": "0ec5cdc1ff3ff38c00d51c9cf57f5acc8b041a5c4b709c81c46d549da4f66639"
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/log/week2-evidence-manifest.json",
@@ -351,23 +321,23 @@
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/log/week2-graph.json",
-      "bytes": 11660,
-      "sha256_working_copy": "b5fa29d2aab10b517b4346a0bc27f83f3e25e5a0fc406c2b56c09e8da0ed75f7"
+      "bytes": 12407,
+      "sha256_working_copy": "2e313121dde541c7cbbc221335eaffadb03af8565f9c21764e61bd2b4585a0f6"
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/log/week2-m0.log",
-      "bytes": 6046,
-      "sha256_working_copy": "2513dd6dc4ba879c1800fec20b4c3e062ff41a302b58a7df533a37250105b54e"
+      "bytes": 6153,
+      "sha256_working_copy": "dab66baba11532e43383e91b6809a1de4f1c54a09483c121052b513a2ac41e9d"
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/log/week2-m4.log",
-      "bytes": 885,
-      "sha256_working_copy": "774a912bc73a3b940e2d2ef69c62893d82fd76f9ab59e54dd42ef0b51ded3554"
+      "bytes": 888,
+      "sha256_working_copy": "747943a85e6c3ee1a4acdc95bcfb0515a322d943912cf0e83b90675a4db81a46"
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/log/week2-summary.json",
-      "bytes": 578,
-      "sha256_working_copy": "904514c9217caf831aafbb0de98b84e84de50b1f94b0e7b2039601c86c6b48b5"
+      "bytes": 595,
+      "sha256_working_copy": "06c12922dc06533c7da813240f99317ecf211cdb062eec6cb1f4bc266827247e"
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/python/manual_m4_item1_armed.py",
@@ -381,18 +351,22 @@
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/python/manual_m4_view.py",
-      "bytes": 4756,
-      "sha256_working_copy": "c721327de59eb1d5ac2518d0fbe5b43b4aac15ec91ca48921829ae23f4094218"
+      "bytes": 4810,
+      "sha256_working_copy": "abb504eefda5ce6b31bcc96eaf4138b942a0d13c6ae139250b08bcb5c25fa2c0"
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/python/week2-live-check.py",
-      "bytes": 4790,
-      "sha256_working_copy": "f8628319db569fb3a59ebc5995b6becc97595bf39c9fae85b896bf66e423a3da"
+      "bytes": 4865,
+      "sha256_working_copy": "d25c973b4cddf8e57dd94b30c2bbcff1c4884939c763b9b6a1fc5ed4a126974a"
     },
     {
       "path": "test/flow/M0-M4/week2-20261114/readme.md",
       "bytes": 2026,
       "sha256_working_copy": "663e11a42cb5c3b96aacb944d1e6b1fd90bab16d29d3b9991866833bfef28b21"
     }
-  ]
+  ],
+  "scope": "Current retained week2 artifacts; full official video set is01/02/03/05/06; original source hashes preserve capture provenance",
+  "historical_base": "e6a53289f0d58431c3149978787b9c7754fea1d3",
+  "official_video_count": 5,
+  "code_reused_from_merged_PR20": true
 }

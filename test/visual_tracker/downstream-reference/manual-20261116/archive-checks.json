@@ -5,8 +5,9 @@
   "relative_links_checked": 13,
   "counts": "41emptytracks each; M6 observer1103zero/bag935zero; M8 raw117step+117callback; source re-count verified",
   "existing_tests": "85 Nov16/M5 E2E PASS; historical103 Nov11, not rerun",
-  "six_video_hashes": "verified in final audit",
   "core_or_interface_changes": false,
   "large_originals_in_Git": false,
-  "raw_bytes": "logs and scripts preserved by local attributes; CRLF recognized, terminal progress whitespace retained"
+  "raw_bytes": "logs and scripts preserved by local attributes; CRLF recognized, terminal progress whitespace retained",
+  "official_video_count": 5,
+  "official_video_hashes": "01/02/03/05/06 match previously full-decoded originals; current selection verified without new simulation"
 }

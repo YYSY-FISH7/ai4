@@ -17,7 +17,8 @@
   {
     "repository_path": "test/detector/week2/readme.md",
     "source_archive": "m4_week2_c421/test/detector/week2/readme.md",
-    "sha256": "945d92b5a7b7af5022eee34df36dc3ca2c47204ebcb80361c6ee4c47c03ce5f5"
+    "sha256": "945d92b5a7b7af5022eee34df36dc3ca2c47204ebcb80361c6ee4c47c03ce5f5",
+    "current_document_sha256_working_copy": "945d92b5a7b7af5022eee34df36dc3ca2c47204ebcb80361c6ee4c47c03ce5f5"
   },
   {
     "repository_path": "test/detector/week2/ros-graph-before.json",
@@ -62,7 +63,8 @@
   {
     "repository_path": "test/detector/week2/pid-geometry/最终问题清单与复现.md",
     "source_archive": "m4_week2_c421/test/detector/week2/pid-geometry/最终问题清单与复现.md",
-    "sha256": "dd7e2dcf3c41f7133e2ea70fe73710af014c6ea37a0806fb56226e283d8d3af1"
+    "sha256": "dd7e2dcf3c41f7133e2ea70fe73710af014c6ea37a0806fb56226e283d8d3af1",
+    "current_document_sha256_working_copy": "dd7e2dcf3c41f7133e2ea70fe73710af014c6ea37a0806fb56226e283d8d3af1"
   },
   {
     "repository_path": "test/detector/week2/receiver-completeness/mux-results.json",
@@ -72,7 +74,8 @@
   {
     "repository_path": "test/detector/week2/receiver-completeness/readme.md",
     "source_archive": "m4_week2_c421/test/detector/week2/receiver-completeness/readme.md",
-    "sha256": "823d71cfcc85dda64071ecffa1a6b6d2b836a74f2b22fdedaf9ad4d0d28dc793"
+    "sha256": "823d71cfcc85dda64071ecffa1a6b6d2b836a74f2b22fdedaf9ad4d0d28dc793",
+    "current_document_sha256_working_copy": "823d71cfcc85dda64071ecffa1a6b6d2b836a74f2b22fdedaf9ad4d0d28dc793"
   },
   {
     "repository_path": "test/detector/week2/receiver-completeness/receiver-results.json",
@@ -172,22 +175,27 @@
   {
     "repository_path": "design_module/M4/模块说明文档/week2-20261114/历史基础联调报告.md",
     "source_archive": "仿真联调记录/20261114-M4第二周/第二周联调报告.md",
-    "sha256": "a705bffd22b2e0cea00e6368b2ead9c215739d72f9d9af1232a16c86f9053965"
+    "sha256": "a705bffd22b2e0cea00e6368b2ead9c215739d72f9d9af1232a16c86f9053965",
+    "current_document_sha256_working_copy": "806c7f51c4282c21b87566e9fa27e0500e9ee291f382a9b2764578d751b2cdf5"
   },
   {
     "repository_path": "design_module/M4/模块说明文档/week2-20261114/历史自动化汇总.md",
     "source_archive": "仿真联调记录/20261114-M4最终验收/M4第二周联调最终验收报告.md",
-    "sha256": "b54ae6bd3c29508a84e1d057323b5e15a9edd91f485a6b20354e28bc5d0de043"
+    "sha256": "b54ae6bd3c29508a84e1d057323b5e15a9edd91f485a6b20354e28bc5d0de043",
+    "current_document_sha256_working_copy": "6562dd083d8da0057db5538217caa7ead62434db307ecd41640c5c8d49de6870"
   },
   {
     "repository_path": "design_module/M4/模块说明文档/week2-20261114/PID尺寸与方向核验.md",
     "source_archive": "仿真联调记录/20261114-M4尺寸方向核验/最终问题清单与复现.md",
-    "sha256": "dd7e2dcf3c41f7133e2ea70fe73710af014c6ea37a0806fb56226e283d8d3af1"
+    "sha256": "dd7e2dcf3c41f7133e2ea70fe73710af014c6ea37a0806fb56226e283d8d3af1",
+    "current_document_sha256_working_copy": "62e53893876cfec7e27c81fd29e5931c6869c337b2a922bc7af03688066ca42d"
   },
   {
-    "repository_path": "design_module/M4/模块说明文档/week2-20261114/四项人工验收审计.md",
+    "repository_path": "design_module/M4/模块说明文档/week2-20261114/正式视频验收审计.md",
     "source_archive": "仿真联调记录/20261114-M4人工验收/最终审计/四项人工联调最终审计.md",
-    "sha256": "7c9110246b39ddc58afddd30234acaca930737336beb3cc900fc77cdc5f1f452"
+    "sha256": "7c9110246b39ddc58afddd30234acaca930737336beb3cc900fc77cdc5f1f452",
+    "derived_from_historical_audit": true,
+    "current_document_sha256_working_copy": "7a3879c7aab9f78bf1fdec48dfc143bd626d7acdc7844314932c1871fa78de22"
   },
   {
     "repository_path": "test/detector/week2/manual/log/第二项/session.json",
@@ -223,31 +231,6 @@
     "repository_path": "test/detector/week2/manual/log/第三项/viewer-status.json",
     "source_archive": "仿真联调记录/20261114-M4人工验收/第三项/viewer-status.json",
     "sha256": "2dfbdbe2294ca623cff9ba7df1a1bebfa386abd0105798e874c49aa3da8487ed"
-  },
-  {
-    "repository_path": "test/detector/week2/manual/log/第四项/session.json",
-    "source_archive": "仿真联调记录/20261114-M4人工验收/第四项/session.json",
-    "sha256": "8966a30d37c2be52c648d6d9916dcf5396a6dc5ca530e061dfe86edfb4ba204d"
-  },
-  {
-    "repository_path": "test/detector/week2/manual/log/第四项/events.json",
-    "source_archive": "仿真联调记录/20261114-M4人工验收/第四项/events.json",
-    "sha256": "68ab9741ab759ed8643cd1dda76e1ca2c9a64715c2bcd7c8fe59ec90e0377a47"
-  },
-  {
-    "repository_path": "test/detector/week2/manual/log/第四项/parameters.yaml",
-    "source_archive": "仿真联调记录/20261114-M4人工验收/第四项/parameters.yaml",
-    "sha256": "8a14b5039a1200e71b9b32e80abb99f2bfb83b53dd9ec7250e28a6e42a684528"
-  },
-  {
-    "repository_path": "test/detector/week2/manual/log/第四项/phase.json",
-    "source_archive": "仿真联调记录/20261114-M4人工验收/第四项/phase.json",
-    "sha256": "4730cf3d6e00fe1798099192aa03fce6286d0338e9102fbe6a414103a31ab67b"
-  },
-  {
-    "repository_path": "test/detector/week2/manual/log/第四项/viewer-status.json",
-    "source_archive": "仿真联调记录/20261114-M4人工验收/第四项/viewer-status.json",
-    "sha256": "05c51ef59f55c7a6babc1adba28c72ea0bccfcd63b1d4a65c4b23fc61a9b614c"
   },
   {
     "repository_path": "test/flow/M0-M4/week2-20261114/log/manual-session.json",
@@ -353,10 +336,5 @@
     "repository_path": "test/detector/week2/manual/image/video3-contact-sheet.jpg",
     "source_archive": "仿真联调记录/20261114-M4人工验收/第三项/video3-contact-sheet.jpg",
     "sha256": "d4011151a19dee85603d28515e7d2e49d2e4e0f1c17e85d900f735b91e5a02c6"
-  },
-  {
-    "repository_path": "test/detector/week2/manual/image/video4-contact-sheet.jpg",
-    "source_archive": "仿真联调记录/20261114-M4人工验收/第四项/video4-contact-sheet.jpg",
-    "sha256": "a41ded55e922c79188b656462d05ea5db450346f25987a1b085d3de7f789062f"
   }
 ]
