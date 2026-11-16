@@ -1,0 +1,10 @@
+........................................................................ [ 84%]
+.............                                                            [100%]
+=============================== warnings summary ===============================
+test/visual_tracker/test_visual_tracker.py::test_track_bad_image_shape_is_tolerated
+  /home/demo/ai4-m4-m5-delivery-20261116/catkin_ws/src/uav_tracking/lib/visual_tracker.py:363: RuntimeWarning: [visual_tracker] track: image 形状非法，实际为 None；上机阶段按默认值/空结果处理
+    _reject("track: image 形状非法，实际为 %r" % (shape,))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+------------ generated xml file: /tmp/m4-m5-regression-20261116.xml ------------
+85 passed, 1 warning in 2.08s

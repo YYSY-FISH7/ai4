@@ -9,7 +9,8 @@
     "video_stream_complete": true,
     "name": "01_M0-M4_相机检测.mp4",
     "delivery": "由项目成员另行通过团队群聊交付；不上传GitHub",
-    "link": null
+    "link": null,
+    "owner_module": "M4"
   },
   {
     "bytes": 10599524,
@@ -21,7 +22,8 @@
     "video_stream_complete": true,
     "name": "02_M4-M5_视觉跟踪.mp4",
     "delivery": "由项目成员另行通过团队群聊交付；不上传GitHub",
-    "link": null
+    "link": null,
+    "owner_module": "M5"
   },
   {
     "bytes": 9195600,
@@ -33,7 +35,8 @@
     "video_stream_complete": true,
     "name": "03_M4-M8_状态机切换.mp4",
     "delivery": "由项目成员另行通过团队群聊交付；不上传GitHub",
-    "link": null
+    "link": null,
+    "owner_module": "M4/M5→M8受控参考"
   },
   {
     "bytes": 9591106,
@@ -45,6 +48,8 @@
     "video_stream_complete": true,
     "name": "04_M4-PID_控制响应.mp4",
     "delivery": "由项目成员另行通过团队群聊交付；不上传GitHub",
-    "link": null
+    "link": null,
+    "owner_module": "M6受控参考",
+    "clarification": "原始文件名保留；人工VisualTrackArray→M6 PID，非M4直连、非正式M5→M6实时联调"
   }
 ]

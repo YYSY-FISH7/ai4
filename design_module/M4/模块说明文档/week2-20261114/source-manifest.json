@@ -155,12 +155,12 @@
     "sha256": "1c693d1f923066b6d1cc57b2e95491be5219a567441ed39d0e0a68e2ec29389a"
   },
   {
-    "repository_path": "test/detector/week2/manual/python/manual_m4_track_view.py",
+    "repository_path": "test/flow/M4-M5/python/manual_track_view.py",
     "source_archive": "tools/manual_m4_track_view.py",
     "sha256": "768cfd08801b8adbf1a6d174ceb4326ba02226303bd4dc24585aacd13d0e922b"
   },
   {
-    "repository_path": "test/detector/week2/manual/python/manual_m4_item2_armed.py",
+    "repository_path": "test/flow/M4-M5/python/manual_track_sequence.py",
     "source_archive": "tools/manual_m4_item2_armed.py",
     "sha256": "24d1d1440313f46f6d130ca3c94b465963dc49b41f070823b7b431f45fb2574e"
   },
@@ -290,22 +290,22 @@
     "sha256": "9e16d4146a9462c3b880f624673372505aa32ff71cbc1ddc7211ef79432eee5e"
   },
   {
-    "repository_path": "test/detector/week2/manual/log/item2-run/bag.log",
+    "repository_path": "test/flow/M4-M5/log/live-20261114/bag.log",
     "source_archive": "仿真联调记录/20261114-M4人工验收/第二项/manual-item2-162032/bag.log",
     "sha256": "991edfc57c7536239a0eb18a4945e7bb106408ab9bb7892974bf8b121d2d9465"
   },
   {
-    "repository_path": "test/detector/week2/manual/log/item2-run/events.json",
+    "repository_path": "test/flow/M4-M5/log/live-20261114/events.json",
     "source_archive": "仿真联调记录/20261114-M4人工验收/第二项/manual-item2-162032/events.json",
     "sha256": "6caf4bd8b62b84dfdfc61dad40395034dd10581a15aef2fe8870f61d7e8eacf3"
   },
   {
-    "repository_path": "test/detector/week2/manual/log/item2-run/restore-state.yaml",
+    "repository_path": "test/flow/M4-M5/log/live-20261114/restore-state.yaml",
     "source_archive": "仿真联调记录/20261114-M4人工验收/第二项/manual-item2-162032/restore-state.yaml",
     "sha256": "b137a481b19c0adb2516dc1dea007e923a4580a677d60e914600d0de6f767473"
   },
   {
-    "repository_path": "test/detector/week2/manual/log/item2-run/verdict.json",
+    "repository_path": "test/flow/M4-M5/log/live-20261114/verdict.json",
     "source_archive": "仿真联调记录/20261114-M4人工验收/第二项/manual-item2-162032/verdict.json",
     "sha256": "9e16d4146a9462c3b880f624673372505aa32ff71cbc1ddc7211ef79432eee5e"
   },
@@ -345,7 +345,7 @@
     "sha256": "2ff05eb0a7d1be86d3cf7aee95a2c4a994ecf536c9694c832d5174e2b3c704c5"
   },
   {
-    "repository_path": "test/detector/week2/manual/image/video2-contact-sheet.jpg",
+    "repository_path": "test/flow/M4-M5/image/20261114-video2-contact-sheet.jpg",
     "source_archive": "仿真联调记录/20261114-M4人工验收/第二项/video2-contact-sheet.jpg",
     "sha256": "7f00a6aeab04956470d6f11487e493acbb3ba4213c14d906a403c4700449dc85"
   },

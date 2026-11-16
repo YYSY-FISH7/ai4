@@ -55,7 +55,7 @@
       "sha256_working_copy": "3cf4624e60cbd39c0df67af2cd581f71e55508dc1425d99ce279b9c98cbd07f6"
     },
     {
-      "path": "test/detector/week2/manual/image/video2-contact-sheet.jpg",
+      "path": "test/flow/M4-M5/image/20261114-video2-contact-sheet.jpg",
       "bytes": 288342,
       "sha256_working_copy": "7f00a6aeab04956470d6f11487e493acbb3ba4213c14d906a403c4700449dc85"
     },
@@ -85,22 +85,22 @@
       "sha256_working_copy": "fb0f5c2ffbb6504dbb89264677cbe1bd280d5a239e437826a5279988605138e1"
     },
     {
-      "path": "test/detector/week2/manual/log/item2-run/bag.log",
+      "path": "test/flow/M4-M5/log/live-20261114/bag.log",
       "bytes": 1761,
       "sha256_working_copy": "991edfc57c7536239a0eb18a4945e7bb106408ab9bb7892974bf8b121d2d9465"
     },
     {
-      "path": "test/detector/week2/manual/log/item2-run/events.json",
+      "path": "test/flow/M4-M5/log/live-20261114/events.json",
       "bytes": 38398,
       "sha256_working_copy": "6caf4bd8b62b84dfdfc61dad40395034dd10581a15aef2fe8870f61d7e8eacf3"
     },
     {
-      "path": "test/detector/week2/manual/log/item2-run/restore-state.yaml",
+      "path": "test/flow/M4-M5/log/live-20261114/restore-state.yaml",
       "bytes": 289,
       "sha256_working_copy": "b137a481b19c0adb2516dc1dea007e923a4580a677d60e914600d0de6f767473"
     },
     {
-      "path": "test/detector/week2/manual/log/item2-run/verdict.json",
+      "path": "test/flow/M4-M5/log/live-20261114/verdict.json",
       "bytes": 56,
       "sha256_working_copy": "9e16d4146a9462c3b880f624673372505aa32ff71cbc1ddc7211ef79432eee5e"
     },
@@ -180,12 +180,12 @@
       "sha256_working_copy": "05c51ef59f55c7a6babc1adba28c72ea0bccfcd63b1d4a65c4b23fc61a9b614c"
     },
     {
-      "path": "test/detector/week2/manual/python/manual_m4_item2_armed.py",
+      "path": "test/flow/M4-M5/python/manual_track_sequence.py",
       "bytes": 3918,
       "sha256_working_copy": "24d1d1440313f46f6d130ca3c94b465963dc49b41f070823b7b431f45fb2574e"
     },
     {
-      "path": "test/detector/week2/manual/python/manual_m4_track_view.py",
+      "path": "test/flow/M4-M5/python/manual_track_view.py",
       "bytes": 4651,
       "sha256_working_copy": "768cfd08801b8adbf1a6d174ceb4326ba02226303bd4dc24585aacd13d0e922b"
     },
