@@ -48,22 +48,6 @@
     "shared_url": null
   },
   {
-    "name": "04_M4-PID_控制响应.mp4",
-    "exists": true,
-    "bytes": 9591106,
-    "sha256": "9820f70224cc164485fc19e58fbf3ef20ded13bc4bb31699413e57f60b4c7f3e",
-    "index": 4,
-    "fps": 60.0,
-    "metadata_frames": 3670,
-    "decoded_frames": 3670,
-    "complete": true,
-    "duration_seconds": 61.166666666666664,
-    "audio": "not audited; visual evidence only",
-    "provenance": "artificial VisualTrack -> M6 PID; not M4 direct or actual M5",
-    "delivery": "Video original delivered separately by project member through team chat; not in Git",
-    "shared_url": null
-  },
-  {
     "name": "05_M5-M6_PID接收与丢失恢复.mp4",
     "exists": true,
     "bytes": 20780430,

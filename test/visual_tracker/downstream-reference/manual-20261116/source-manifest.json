@@ -1,5 +1,5 @@
 {
-  "scope": "Nov16 source archival snapshot; raw byte SHA, self excluded",
+  "scope": "Current lightweight archive after five-video selection; original raw logs retained, historical checks have their original date",
   "files_excluding_this_manifest": [
     {
       "path": "test/visual_tracker/downstream-reference/manual-20261116/.gitattributes",
@@ -13,8 +13,8 @@
     },
     {
       "path": "test/visual_tracker/downstream-reference/manual-20261116/archive-checks.json",
-      "bytes": 636,
-      "sha256": "95ddd744756e1dce8c1bdc2e53aaaf0874dc17f68ba9d192baeb457608fffe59"
+      "bytes": 753,
+      "sha256": "ec4c7c32a1b0c0cbcfe28acf20674550477de68b8bac77941366381e761253e3"
     },
     {
       "path": "test/visual_tracker/downstream-reference/manual-20261116/bag-index.json",
@@ -278,8 +278,8 @@
     },
     {
       "path": "test/visual_tracker/downstream-reference/manual-20261116/readme.md",
-      "bytes": 2322,
-      "sha256": "69af28a8dc0ef40cc55b2064f0074c6fc07f447c0f883ba41afa052a85c14bd3"
+      "bytes": 2361,
+      "sha256": "c94cce63eaa3c27482652e20bd7277ef6f3d1279b27e2a2d9bfd09909bc05619"
     },
     {
       "path": "test/visual_tracker/downstream-reference/manual-20261116/source-script-hashes.json",

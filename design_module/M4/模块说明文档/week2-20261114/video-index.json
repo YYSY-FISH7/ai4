@@ -37,19 +37,5 @@
     "delivery": "由项目成员另行通过团队群聊交付；不上传GitHub",
     "link": null,
     "owner_module": "M4/M5→M8受控参考"
-  },
-  {
-    "bytes": 9591106,
-    "sha256": "9820f70224cc164485fc19e58fbf3ef20ded13bc4bb31699413e57f60b4c7f3e",
-    "fps": 60.0,
-    "expected_frames": 3670,
-    "decoded_frames": 3670,
-    "duration": 61.166666666666664,
-    "video_stream_complete": true,
-    "name": "04_M4-PID_控制响应.mp4",
-    "delivery": "由项目成员另行通过团队群聊交付；不上传GitHub",
-    "link": null,
-    "owner_module": "M6受控参考",
-    "clarification": "原始文件名保留；人工VisualTrackArray→M6 PID，非M4直连、非正式M5→M6实时联调"
   }
 ]
