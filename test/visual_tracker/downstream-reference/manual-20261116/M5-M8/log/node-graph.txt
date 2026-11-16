@@ -1,0 +1,32 @@
+--------------------------------------------------------------------------------
+Node [/state_machine]
+Publications: 
+ * /rosout [rosgraph_msgs/Log]
+ * /state [std_msgs/String]
+
+Subscriptions: 
+ * /detections [unknown type]
+ * /radar/tracks [unknown type]
+ * /visual/tracks [uav_tracking/VisualTrackArray]
+
+Services: 
+ * /state_machine/get_loggers
+ * /state_machine/set_logger_level
+
+
+contacting node http://127.0.0.1:34009/ ...
+Pid: 200977
+Connections:
+ * topic: /rosout
+    * to: /rosout
+    * direction: outbound (43785 - 127.0.0.1:42872) [15]
+    * transport: TCPROS
+ * topic: /state
+    * to: /m5_m6_manual_monitor
+    * direction: outbound (43785 - 127.0.0.1:42862) [8]
+    * transport: TCPROS
+ * topic: /visual/tracks
+    * to: /visual_tracker (http://127.0.0.1:39025/)
+    * direction: inbound
+    * transport: TCPROS
+

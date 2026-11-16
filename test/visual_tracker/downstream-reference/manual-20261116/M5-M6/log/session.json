@@ -1,0 +1,13 @@
+{
+  "master": "http://127.0.0.1:37671",
+  "source_bag": "/home/demo/m4-ort1-exit-reentry.NeAllp/live.bag",
+  "sha256": "139009ec869407a1871a4b2b0fa8f1f7420b6bd68b054d06d301320e0af912ea",
+  "source": "historical real Gazebo camera/detections; original M5 and M6 run now",
+  "PID_test_dimensions": [
+    320,
+    240
+  ],
+  "flight": false,
+  "synthetic_tracks": false,
+  "git_changes": false
+}

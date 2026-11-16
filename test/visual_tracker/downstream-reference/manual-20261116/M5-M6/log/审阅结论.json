@@ -1,0 +1,15 @@
+{
+  "video_name": "05_M5-M6_PID接收与丢失恢复.mp4",
+  "bytes": 20780430,
+  "sha256": "df2e0697443990d35da73dcbcfe8b1a1b26610256719163765645b3866c807fa",
+  "seconds": 100.68333333333334,
+  "node_exception_scan": {
+    "original-M5.log": false,
+    "original-M6.log": false
+  },
+  "scope": "historical real Gazebo input replay -> original running M5 -> original running M6; not synthetic tracks/fresh Gazebo/flight",
+  "human_verdict": null,
+  "PR20_updated": false,
+  "original_filename": "2026-11-16 17-09-21.mp4",
+  "renamed_without_reencoding": true
+}
