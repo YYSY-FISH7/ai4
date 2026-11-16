@@ -1,0 +1,24 @@
+{
+  "core_msg_launch_yaml_and_team_design_unchanged": true,
+  "unit_and_E2E_programs_preserved": 9,
+  "shared_tools_preserved": [
+    "test/detector/week2/manual/python/manual_receiver_demo.py",
+    "test/detector/week2/receiver-completeness/run.sh",
+    "test/detector/week2/receiver-completeness/week2_mux_check.py",
+    "test/detector/week2/receiver-completeness/week2_receiver_checks.py",
+    "test/detector/week2/pid-geometry/controlled-pid-geometry.py",
+    "test/detector/week2/run-week2.sh",
+    "test/detector/week2/sender-replay-audit.py"
+  ],
+  "existing_realtime_evidence_and_scripts_unchanged": 25,
+  "M4_confidence_analysis_retained": true,
+  "relative_links_checked": 17,
+  "JSON_files_parsed": 9,
+  "Python38_syntax": "3 retained real-capture/start helpers PASS; shared program bytes unchanged",
+  "formal_video_count": 2,
+  "formal_video_hashes": "01/02 match prior full-decoded originals; no new recording",
+  "formal_scope_and_manifest_links": "PASS;01/02 only; other-module outcomes excluded",
+  "existing_test_results": "85 joint unit tests/M5 E2E retained;103 historical tests retained; no full suite or simulation rerun",
+  "base_SHA": "3e3a5d57f8e59ceecf35cbf5fa8a78c41d8b347d",
+  "no_new_simulation_or_core_algorithm_changes": true
+}

@@ -1,1 +1,0 @@
-[INFO] [1794821980.550803]: [visual_tracker] ready: 兜底尺寸=320x240 use_image=True high=0.50 low=0.10 buffer=30 in=/detections,/camera/image_raw out=/visual/tracks
