@@ -1,0 +1,14 @@
+{
+  "status": "BINARY_RELEASE_PENDING_LICENSE_CONFIRMATION",
+  "application_source": "Existing ai4 source retained; deployment/export documentation submitted for review",
+  "source_base_revision": "59acc6295776a6f88336072e010b380ef3c30b65",
+  "model_sha256": "320ec090ff91a333116d120479f2ad2a9f97a1893e5826e99cf2ad7fd2ca1bd7",
+  "binary_download_url": null,
+  "binary_upload_performed": false,
+  "pending": [
+    "Confirm fine-tune/ONNX redistribution terms retaining original declarations",
+    "Team and relevant authors confirm source/script license and distribution terms; no new project license assigned",
+    "Target VM first install/build/realtime run confirmation"
+  ],
+  "model_reexport_performed": false
+}

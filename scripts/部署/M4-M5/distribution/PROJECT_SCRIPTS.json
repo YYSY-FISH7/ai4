@@ -1,0 +1,44 @@
+[
+  {
+    "path": "check-resources.py",
+    "sha256": "5dda803e52684afdd5a73290f9961ccb84ebd0eefb4ac90265515fd7b374ae46",
+    "role": "Deployment/export helper; core application unchanged"
+  },
+  {
+    "path": "env.sh",
+    "sha256": "0cb14a6822f5082e6c770f582443d581450f55177a042ce773864f4a678fefe3",
+    "role": "Deployment/export helper; core application unchanged"
+  },
+  {
+    "path": "export/export_verified_drone.py",
+    "sha256": "9822263ac8462640cab9d576d38b893fb90b7951b411ebc1256454b297522445",
+    "role": "Deployment/export helper; core application unchanged"
+  },
+  {
+    "path": "install-isolated.sh",
+    "sha256": "242db7e346417a02f258f1e04130b2972f0d46332035e3fe393b244d1f9a5593",
+    "role": "Deployment/export helper; core application unchanged"
+  },
+  {
+    "path": "preflight.sh",
+    "sha256": "80bc48fc3281e63dd57cd12e17a50c7794a7e6b3bb9bb7b0293f8c2a53c4d3a8",
+    "role": "Deployment/export helper; core application unchanged"
+  },
+  {
+    "path": "start.sh",
+    "sha256": "6472f60fe0ddc1025b9ef2fd7dbfc057235757fb26f90fc4479e409449efc709",
+    "role": "Deployment/export helper; core application unchanged"
+  },
+  {
+    "repository_path": "scripts/冲突库下载/install_m4_deps.sh",
+    "sha256": "8dcf3d4133b68c5874cc2ac5024dc945895ae6a848ec1c3f44fc572a0d846246",
+    "role": "Existing official installer; referenced unchanged, not duplicated",
+    "hash_basis": "Unchanged repository Git blob bytes, not Windows CRLF checkout"
+  },
+  {
+    "repository_path": "scripts/冲突库下载/install_m4_onnx_deps.sh",
+    "sha256": "c82f7e4441959fa52025d46389a33b44d629913ba56582faa0af12ef7e880d1a",
+    "role": "Existing official installer; referenced unchanged, not duplicated",
+    "hash_basis": "Unchanged repository Git blob bytes, not Windows CRLF checkout"
+  }
+]

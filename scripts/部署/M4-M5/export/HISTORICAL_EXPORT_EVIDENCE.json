@@ -1,0 +1,89 @@
+{
+  "historical_files": [
+    {
+      "name": "bench-restricted.py",
+      "bytes": 4596,
+      "sha256": "bb81013743c83b432ef99ed74fcb97d039343f6eca31aba86c4093aad3322d68",
+      "role": "historical restricted loader + offline comparison"
+    },
+    {
+      "name": "export-retry.py",
+      "bytes": 1598,
+      "sha256": "c8e86403b1d4309b949ef448989b71d1e060af8d72194bf7edafa81b3b67ede8",
+      "role": "historical successful export script"
+    },
+    {
+      "name": "export-retry.log",
+      "bytes": 1445,
+      "sha256": "2be43dd989393568b28c9a91ba11d96b038b6f8238396d98134e388e78c1e496",
+      "role": "historical successful export log"
+    }
+  ],
+  "historical_export": {
+    "python": "3.8.10",
+    "ultralytics": "8.4.173",
+    "torch": "2.4.1+cpu",
+    "onnx": "1.16.2",
+    "onnxruntime_comparison": "1.19.2",
+    "format": "onnx",
+    "imgsz": 640,
+    "opset": 17,
+    "simplify": false,
+    "dynamic": true,
+    "device": "cpu",
+    "nms": false,
+    "torch_num_threads": 2,
+    "input_at_export": [
+      1,
+      3,
+      640,
+      640
+    ],
+    "output_at_export": [
+      1,
+      5,
+      8400
+    ]
+  },
+  "comparison": {
+    "old_positive_confidence": [
+      0.729,
+      0.729
+    ],
+    "near_positive_confidence": [
+      0.659,
+      0.659
+    ],
+    "away1": [
+      "empty",
+      "empty"
+    ],
+    "away2": [
+      "empty",
+      "empty"
+    ],
+    "scope": "four historical images only; not comprehensive accuracy proof"
+  },
+  "portable_adapter": {
+    "status": "Python 3.8 AST/static checks only; NOT executed or re-exported",
+    "changes": [
+      "CLI paths replace temporary absolute paths",
+      "YOLO YAML container replaces the historical COCO wrapper initializer; final model still replaced by verified checkpoint",
+      "No ROS/bag benchmark or dynamic exec of external helper",
+      "Requires explicit acknowledgment and a fresh output directory"
+    ],
+    "warning": "Custom restricted pickle loader with exact SHA is not a general safety guarantee. Use only after source/rights review in a separate unprivileged environment. Never load arbitrary pt files."
+  },
+  "missing": [
+    "Exact training base yolo11s.pt download revision/hash",
+    "Full historical transitive export environment lock",
+    "Historical COCO wrapper bootstrap checkpoint hash/source revision",
+    "Independent reproduction of author training dataset/procedure"
+  ],
+  "original_pt_backup_verification": {
+    "exists": true,
+    "bytes": 19160211,
+    "sha256": "337390e1018eaf815474c02e172a224425095466d4a5cd2dbd11301b0aa01b78",
+    "included_in_bundle": false
+  }
+}

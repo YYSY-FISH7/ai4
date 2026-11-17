@@ -1,0 +1,6 @@
+# Historical successful export versions; install only in a separate export environment.
+ultralytics==8.4.173
+torch==2.4.1+cpu
+onnx==1.16.2
+# PyTorch CPU index: https://download.pytorch.org/whl/cpu
+# Other transitive versions were not fully recorded; see README.

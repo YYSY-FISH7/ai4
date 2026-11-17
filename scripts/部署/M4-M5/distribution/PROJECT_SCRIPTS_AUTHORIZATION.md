@@ -1,0 +1,7 @@
+# 应用源码和部署脚本授权记录
+
+本次用户授权将应用源码技术资料、部署/导出脚本及原始许可声明提交个人Fork并创建团队PR供审核。该操作不等于助手已为团队所有作者指定许可证；工程没有统一LICENSE，package.xml现有TODO保持原状。
+
+M4/M5现有应用源码仍在code/及catkin_ws/src/uav_tracking，未复制、未修改。此目录新增四个shell包装器、标准库资源校验器与可移植导出适配器。原正式install_m4_deps.sh、install_m4_onnx_deps.sh仍位于仓库scripts/冲突库下载，包装器仅复制到全新隔离安装暂存区执行，不在仓库重复收录。
+
+PROJECT_SCRIPTS.json给出本目录脚本SHA及原安装器引用。组长与相关作者仍需确认源码/脚本后续公开发行的许可方式、署名及适用范围；模型作者/Ultralytics权利事项不能由组长代其授权。所有第三方版权/许可原文保留，不统称Apache，也不擅自给团队代码指定AGPL。

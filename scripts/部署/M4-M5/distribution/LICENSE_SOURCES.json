@@ -1,0 +1,270 @@
+{
+  "checked_date": "2026-11-17",
+  "wheel_metadata": [
+    {
+      "wheel": "coloredlogs-15.0.1-py2.py3-none-any.whl",
+      "Name": "coloredlogs",
+      "Version": "15.0.1",
+      "License": "MIT",
+      "License_Expression": null,
+      "License_File": null,
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "bundled_license_notice_files": [
+        "coloredlogs-15.0.1.dist-info/LICENSE.txt"
+      ]
+    },
+    {
+      "wheel": "flatbuffers-24.3.25-py2.py3-none-any.whl",
+      "Name": "flatbuffers",
+      "Version": "24.3.25",
+      "License": "Apache 2.0",
+      "License_Expression": null,
+      "License_File": null,
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "bundled_license_notice_files": []
+    },
+    {
+      "wheel": "humanfriendly-10.0-py2.py3-none-any.whl",
+      "Name": "humanfriendly",
+      "Version": "10.0",
+      "License": "MIT",
+      "License_Expression": null,
+      "License_File": null,
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "bundled_license_notice_files": [
+        "humanfriendly-10.0.dist-info/LICENSE.txt"
+      ]
+    },
+    {
+      "wheel": "onnx-1.16.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "Name": "onnx",
+      "Version": "1.16.2",
+      "License": "Apache License v2.0",
+      "License_Expression": null,
+      "License_File": [
+        "LICENSE"
+      ],
+      "classifiers": [],
+      "bundled_license_notice_files": [
+        "onnx-1.16.2.dist-info/LICENSE"
+      ]
+    },
+    {
+      "wheel": "onnxruntime-1.19.2-cp38-cp38-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "Name": "onnxruntime",
+      "Version": "1.19.2",
+      "License": "MIT License",
+      "License_Expression": null,
+      "License_File": null,
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "bundled_license_notice_files": [
+        "onnxruntime/ThirdPartyNotices.txt",
+        "onnxruntime/LICENSE"
+      ]
+    },
+    {
+      "wheel": "pip-24.3.1-py3-none-any.whl",
+      "Name": "pip",
+      "Version": "24.3.1",
+      "License": "MIT",
+      "License_Expression": null,
+      "License_File": [
+        "LICENSE.txt",
+        "AUTHORS.txt"
+      ],
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "bundled_license_notice_files": [
+        "pip-24.3.1.dist-info/LICENSE.txt"
+      ]
+    },
+    {
+      "wheel": "protobuf-4.25.8-cp37-abi3-manylinux2014_x86_64.whl",
+      "Name": "protobuf",
+      "Version": "4.25.8",
+      "License": "3-Clause BSD License",
+      "License_Expression": null,
+      "License_File": null,
+      "classifiers": [],
+      "bundled_license_notice_files": [
+        "protobuf-4.25.8.dist-info/LICENSE"
+      ]
+    }
+  ],
+  "pip_vendor_source": "https://github.com/pypa/pip/tree/24.3.1/src/pip/_vendor",
+  "model_source": "https://huggingface.co/sapoepsilon/yolov11s-drone-detector/tree/58897d6d6fadda9dfec979fd5dd7ad9040e73365",
+  "ultralytics_policy": "https://www.ultralytics.com/license",
+  "records": {
+    "许可证来源核查.json": [
+      {
+        "file": "flatbuffers-LICENSE.txt",
+        "url": "https://raw.githubusercontent.com/google/flatbuffers/v24.3.25/LICENSE",
+        "status": "retrieved",
+        "bytes": 11358,
+        "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      },
+      {
+        "file": "flatbuffers-NOTICE.txt",
+        "url": "https://raw.githubusercontent.com/google/flatbuffers/v24.3.25/NOTICE.txt",
+        "status": "not retrieved",
+        "reason": "HTTP Error 404: Not Found"
+      },
+      {
+        "file": "模型来源元数据.json",
+        "url": "https://huggingface.co/api/models/sapoepsilon/yolov11s-drone-detector",
+        "status": "retrieved",
+        "bytes": 846,
+        "sha256": "1fbaa50ddd99ba74b262682b4ff7b1a312bfe48a1d59b3a15c3c59cde33da309"
+      },
+      {
+        "file": "模型卡片.md",
+        "url": "https://huggingface.co/sapoepsilon/yolov11s-drone-detector/raw/main/README.md",
+        "status": "retrieved",
+        "bytes": 1512,
+        "sha256": "0f9efeab6351bd1b60dd1e6528c3f144a14c67d2e8ac33719e880e98ce4cf27a"
+      },
+      {
+        "file": "Ultralytics-LICENSE-8.4.173.txt",
+        "url": "https://raw.githubusercontent.com/ultralytics/ultralytics/v8.4.173/LICENSE",
+        "status": "retrieved",
+        "bytes": 34523,
+        "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+      }
+    ],
+    "pip官方vendored许可来源.json": {
+      "url": "https://codeload.github.com/pypa/pip/tar.gz/refs/tags/24.3.1",
+      "archive_sha256": "1349240eff5fd44f4b9d834d503d87505a6cd0a8ab022f3f1665181d6a719a73",
+      "files": [
+        {
+          "path": "cachecontrol/LICENSE.txt",
+          "bytes": 558,
+          "sha256": "86eeee87be2a43f3ff1f56496f451f69243926f025fedbb033666c304c4c161b"
+        },
+        {
+          "path": "certifi/LICENSE",
+          "bytes": 989,
+          "sha256": "e93716da6b9c0d5a4a1df60fe695b370f0695603d21f6f83f053e42cfc10caf7"
+        },
+        {
+          "path": "distlib/LICENSE.txt",
+          "bytes": 14531,
+          "sha256": "808e10c8a6ab8deb149ff9b3fb19f447a808094606d712a9ca57fead3552599d"
+        },
+        {
+          "path": "distro/LICENSE",
+          "bytes": 11325,
+          "sha256": "cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14"
+        },
+        {
+          "path": "idna/LICENSE.md",
+          "bytes": 1541,
+          "sha256": "a59f0b0ef3635874109a4461ca44ff7a70d50696e814767bfaf721d4c9b0db0f"
+        },
+        {
+          "path": "msgpack/COPYING",
+          "bytes": 614,
+          "sha256": "492dedba85da5872f78e6091bcd1fea474d660d35acb4dee964b8aab3f007427"
+        },
+        {
+          "path": "packaging/LICENSE",
+          "bytes": 197,
+          "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48"
+        },
+        {
+          "path": "packaging/LICENSE.APACHE",
+          "bytes": 10174,
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+        },
+        {
+          "path": "packaging/LICENSE.BSD",
+          "bytes": 1344,
+          "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+        },
+        {
+          "path": "pkg_resources/LICENSE",
+          "bytes": 1023,
+          "sha256": "86da0f01aeae46348a3c3d465195dc1ceccde79f79e87769a64b8da04b2a4741"
+        },
+        {
+          "path": "platformdirs/LICENSE",
+          "bytes": 1089,
+          "sha256": "29e0fd62e929850e86eb28c3fdccf0cefdf4fa94879011cffb3d0d4bed6d4db6"
+        },
+        {
+          "path": "pygments/LICENSE",
+          "bytes": 1331,
+          "sha256": "a9d66f1d526df02e29dce73436d34e56e8632f46c275bbdffc70569e882f9f17"
+        },
+        {
+          "path": "pyproject_hooks/LICENSE",
+          "bytes": 1081,
+          "sha256": "1b22b049b5267d6dfc23a67bf4a84d8ec04b9fdfb1a51d360e42b4342c8b4154"
+        },
+        {
+          "path": "requests/LICENSE",
+          "bytes": 10142,
+          "sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b"
+        },
+        {
+          "path": "resolvelib/LICENSE",
+          "bytes": 751,
+          "sha256": "f388fd38cad13112c1dc0f669bbe80e7f84541edbafb72f3030d2ca7642c3c9d"
+        },
+        {
+          "path": "rich/LICENSE",
+          "bytes": 1056,
+          "sha256": "deed7c17a4318158190a3ea239cc879a5a50271cebb98ae7025f48fbe58dca15"
+        },
+        {
+          "path": "tomli/LICENSE",
+          "bytes": 1072,
+          "sha256": "b80816b0d530b8accb4c2211783790984a6e3b61922c2b5ee92f3372ab2742fe"
+        },
+        {
+          "path": "truststore/LICENSE",
+          "bytes": 1086,
+          "sha256": "33be7b7e8fa4fd19b1760e1a8ed8a668bdab852c91b692dd41424bcb725a9fca"
+        },
+        {
+          "path": "typing_extensions.LICENSE",
+          "bytes": 13936,
+          "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+        },
+        {
+          "path": "urllib3/LICENSE.txt",
+          "bytes": 1115,
+          "sha256": "c37bf186e27cf9dbe9619e55edfe3cea7b30091ceb3da63c7dacbe0e6d77907b"
+        },
+        {
+          "path": "vendor.txt",
+          "bytes": 332,
+          "sha256": "e37d79dae0eda6cba7104dbdbe62eaa8a654a2c76b6efcc8164cec70b079e428"
+        }
+      ]
+    },
+    "额外版权归属来源.json": [
+      {
+        "package": "pygments",
+        "file": "AUTHORS",
+        "url": "https://raw.githubusercontent.com/pygments/pygments/2.18.0/AUTHORS",
+        "status": "retrieved"
+      },
+      {
+        "package": "urllib3",
+        "file": "CONTRIBUTORS.txt",
+        "url": "https://raw.githubusercontent.com/urllib3/urllib3/1.26.20/CONTRIBUTORS.txt",
+        "status": "pending",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  }
+}

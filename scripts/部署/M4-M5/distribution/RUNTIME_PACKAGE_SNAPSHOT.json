@@ -1,0 +1,846 @@
+{
+  "base": [
+    {
+      "name": "MarkupSafe",
+      "version": "2.1.5",
+      "license_field": "BSD-3-Clause",
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "requires_dist": []
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3",
+      "license_field": "MIT",
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "requires_dist": []
+    },
+    {
+      "name": "certifi",
+      "version": "2026.7.22",
+      "license_field": "MPL-2.0",
+      "classifiers": [
+        "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+      ],
+      "requires_dist": []
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.2",
+      "license_field": "MIT",
+      "classifiers": [],
+      "requires_dist": []
+    },
+    {
+      "name": "contourpy",
+      "version": "1.1.1",
+      "license_field": "BSD 3-Clause License\n        \n        Copyright (c) 2021-2023, ContourPy Developers.\n        All rights reserved.\n        \n        Redistribution and use in source and binary forms, with or without\n        modification, are permitted provided that the following conditions are met:\n        \n        1. Redistributions of source code must retain the above copyright notice, this\n           list of conditions and the following disclaimer.\n        \n        2. Redistributions in binary form must reproduce the above copyright notice,\n           this list of conditions and the following disclaimer in the documentation\n           and/or other materials provided with the distribution.\n        \n        3. Neither the name of the copyright holder nor the names of its\n           contributors may be used to endorse or promote products derived from\n           this software without specific prior written permission.\n        \n        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n        AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n        IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n        DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\n        FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n        DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n        SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n        CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\n        OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n        OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.",
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "requires_dist": [
+        "numpy<2.0,>=1.16; python_version <= \"3.11\"",
+        "numpy<2.0,>=1.26.0rc1; python_version >= \"3.12\"",
+        "furo; extra == \"docs\"",
+        "sphinx>=7.2; extra == \"docs\"",
+        "sphinx-copybutton; extra == \"docs\"",
+        "bokeh; extra == \"bokeh\"",
+        "selenium; extra == \"bokeh\"",
+        "contourpy[bokeh,docs]; extra == \"mypy\"",
+        "docutils-stubs; extra == \"mypy\"",
+        "mypy==1.4.1; extra == \"mypy\"",
+        "types-Pillow; extra == \"mypy\"",
+        "contourpy[test-no-images]; extra == \"test\"",
+        "matplotlib; extra == \"test\"",
+        "Pillow; extra == \"test\"",
+        "pytest; extra == \"test-no-images\"",
+        "pytest-cov; extra == \"test-no-images\"",
+        "wurlitzer; extra == \"test-no-images\""
+      ]
+    },
+    {
+      "name": "cycler",
+      "version": "0.12.1",
+      "license_field": "Copyright (c) 2015, matplotlib project\n        All rights reserved.\n        \n        Redistribution and use in source and binary forms, with or without\n        modification, are permitted provided that the following conditions are met:\n        \n        * Redistributions of source code must retain the above copyright notice, this\n          list of conditions and the following disclaimer.\n        \n        * Redistributions in binary form must reproduce the above copyright notice,\n          this list of conditions and the following disclaimer in the documentation\n          and/or other materials provided with the distribution.\n        \n        * Neither the name of the matplotlib project nor the names of its\n          contributors may be used to endorse or promote products derived from\n          this software without specific prior written permission.\n        \n        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n        AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n        IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n        DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\n        FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n        DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n        SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n        CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\n        OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n        OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.",
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "requires_dist": [
+        "ipython ; extra == 'docs'",
+        "matplotlib ; extra == 'docs'",
+        "numpydoc ; extra == 'docs'",
+        "sphinx ; extra == 'docs'",
+        "pytest ; extra == 'tests'",
+        "pytest-cov ; extra == 'tests'",
+        "pytest-xdist ; extra == 'tests'"
+      ]
+    },
+    {
+      "name": "filelock",
+      "version": "3.16.1",
+      "license_field": null,
+      "classifiers": [
+        "License :: OSI Approved :: The Unlicense (Unlicense)"
+      ],
+      "requires_dist": [
+        "furo>=2024.8.6; extra == 'docs'",
+        "sphinx-autodoc-typehints>=2.4.1; extra == 'docs'",
+        "sphinx>=8.0.2; extra == 'docs'",
+        "covdefaults>=2.3; extra == 'testing'",
+        "coverage>=7.6.1; extra == 'testing'",
+        "diff-cover>=9.2; extra == 'testing'",
+        "pytest-asyncio>=0.24; extra == 'testing'",
+        "pytest-cov>=5; extra == 'testing'",
+        "pytest-mock>=3.14; extra == 'testing'",
+        "pytest-timeout>=2.3.1; extra == 'testing'",
+        "pytest>=8.3.3; extra == 'testing'",
+        "virtualenv>=20.26.4; extra == 'testing'",
+        "typing-extensions>=4.12.2; (python_version < '3.11') and extra == 'typing'"
+      ]
+    },
+    {
+      "name": "fonttools",
+      "version": "4.57.0",
+      "license_field": "MIT",
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "requires_dist": [
+        "fs <3,>=2.2.0 ; extra == 'all'",
+        "lxml >=4.0 ; extra == 'all'",
+        "zopfli >=0.1.4 ; extra == 'all'",
+        "lz4 >=1.7.4.2 ; extra == 'all'",
+        "pycairo ; extra == 'all'",
+        "matplotlib ; extra == 'all'",
+        "sympy ; extra == 'all'",
+        "skia-pathops >=0.5.0 ; extra == 'all'",
+        "uharfbuzz >=0.23.0 ; extra == 'all'",
+        "brotlicffi >=0.8.0 ; (platform_python_implementation != \"CPython\") and extra == 'all'",
+        "scipy ; (platform_python_implementation != \"PyPy\") and extra == 'all'",
+        "brotli >=1.0.1 ; (platform_python_implementation == \"CPython\") and extra == 'all'",
+        "munkres ; (platform_python_implementation == \"PyPy\") and extra == 'all'",
+        "unicodedata2 >=15.1.0 ; (python_version <= \"3.12\") and extra == 'all'",
+        "xattr ; (sys_platform == \"darwin\") and extra == 'all'",
+        "lz4 >=1.7.4.2 ; extra == 'graphite'",
+        "pycairo ; extra == 'interpolatable'",
+        "scipy ; (platform_python_implementation != \"PyPy\") and extra == 'interpolatable'",
+        "munkres ; (platform_python_implementation == \"PyPy\") and extra == 'interpolatable'",
+        "lxml >=4.0 ; extra == 'lxml'",
+        "skia-pathops >=0.5.0 ; extra == 'pathops'",
+        "matplotlib ; extra == 'plot'",
+        "uharfbuzz >=0.23.0 ; extra == 'repacker'",
+        "sympy ; extra == 'symfont'",
+        "xattr ; (sys_platform == \"darwin\") and extra == 'type1'",
+        "fs <3,>=2.2.0 ; extra == 'ufo'",
+        "unicodedata2 >=15.1.0 ; (python_version <= \"3.12\") and extra == 'unicode'",
+        "zopfli >=0.1.4 ; extra == 'woff'",
+        "brotlicffi >=0.8.0 ; (platform_python_implementation != \"CPython\") and extra == 'woff'",
+        "brotli >=1.0.1 ; (platform_python_implementation == \"CPython\") and extra == 'woff'"
+      ]
+    },
+    {
+      "name": "fsspec",
+      "version": "2025.3.0",
+      "license_field": "BSD 3-Clause License\n        \n        Copyright (c) 2018, Martin Durant\n        All rights reserved.\n        \n        Redistribution and use in source and binary forms, with or without\n        modification, are permitted provided that the following conditions are met:\n        \n        * Redistributions of source code must retain the above copyright notice, this\n          list of conditions and the following disclaimer.\n        \n        * Redistributions in binary form must reproduce the above copyright notice,\n          this list of conditions and the following disclaimer in the documentation\n          and/or other materials provided with the distribution.\n        \n        * Neither the name of the copyright holder nor the names of its\n          contributors may be used to endorse or promote products derived from\n          this software without specific prior written permission.\n        \n        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n        AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n        IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n        DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\n        FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n        DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n        SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n        CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\n        OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n        OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.",
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "requires_dist": [
+        "adlfs; extra == 'abfs'",
+        "adlfs; extra == 'adl'",
+        "pyarrow>=1; extra == 'arrow'",
+        "dask; extra == 'dask'",
+        "distributed; extra == 'dask'",
+        "pre-commit; extra == 'dev'",
+        "ruff; extra == 'dev'",
+        "numpydoc; extra == 'doc'",
+        "sphinx; extra == 'doc'",
+        "sphinx-design; extra == 'doc'",
+        "sphinx-rtd-theme; extra == 'doc'",
+        "yarl; extra == 'doc'",
+        "dropbox; extra == 'dropbox'",
+        "dropboxdrivefs; extra == 'dropbox'",
+        "requests; extra == 'dropbox'",
+        "adlfs; extra == 'full'",
+        "aiohttp!=4.0.0a0,!=4.0.0a1; extra == 'full'",
+        "dask; extra == 'full'",
+        "distributed; extra == 'full'",
+        "dropbox; extra == 'full'",
+        "dropboxdrivefs; extra == 'full'",
+        "fusepy; extra == 'full'",
+        "gcsfs; extra == 'full'",
+        "libarchive-c; extra == 'full'",
+        "ocifs; extra == 'full'",
+        "panel; extra == 'full'",
+        "paramiko; extra == 'full'",
+        "pyarrow>=1; extra == 'full'",
+        "pygit2; extra == 'full'",
+        "requests; extra == 'full'",
+        "s3fs; extra == 'full'",
+        "smbprotocol; extra == 'full'",
+        "tqdm; extra == 'full'",
+        "fusepy; extra == 'fuse'",
+        "gcsfs; extra == 'gcs'",
+        "pygit2; extra == 'git'",
+        "requests; extra == 'github'",
+        "gcsfs; extra == 'gs'",
+        "panel; extra == 'gui'",
+        "pyarrow>=1; extra == 'hdfs'",
+        "aiohttp!=4.0.0a0,!=4.0.0a1; extra == 'http'",
+        "libarchive-c; extra == 'libarchive'",
+        "ocifs; extra == 'oci'",
+        "s3fs; extra == 's3'",
+        "paramiko; extra == 'sftp'",
+        "smbprotocol; extra == 'smb'",
+        "paramiko; extra == 'ssh'",
+        "aiohttp!=4.0.0a0,!=4.0.0a1; extra == 'test'",
+        "numpy; extra == 'test'",
+        "pytest; extra == 'test'",
+        "pytest-asyncio!=0.22.0; extra == 'test'",
+        "pytest-benchmark; extra == 'test'",
+        "pytest-cov; extra == 'test'",
+        "pytest-mock; extra == 'test'",
+        "pytest-recording; extra == 'test'",
+        "pytest-rerunfailures; extra == 'test'",
+        "requests; extra == 'test'",
+        "aiobotocore<3.0.0,>=2.5.4; extra == 'test-downstream'",
+        "dask[dataframe,test]; extra == 'test-downstream'",
+        "moto[server]<5,>4; extra == 'test-downstream'",
+        "pytest-timeout; extra == 'test-downstream'",
+        "xarray; extra == 'test-downstream'",
+        "adlfs; extra == 'test-full'",
+        "aiohttp!=4.0.0a0,!=4.0.0a1; extra == 'test-full'",
+        "cloudpickle; extra == 'test-full'",
+        "dask; extra == 'test-full'",
+        "distributed; extra == 'test-full'",
+        "dropbox; extra == 'test-full'",
+        "dropboxdrivefs; extra == 'test-full'",
+        "fastparquet; extra == 'test-full'",
+        "fusepy; extra == 'test-full'",
+        "gcsfs; extra == 'test-full'",
+        "jinja2; extra == 'test-full'",
+        "kerchunk; extra == 'test-full'",
+        "libarchive-c; extra == 'test-full'",
+        "lz4; extra == 'test-full'",
+        "notebook; extra == 'test-full'",
+        "numpy; extra == 'test-full'",
+        "ocifs; extra == 'test-full'",
+        "pandas; extra == 'test-full'",
+        "panel; extra == 'test-full'",
+        "paramiko; extra == 'test-full'",
+        "pyarrow; extra == 'test-full'",
+        "pyarrow>=1; extra == 'test-full'",
+        "pyftpdlib; extra == 'test-full'",
+        "pygit2; extra == 'test-full'",
+        "pytest; extra == 'test-full'",
+        "pytest-asyncio!=0.22.0; extra == 'test-full'",
+        "pytest-benchmark; extra == 'test-full'",
+        "pytest-cov; extra == 'test-full'",
+        "pytest-mock; extra == 'test-full'",
+        "pytest-recording; extra == 'test-full'",
+        "pytest-rerunfailures; extra == 'test-full'",
+        "python-snappy; extra == 'test-full'",
+        "requests; extra == 'test-full'",
+        "smbprotocol; extra == 'test-full'",
+        "tqdm; extra == 'test-full'",
+        "urllib3; extra == 'test-full'",
+        "zarr; extra == 'test-full'",
+        "zstandard; extra == 'test-full'",
+        "tqdm; extra == 'tqdm'"
+      ]
+    },
+    {
+      "name": "idna",
+      "version": "3.15",
+      "license_field": null,
+      "classifiers": [],
+      "requires_dist": [
+        "ruff >= 0.6.2 ; extra == \"all\"",
+        "mypy >= 1.11.2 ; extra == \"all\"",
+        "pytest >= 8.3.2 ; extra == \"all\""
+      ]
+    },
+    {
+      "name": "importlib_resources",
+      "version": "6.4.5",
+      "license_field": null,
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "requires_dist": [
+        "zipp >=3.1.0 ; python_version < \"3.10\"",
+        "pytest-checkdocs >=2.4 ; extra == 'check'",
+        "pytest-ruff >=0.2.1 ; (sys_platform != \"cygwin\") and extra == 'check'",
+        "pytest-cov ; extra == 'cover'",
+        "sphinx >=3.5 ; extra == 'doc'",
+        "jaraco.packaging >=9.3 ; extra == 'doc'",
+        "rst.linker >=1.9 ; extra == 'doc'",
+        "furo ; extra == 'doc'",
+        "sphinx-lint ; extra == 'doc'",
+        "jaraco.tidelift >=1.4 ; extra == 'doc'",
+        "pytest-enabler >=2.2 ; extra == 'enabler'",
+        "pytest !=8.1.*,>=6 ; extra == 'test'",
+        "zipp >=3.17 ; extra == 'test'",
+        "jaraco.test >=5.4 ; extra == 'test'",
+        "pytest-mypy ; extra == 'type'"
+      ]
+    },
+    {
+      "name": "Jinja2",
+      "version": "3.1.6",
+      "license_field": null,
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "requires_dist": [
+        "MarkupSafe>=2.0",
+        "Babel>=2.7 ; extra == \"i18n\""
+      ]
+    },
+    {
+      "name": "kiwisolver",
+      "version": "1.4.7",
+      "license_field": "=========================\n         The Kiwi licensing terms\n        =========================\n        Kiwi is licensed under the terms of the Modified BSD License (also known as\n        New or Revised BSD), as follows:\n        \n        Copyright (c) 2013-2024, Nucleic Development Team\n        \n        All rights reserved.\n        \n        Redistribution and use in source and binary forms, with or without\n        modification, are permitted provided that the following conditions are met:\n        \n        Redistributions of source code must retain the above copyright notice, this\n        list of conditions and the following disclaimer.\n        \n        Redistributions in binary form must reproduce the above copyright notice, this\n        list of conditions and the following disclaimer in the documentation and/or\n        other materials provided with the distribution.\n        \n        Neither the name of the Nucleic Development Team nor the names of its\n        contributors may be used to endorse or promote products derived from this\n        software without specific prior written permission.\n        \n        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\n        ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\n        WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n        DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE\n        FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n        DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n        SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n        CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\n        OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n        OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n        \n        About Kiwi\n        ----------\n        Chris Colbert began the Kiwi project in December 2013 in an effort to\n        create a blisteringly fast UI constraint solver. Chris is still the\n        project lead.\n        \n        The Nucleic Development Team is the set of all contributors to the Nucleic\n        project and its subprojects.\n        \n        The core team that coordinates development on GitHub can be found here:\n        http://github.com/nucleic. The current team consists of:\n        \n        * Chris Colbert\n        \n        Our Copyright Policy\n        --------------------\n        Nucleic uses a shared copyright model. Each contributor maintains copyright\n        over their contributions to Nucleic. But, it is important to note that these\n        contributions are typically only changes to the repositories. Thus, the Nucleic\n        source code, in its entirety is not the copyright of any single person or\n        institution. Instead, it is the collective copyright of the entire Nucleic\n        Development Team. If individual contributors want to maintain a record of what\n        changes/contributions they have specific copyright on, they should indicate\n        their copyright in the commit message of the change, when they commit the\n        change to one of the Nucleic repositories.\n        \n        With this in mind, the following banner should be used in any source code file\n        to indicate the copyright and license terms:\n        \n        #------------------------------------------------------------------------------\n        # Copyright (c) 2013-2024, Nucleic Development Team.\n        #\n        # Distributed under the terms of the Modified BSD License.\n        #\n        # The full license is in the file LICENSE, distributed with this software.\n        #------------------------------------------------------------------------------\n        ",
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "requires_dist": []
+    },
+    {
+      "name": "matplotlib",
+      "version": "3.7.5",
+      "license_field": "PSF",
+      "classifiers": [
+        "License :: OSI Approved :: Python Software Foundation License"
+      ],
+      "requires_dist": [
+        "contourpy >=1.0.1",
+        "cycler >=0.10",
+        "fonttools >=4.22.0",
+        "kiwisolver >=1.0.1",
+        "numpy <2,>=1.20",
+        "packaging >=20.0",
+        "pillow >=6.2.0",
+        "pyparsing >=2.3.1",
+        "python-dateutil >=2.7",
+        "importlib-resources >=3.2.0 ; python_version<\"3.10\""
+      ]
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0",
+      "license_field": "BSD",
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "requires_dist": [
+        "pytest (>=4.6) ; extra == 'develop'",
+        "pycodestyle ; extra == 'develop'",
+        "pytest-cov ; extra == 'develop'",
+        "codecov ; extra == 'develop'",
+        "wheel ; extra == 'develop'",
+        "sphinx ; extra == 'docs'",
+        "gmpy2 (>=2.1.0a4) ; (platform_python_implementation != \"PyPy\") and extra == 'gmpy'",
+        "pytest (>=4.6) ; extra == 'tests'"
+      ]
+    },
+    {
+      "name": "networkx",
+      "version": "3.1",
+      "license_field": null,
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "requires_dist": [
+        "numpy (>=1.20) ; extra == 'default'",
+        "scipy (>=1.8) ; extra == 'default'",
+        "matplotlib (>=3.4) ; extra == 'default'",
+        "pandas (>=1.3) ; extra == 'default'",
+        "pre-commit (>=3.2) ; extra == 'developer'",
+        "mypy (>=1.1) ; extra == 'developer'",
+        "sphinx (>=6.1) ; extra == 'doc'",
+        "pydata-sphinx-theme (>=0.13) ; extra == 'doc'",
+        "sphinx-gallery (>=0.12) ; extra == 'doc'",
+        "numpydoc (>=1.5) ; extra == 'doc'",
+        "pillow (>=9.4) ; extra == 'doc'",
+        "nb2plots (>=0.6) ; extra == 'doc'",
+        "texext (>=0.6.7) ; extra == 'doc'",
+        "lxml (>=4.6) ; extra == 'extra'",
+        "pygraphviz (>=1.10) ; extra == 'extra'",
+        "pydot (>=1.4.2) ; extra == 'extra'",
+        "sympy (>=1.10) ; extra == 'extra'",
+        "pytest (>=7.2) ; extra == 'test'",
+        "pytest-cov (>=4.0) ; extra == 'test'",
+        "codecov (>=2.1) ; extra == 'test'"
+      ]
+    },
+    {
+      "name": "numpy",
+      "version": "1.21.6",
+      "license_field": "BSD",
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "requires_dist": []
+    },
+    {
+      "name": "nvidia-ml-py",
+      "version": "13.615.71",
+      "license_field": "BSD",
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "requires_dist": []
+    },
+    {
+      "name": "packaging",
+      "version": "26.2",
+      "license_field": null,
+      "classifiers": [],
+      "requires_dist": []
+    },
+    {
+      "name": "pillow",
+      "version": "10.4.0",
+      "license_field": "HPND",
+      "classifiers": [
+        "License :: OSI Approved :: Historical Permission Notice and Disclaimer (HPND)"
+      ],
+      "requires_dist": [
+        "furo ; extra == 'docs'",
+        "olefile ; extra == 'docs'",
+        "sphinx >=7.3 ; extra == 'docs'",
+        "sphinx-copybutton ; extra == 'docs'",
+        "sphinx-inline-tabs ; extra == 'docs'",
+        "sphinxext-opengraph ; extra == 'docs'",
+        "olefile ; extra == 'fpx'",
+        "olefile ; extra == 'mic'",
+        "check-manifest ; extra == 'tests'",
+        "coverage ; extra == 'tests'",
+        "defusedxml ; extra == 'tests'",
+        "markdown2 ; extra == 'tests'",
+        "olefile ; extra == 'tests'",
+        "packaging ; extra == 'tests'",
+        "pyroma ; extra == 'tests'",
+        "pytest ; extra == 'tests'",
+        "pytest-cov ; extra == 'tests'",
+        "pytest-timeout ; extra == 'tests'",
+        "typing-extensions ; (python_version < \"3.10\") and extra == 'typing'",
+        "defusedxml ; extra == 'xmp'"
+      ]
+    },
+    {
+      "name": "polars",
+      "version": "1.8.2",
+      "license_field": null,
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "requires_dist": [
+        "numpy >=1.16.0 ; extra == 'numpy'",
+        "pandas ; extra == 'pandas'",
+        "polars[pyarrow] ; extra == 'pandas'",
+        "pyarrow >=7.0.0 ; extra == 'pyarrow'",
+        "pydantic ; extra == 'pydantic'",
+        "fastexcel >=0.9 ; extra == 'calamine'",
+        "openpyxl >=3.0.0 ; extra == 'openpyxl'",
+        "xlsx2csv >=0.8.0 ; extra == 'xlsx2csv'",
+        "xlsxwriter ; extra == 'xlsxwriter'",
+        "polars[calamine,openpyxl,xlsx2csv,xlsxwriter] ; extra == 'excel'",
+        "adbc-driver-manager[dbapi] ; extra == 'adbc'",
+        "adbc-driver-sqlite[dbapi] ; extra == 'adbc'",
+        "connectorx >=0.3.2 ; extra == 'connectorx'",
+        "sqlalchemy ; extra == 'sqlalchemy'",
+        "polars[pandas] ; extra == 'sqlalchemy'",
+        "polars[adbc,connectorx,sqlalchemy] ; extra == 'database'",
+        "nest-asyncio ; extra == 'database'",
+        "fsspec ; extra == 'fsspec'",
+        "deltalake >=0.15.0 ; extra == 'deltalake'",
+        "pyiceberg >=0.5.0 ; extra == 'iceberg'",
+        "gevent ; extra == 'async'",
+        "cloudpickle ; extra == 'cloudpickle'",
+        "matplotlib ; extra == 'graph'",
+        "altair >=5.4.0 ; extra == 'plot'",
+        "great-tables >=0.8.0 ; extra == 'style'",
+        "backports-zoneinfo ; python_version < '3.9' and extra == 'timezone'",
+        "tzdata ; platform_system == 'Windows' and extra == 'timezone'",
+        "cudf-polars-cu12 ; extra == 'gpu'",
+        "polars[async,cloudpickle,database,deltalake,excel,fsspec,graph,iceberg,numpy,pandas,plot,pyarrow,pydantic,style,timezone] ; extra == 'all'"
+      ]
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2",
+      "license_field": "BSD-3-Clause",
+      "classifiers": [],
+      "requires_dist": [
+        "psleak ; extra == 'dev'",
+        "pytest ; extra == 'dev'",
+        "pytest-instafail ; extra == 'dev'",
+        "pytest-xdist ; extra == 'dev'",
+        "setuptools ; extra == 'dev'",
+        "abi3audit ; extra == 'dev'",
+        "black ; extra == 'dev'",
+        "check-manifest ; extra == 'dev'",
+        "coverage ; extra == 'dev'",
+        "packaging ; extra == 'dev'",
+        "pylint ; extra == 'dev'",
+        "pyperf ; extra == 'dev'",
+        "pypinfo ; extra == 'dev'",
+        "pytest-cov ; extra == 'dev'",
+        "requests ; extra == 'dev'",
+        "rstcheck ; extra == 'dev'",
+        "ruff ; extra == 'dev'",
+        "sphinx ; extra == 'dev'",
+        "sphinx-rtd-theme ; extra == 'dev'",
+        "toml-sort ; extra == 'dev'",
+        "twine ; extra == 'dev'",
+        "validate-pyproject[all] ; extra == 'dev'",
+        "virtualenv ; extra == 'dev'",
+        "vulture ; extra == 'dev'",
+        "wheel ; extra == 'dev'",
+        "colorama ; (os_name == \"nt\") and extra == 'dev'",
+        "pyreadline3 ; (os_name == \"nt\") and extra == 'dev'",
+        "pywin32 ; (os_name == \"nt\" and implementation_name != \"pypy\") and extra == 'dev'",
+        "wheel ; (os_name == \"nt\" and implementation_name != \"pypy\") and extra == 'dev'",
+        "wmi ; (os_name == \"nt\" and implementation_name != \"pypy\") and extra == 'dev'",
+        "psleak ; extra == 'test'",
+        "pytest ; extra == 'test'",
+        "pytest-instafail ; extra == 'test'",
+        "pytest-xdist ; extra == 'test'",
+        "setuptools ; extra == 'test'",
+        "pywin32 ; (os_name == \"nt\" and implementation_name != \"pypy\") and extra == 'test'",
+        "wheel ; (os_name == \"nt\" and implementation_name != \"pypy\") and extra == 'test'",
+        "wmi ; (os_name == \"nt\" and implementation_name != \"pypy\") and extra == 'test'"
+      ]
+    },
+    {
+      "name": "pyparsing",
+      "version": "3.1.4",
+      "license_field": null,
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "requires_dist": [
+        "railroad-diagrams ; extra == \"diagrams\"",
+        "jinja2 ; extra == \"diagrams\""
+      ]
+    },
+    {
+      "name": "python-dateutil",
+      "version": "2.9.0.post0",
+      "license_field": "Dual License",
+      "classifiers": [
+        "License :: OSI Approved :: BSD License",
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "requires_dist": [
+        "six >=1.5"
+      ]
+    },
+    {
+      "name": "requests",
+      "version": "2.32.4",
+      "license_field": "Apache-2.0",
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "requires_dist": [
+        "charset_normalizer<4,>=2",
+        "idna<4,>=2.5",
+        "urllib3<3,>=1.21.1",
+        "certifi>=2017.4.17",
+        "PySocks!=1.5.7,>=1.5.6; extra == \"socks\"",
+        "chardet<6,>=3.0.2; extra == \"use-chardet-on-py3\""
+      ]
+    },
+    {
+      "name": "six",
+      "version": "1.17.0",
+      "license_field": "MIT",
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "requires_dist": []
+    },
+    {
+      "name": "sympy",
+      "version": "1.13.3",
+      "license_field": "BSD",
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "requires_dist": [
+        "mpmath <1.4,>=1.1.0",
+        "pytest >=7.1.0 ; extra == 'dev'",
+        "hypothesis >=6.70.0 ; extra == 'dev'"
+      ]
+    },
+    {
+      "name": "torch",
+      "version": "2.4.1+cpu",
+      "license_field": "BSD-3",
+      "classifiers": [
+        "License :: OSI Approved :: BSD License"
+      ],
+      "requires_dist": [
+        "filelock",
+        "typing-extensions (>=4.8.0)",
+        "sympy",
+        "networkx",
+        "jinja2",
+        "fsspec",
+        "opt-einsum (>=3.3) ; extra == 'opt-einsum'",
+        "optree (>=0.11.0) ; extra == 'optree'"
+      ]
+    },
+    {
+      "name": "torchvision",
+      "version": "0.19.1+cpu",
+      "license_field": "BSD",
+      "classifiers": [],
+      "requires_dist": [
+        "numpy",
+        "torch (==2.4.1)",
+        "pillow (!=8.3.*,>=5.3.0)",
+        "gdown (>=4.7.3) ; extra == 'gdown'",
+        "scipy ; extra == 'scipy'"
+      ]
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.13.2",
+      "license_field": null,
+      "classifiers": [],
+      "requires_dist": []
+    },
+    {
+      "name": "ultralytics",
+      "version": "8.4.173",
+      "license_field": "AGPL-3.0",
+      "classifiers": [
+        "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)"
+      ],
+      "requires_dist": [
+        "numpy>=1.23.0; platform_system != \"Darwin\"",
+        "numpy!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,!=2.3.1,!=2.3.2,!=2.3.3,!=2.3.4,>=1.23.0; platform_system == \"Darwin\"",
+        "matplotlib>=3.3.0",
+        "opencv-python!=4.13.0.90,>=4.7.0",
+        "pillow>=7.1.2",
+        "pyyaml>=5.3.1",
+        "requests>=2.23.0",
+        "torch>=1.8.0",
+        "torch!=2.4.0,>=1.8.0; sys_platform == \"win32\"",
+        "torchvision>=0.9.0",
+        "psutil>=5.8.0",
+        "polars>=0.20.0",
+        "nvidia-ml-py>=12.0.0",
+        "ultralytics-thop>=2.2.2",
+        "ultralytics-platform>=0.1.45; python_version >= \"3.11\"",
+        "ipython; extra == \"dev\"",
+        "pytest; extra == \"dev\"",
+        "pytest-cov; extra == \"dev\"",
+        "pytest-xdist>=3.0.0; extra == \"dev\"",
+        "coverage[toml]; extra == \"dev\"",
+        "zensical>=0.0.58; python_version >= \"3.10\" and extra == \"dev\"",
+        "minijinja>=2.0.0; extra == \"dev\"",
+        "onnx>=1.12.0; platform_system != \"Darwin\" and extra == \"export-base\"",
+        "onnx<1.18.0,>=1.12.0; (platform_system == \"Darwin\" and python_version < \"3.13\") and extra == \"export-base\"",
+        "onnx>=1.20.0; (platform_system == \"Darwin\" and python_version >= \"3.13\") and extra == \"export-base\"",
+        "onnxslim>=0.1.82; extra == \"export-base\"",
+        "onnxruntime<1.20.0; (python_version < \"3.11\" and (platform_machine != \"aarch64\" or platform_system != \"Linux\")) and extra == \"export-base\"",
+        "onnxruntime>=1.20.0; python_version >= \"3.11\" and extra == \"export-base\"",
+        "nncf>=2.14.0; python_version >= \"3.9\" and extra == \"export-openvino\"",
+        "openvino>=2024.0.0; extra == \"export-openvino\"",
+        "packaging>=26.0; (platform_machine == \"aarch64\" and platform_system == \"Linux\" and python_version >= \"3.9\") and extra == \"export-openvino\"",
+        "numpy<2; python_version < \"3.13\" and extra == \"export-legacy-torch\"",
+        "setuptools<81.0.0; python_version >= \"3.9\" and extra == \"export-legacy-torch\"",
+        "nncf<3.0.0; python_version >= \"3.9\" and extra == \"export-legacy-torch\"",
+        "numpy<2.0.0; python_version < \"3.13\" and extra == \"export-tensorflow\"",
+        "tensorflow<=2.19.0,>=2.0.0; python_version < \"3.13\" and extra == \"export-tensorflow\"",
+        "tensorflow>2.19.0; python_version >= \"3.13\" and extra == \"export-tensorflow\"",
+        "ydf<0.13.0; (platform_machine != \"aarch64\" and python_version <= \"3.12\") and extra == \"export-tensorflow\"",
+        "googleapis-common-protos<1.74.0; python_version <= \"3.12\" and extra == \"export-tensorflow\"",
+        "tensorstore>=0.1.63; (platform_machine == \"aarch64\" and python_version >= \"3.9\") and extra == \"export-tensorflow\"",
+        "h5py!=3.11.0; platform_machine == \"aarch64\" and extra == \"export-tensorflow\"",
+        "coreai-torch>=0.4.3; (((platform_system == \"Darwin\" and platform_machine == \"arm64\") or (platform_system == \"Linux\" and platform_machine == \"x86_64\")) and python_version >= \"3.11\" and python_version < \"3.15\") and extra == \"export-coreai\"",
+        "numpy<=2.3.5; (platform_system != \"Windows\" and python_version <= \"3.13\") and extra == \"export-coreml\"",
+        "coremltools>=9.0; (platform_system != \"Windows\" and python_version <= \"3.13\") and extra == \"export-coreml\"",
+        "scikit-learn>=1.3.2; (platform_system != \"Windows\" and python_version <= \"3.13\") and extra == \"export-coreml\"",
+        "executorch; extra == \"export-executorch\"",
+        "numpy<=2.3.5; extra == \"export-executorch\"",
+        "dx_com>=2.4.1; extra == \"export-deepx\"",
+        "numpy<2; python_version < \"3.13\" and extra == \"export-deepx\"",
+        "amd-quark<0.14.0,>=0.13.0; (platform_system == \"Linux\" and python_version >= \"3.11\" and python_version < \"3.14\") and extra == \"export-xilinx\"",
+        "litert-torch>=0.9.0; (((platform_system == \"Linux\" and platform_machine == \"x86_64\") or platform_system == \"Darwin\") and python_version >= \"3.10\") and extra == \"export-litert\"",
+        "ai-edge-litert>=2.1.4; (((platform_system == \"Linux\" and platform_machine == \"x86_64\") or platform_system == \"Darwin\") and python_version >= \"3.10\") and extra == \"export-litert\"",
+        "ai-edge-quantizer>=0.6.0; (((platform_system == \"Linux\" and platform_machine == \"x86_64\") or platform_system == \"Darwin\") and python_version >= \"3.10\") and extra == \"export-litert\"",
+        "ultralytics[export-base]; extra == \"export\"",
+        "ultralytics[export-openvino]; extra == \"export\"",
+        "ultralytics[export-tensorflow]; extra == \"export\"",
+        "ultralytics[export-coreml]; extra == \"export\"",
+        "ultralytics[export-litert]; extra == \"export\"",
+        "torch<2.15.0,>=2.12.0; (platform_system == \"Linux\" and platform_machine == \"aarch64\" and python_version == \"3.11\") and extra == \"export\"",
+        "shapely>=2.0.0; extra == \"solutions\"",
+        "lap>=0.5.12; extra == \"solutions\"",
+        "streamlit>=1.51.0; python_version >= \"3.10\" and extra == \"solutions\"",
+        "streamlit<1.51.0,>=1.29.0; (python_version < \"3.10\" and (platform_machine != \"aarch64\" or platform_system != \"Linux\")) and extra == \"solutions\"",
+        "flask>=3.0.1; extra == \"solutions\"",
+        "openai>=2.0.0; extra == \"llm\"",
+        "wandb; extra == \"logging\"",
+        "tensorboard; extra == \"logging\"",
+        "mlflow; extra == \"logging\"",
+        "ipython; extra == \"extra\"",
+        "albumentations>=1.4.6; extra == \"extra\"",
+        "faster-coco-eval>=1.6.7; extra == \"extra\"",
+        "types-pillow; extra == \"typing\"",
+        "types-psutil; extra == \"typing\"",
+        "types-pyyaml; extra == \"typing\"",
+        "types-requests; extra == \"typing\"",
+        "types-shapely; extra == \"typing\""
+      ]
+    },
+    {
+      "name": "ultralytics-thop",
+      "version": "2.2.2",
+      "license_field": "AGPL-3.0",
+      "classifiers": [
+        "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)"
+      ],
+      "requires_dist": [
+        "numpy",
+        "torch"
+      ]
+    },
+    {
+      "name": "urllib3",
+      "version": "2.2.3",
+      "license_field": null,
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "requires_dist": [
+        "brotli>=1.0.9; (platform_python_implementation == 'CPython') and extra == 'brotli'",
+        "brotlicffi>=0.8.0; (platform_python_implementation != 'CPython') and extra == 'brotli'",
+        "h2<5,>=4; extra == 'h2'",
+        "pysocks!=1.5.7,<2.0,>=1.5.6; extra == 'socks'",
+        "zstandard>=0.18.0; extra == 'zstd'"
+      ]
+    },
+    {
+      "name": "zipp",
+      "version": "3.20.2",
+      "license_field": null,
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "requires_dist": [
+        "pytest-checkdocs >=2.4 ; extra == 'check'",
+        "pytest-ruff >=0.2.1 ; (sys_platform != \"cygwin\") and extra == 'check'",
+        "pytest-cov ; extra == 'cover'",
+        "sphinx >=3.5 ; extra == 'doc'",
+        "jaraco.packaging >=9.3 ; extra == 'doc'",
+        "rst.linker >=1.9 ; extra == 'doc'",
+        "furo ; extra == 'doc'",
+        "sphinx-lint ; extra == 'doc'",
+        "jaraco.tidelift >=1.4 ; extra == 'doc'",
+        "pytest-enabler >=2.2 ; extra == 'enabler'",
+        "pytest !=8.1.*,>=6 ; extra == 'test'",
+        "jaraco.itertools ; extra == 'test'",
+        "jaraco.functools ; extra == 'test'",
+        "more-itertools ; extra == 'test'",
+        "big-O ; extra == 'test'",
+        "pytest-ignore-flaky ; extra == 'test'",
+        "jaraco.test ; extra == 'test'",
+        "importlib-resources ; (python_version < \"3.9\") and extra == 'test'",
+        "pytest-mypy ; extra == 'type'"
+      ]
+    }
+  ],
+  "onnx": [
+    {
+      "name": "coloredlogs",
+      "version": "15.0.1",
+      "license_field": "MIT",
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "requires_dist": [
+        "humanfriendly (>=9.1)",
+        "capturer (>=2.4) ; extra == 'cron'"
+      ]
+    },
+    {
+      "name": "flatbuffers",
+      "version": "24.3.25",
+      "license_field": "Apache 2.0",
+      "classifiers": [
+        "License :: OSI Approved :: Apache Software License"
+      ],
+      "requires_dist": []
+    },
+    {
+      "name": "humanfriendly",
+      "version": "10.0",
+      "license_field": "MIT",
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "requires_dist": [
+        "monotonic ; python_version == \"2.7\"",
+        "pyreadline ; sys_platform == \"win32\" and python_version<\"3.8\"",
+        "pyreadline3 ; sys_platform == \"win32\" and python_version>=\"3.8\""
+      ]
+    },
+    {
+      "name": "onnx",
+      "version": "1.16.2",
+      "license_field": "Apache License v2.0",
+      "classifiers": [],
+      "requires_dist": [
+        "numpy >=1.20",
+        "protobuf >=3.20.2",
+        "google-re2 ; extra == 'reference'",
+        "pillow ; extra == 'reference'"
+      ]
+    },
+    {
+      "name": "onnxruntime",
+      "version": "1.19.2",
+      "license_field": "MIT License",
+      "classifiers": [
+        "License :: OSI Approved :: MIT License"
+      ],
+      "requires_dist": [
+        "coloredlogs",
+        "flatbuffers",
+        "numpy >=1.21.6",
+        "packaging",
+        "protobuf",
+        "sympy"
+      ]
+    },
+    {
+      "name": "protobuf",
+      "version": "4.25.8",
+      "license_field": "3-Clause BSD License",
+      "classifiers": [],
+      "requires_dist": []
+    }
+  ],
+  "pt_local": {
+    "exists": false,
+    "bytes": null,
+    "sha256": null
+  },
+  "scope": "2026-11-17 current isolated directory METADATA, not a historical export lock and not proof every distribution was imported",
+  "original_pt_backup": {
+    "exists": true,
+    "bytes": 19160211,
+    "sha256": "337390e1018eaf815474c02e172a224425095466d4a5cd2dbd11301b0aa01b78",
+    "included_in_bundle": false
+  }
+}

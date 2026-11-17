@@ -1,0 +1,8 @@
+320ec090ff91a333116d120479f2ad2a9f97a1893e5826e99cf2ad7fd2ca1bd7  model/yolo11s-drone.onnx
+612ee75c546f53e92e70049c9dbfcc18c935a2b9a53b66085ce9ef6a6e5c0934  wheelhouse/coloredlogs-15.0.1-py2.py3-none-any.whl
+8dbdec58f935f3765e4f7f3cf635ac3a77f83568138d6a2311f524ec96364812  wheelhouse/flatbuffers-24.3.25-py2.py3-none-any.whl
+1697e1a8a8f550fd43c2865cd84542fc175a61dcb779b6fee18cf6b6ccba1477  wheelhouse/humanfriendly-10.0-py2.py3-none-any.whl
+e9e22be82c3447ba6d2fe851973a736a7013e97b398e8beb7a25fd2ad4df219e  wheelhouse/onnx-1.16.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+b2046fc9560f97947bbc1acbe4c6d48585ef0f12742744307d3364b131ac5778  wheelhouse/onnxruntime-1.19.2-cp38-cp38-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+3790624780082365f47549d032f3770eeb2b1e8bd1f7b2e02dace1afa361b4ed  wheelhouse/pip-24.3.1-py3-none-any.whl
+83e6e54e93d2b696a92cad6e6efc924f3850f82b52e1563778dfab8b355101b0  wheelhouse/protobuf-4.25.8-cp37-abi3-manylinux2014_x86_64.whl

@@ -1,0 +1,108 @@
+{
+  "source_base": "59acc6295776a6f88336072e010b380ef3c30b65",
+  "core_algorithm_changed": false,
+  "model_export_performed": false,
+  "fresh_vm_install_performed": false,
+  "gazebo_test_performed": false,
+  "checks": [
+    {
+      "name": "bash syntax env.sh",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "pass": true
+    },
+    {
+      "name": "bash syntax install-isolated.sh",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "pass": true
+    },
+    {
+      "name": "bash syntax preflight.sh",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "pass": true
+    },
+    {
+      "name": "bash syntax start.sh",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "pass": true
+    },
+    {
+      "name": "Python3.8 AST check-resources.py",
+      "pass": true
+    },
+    {
+      "name": "Python3.8 AST export_verified_drone.py",
+      "pass": true
+    },
+    {
+      "name": "resource checker help",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "pass": true
+    },
+    {
+      "name": "export adapter help, no model imports",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "pass": true
+    },
+    {
+      "name": "all 8 original resources size and SHA",
+      "exit_code": 0,
+      "expected_exit": 0,
+      "pass": true
+    },
+    {
+      "name": "missing model rejected",
+      "exit_code": 2,
+      "expected_exit": 2,
+      "pass": true
+    },
+    {
+      "name": "wrong model size rejected",
+      "exit_code": 2,
+      "expected_exit": 2,
+      "pass": true
+    },
+    {
+      "name": "safe refusal preflight.sh []",
+      "exit_code": 2,
+      "expected_exit": 2,
+      "pass": true
+    },
+    {
+      "name": "safe refusal start.sh []",
+      "exit_code": 2,
+      "expected_exit": 2,
+      "pass": true
+    },
+    {
+      "name": "safe refusal install-isolated.sh []",
+      "exit_code": 2,
+      "expected_exit": 2,
+      "pass": true
+    },
+    {
+      "name": "safe refusal install-isolated.sh ['--install-new-runtime', '--wheelhouse', '/definitely-not-existing-m4-wheels']",
+      "exit_code": 2,
+      "expected_exit": 2,
+      "pass": true
+    }
+  ],
+  "json_parsed": 9,
+  "broken_relative_markdown_links": [],
+  "raw_license_files_byte_identical": 83,
+  "no_model_wheel_archive_bag_or_video": true,
+  "unchanged_paths": [
+    "code/",
+    "catkin_ws/",
+    "design/",
+    "skill/",
+    "scripts/冲突库下载/",
+    "test/"
+  ],
+  "check_environment": "Windows Git Bash syntax/negative CLI checks; Python AST grammar 3.8 and standard-library resource checks. No ROS/model inference/fresh install/export."
+}

@@ -1,0 +1,11 @@
+# 模型许可状态：待权利方确认，不得发布
+
+保留原模型字节与所有导出元数据，不改标、不重训练、不替换。ONNX大小37746458字节，SHA320ec090ff91a333116d120479f2ad2a9f97a1893e5826e99cf2ad7fd2ca1bd7。
+
+事实A：sapoepsilon模型卡在revision58897d6d6fadda9dfec979fd5dd7ad9040e73365明确标Apache-2.0，原文完整保留UPSTREAM_MODEL_CARD.md。其原best.pt的LFS SHA337390e1018eaf815474c02e172a224425095466d4a5cd2dbd11301b0aa01b78与既有转换记录一致。
+事实B：既有ONNX导出元数据包含AGPL-3.0声明，见ONNX_EXPORT_METADATA.json，原始二进制元数据保持不变。
+事实C：Ultralytics官方政策将代码、架构、训练/微调模型纳入其AGPL/Enterprise许可说明，见https://www.ultralytics.com/license ；固定v8.4.173源码许可证原文在distribution/licenses/。这属于上游公开政策，不是本项目对权利归属或适用许可的法律裁定。
+
+不能仅以导出元数据推定最终法律许可，不能单凭模型卡推定所有上游权利已授权，也不能把整个发行包改标Apache。待确认：作者Apache声明是否覆盖微调权重及ONNX转换产物、权利范围与上游依据、需要哪些声明/对应源码/分发条件，以及是否还需Ultralytics权利方澄清。作者不能代替第三方豁免其权利。
+
+本项目只准备公开分发，不声称已经收到作者或组长授权。对应英文Discussion草稿在发行准备目录；未发送。数据集相关权利未由本次文件核查独立证实，不把这一不确定性写成已获许可。

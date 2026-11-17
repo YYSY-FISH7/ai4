@@ -1,0 +1,17 @@
+{
+  "end2end": "False",
+  "description": "Ultralytics YOLO11s model trained on /root/drone-ai/data/yolo/dataset.yaml",
+  "channels": "3",
+  "author": "Ultralytics",
+  "docs": "https://docs.ultralytics.com",
+  "head": "Detect",
+  "version": "8.4.173",
+  "batch": "1",
+  "license": "AGPL-3.0 License (https://ultralytics.com/license)",
+  "stride": "32",
+  "task": "detect",
+  "date": "2026-11-09T20:21:50.191635+08:00",
+  "imgsz": "[640, 640]",
+  "names": "{0: 'drone'}",
+  "args": "{'data': None, 'batch': 1, 'fraction': 1.0, 'quantize': None, 'nms': False, 'dynamic': True, 'simplify': False, 'opset': 17}"
+}
