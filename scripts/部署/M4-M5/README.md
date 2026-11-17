@@ -6,9 +6,9 @@
 
 Ubuntu20.04 x86_64、Python3.8、ROS Noetic、cv_bridge、Catkin及共享包声明的mavros_msgs等系统前置。仅依赖消息不意味着启动飞控。本工具不执行apt/sudo，不覆盖系统Python/ROS。
 
-内部包`M4-M5-团队完整交付-PR24.zip`已由成员负责发群；接收时先用同名.sha256校验外层，解压后按包内SHA256SUMS校验组件，再解压内层资源ZIP并核验。模型、7wheel、完整许可原文均在内部资源包，不公开上传。本目录[资源清单](resources/RESOURCE_MANIFEST.json)记录其大小/SHA，未发布任何新Release。内部包内旧源码快照不等于本PR分支，应使用当前分支/合并后的团队源码运行本工具。
+内部包`M4-M5-团队完整交付-PR25.zip`已由成员负责发群；接收时先用同名.sha256校验外层，解压后按包内SHA256SUMS校验组件，再解压内层资源ZIP并核验。模型、7wheel、完整许可原文均在内部资源包，不公开上传。本目录[资源清单](resources/RESOURCE_MANIFEST.json)记录其大小/SHA，未发布任何新Release。内部包内旧源码快照不等于本PR分支，应使用当前分支/合并后的团队源码运行本工具。
 
-原安装器固定numpy1.21.6、torch2.4.1+cpu、torchvision0.19.1+cpu、ultralytics8.4.173。七wheel：onnx1.16.2、ORT1.19.2、coloredlogs15.0.1、humanfriendly10.0、flatbuffers24.3.25、protobuf4.25.8、pip24.3.1。基础torch等仍需联网、约2GB磁盘，不是完全离线包。[40项版本参考](requirements-runtime-reference.txt)是原VM当前元数据快照，不是完整历史导出锁，也不是新VM安装成功证明。
+M4基础层及ONNX补充层的**唯一权威依赖清单**为仓库已有的[冲突库汇总.md（M4与M4 ONNX补充段）](../../冲突库下载/冲突库汇总.md)。版本、安装方式及后续变更均以该文件为准；本目录不另建requirements或40包清单。基础依赖首次安装仍需联网，约2GB磁盘，不是完全离线包。
 
 ## 在自己的工程中执行
 
@@ -24,6 +24,17 @@ python3 "$TOOLS/check-resources.py" --model "$M4_MODEL" --wheelhouse "$ASSETS/wh
 # export M4_BASE_DEPS="/自己的基础库"
 # export M4_ORT_DEPS="/自己的ORT库"
 ```
+## 确认工程版本和两个既有安装入口
+
+从实际工程根目录确认两个路径，文件名均为下划线：
+```bash
+git -C "$REPO" rev-parse HEAD
+test -f "$REPO/scripts/冲突库下载/冲突库汇总.md"
+test -f "$REPO/scripts/冲突库下载/install_m4_deps.sh"
+test -f "$REPO/scripts/冲突库下载/install_m4_onnx_deps.sh"
+```
+旧提交e6a5328/a1ffd9e/44c89c8只有基础脚本；c421ec7起及当前develop/本PR均含两个。只看到一个时先确认是不是旧副本/不完整打包或所在目录错误，不重写安装器，也不覆盖当前工程。取得本PR版本或合并后的版本；ONNX入口为[原ONNX补充安装脚本](../../冲突库下载/install_m4_onnx_deps.sh)，基础入口为[原基础安装脚本](../../冲突库下载/install_m4_deps.sh)。
+
 ## 复用原环境，不新增安装机制
 
 原安装器不是python -m venv：它用pip --target把基础依赖放在`<工程>/lib/m4`，ONNX扩展放在`<工程>/lib/m4_onnx`。本工具默认复用这两处；若它们是软链接，保留链接并使用其真实目标。已有其他兼容Python3.8环境，可通过M4_BASE_DEPS/M4_ORT_DEPS指定其包目录，再以preflight实际验证；仅激活venv不改变此入口使用ROS系统/usr/bin/python3的方式。仓库另有lib/venv/env.bash给M0传感器加载sensor_python，不能据此认为已含YOLO/ORT，不替换该环境。
