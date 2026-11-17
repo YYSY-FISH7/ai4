@@ -12,7 +12,7 @@ Ubuntu20.04 x86_64、Python3.8、ROS Noetic、cv_bridge、Catkin及共享包声�
 
 ## 在自己的工程中执行
 
-以下路径由队友替换，不依赖维护者旧VM。优先使用已有有效隔离库；已有runtime不重复安装。
+以下路径由队友替换，不依赖维护者旧VM。优先使用已有有效隔离库；已有环境不重复安装。
 ```bash
 cd /自己的实际ai4工程
 REPO="$PWD"
@@ -24,12 +24,24 @@ python3 "$TOOLS/check-resources.py" --model "$M4_MODEL" --wheelhouse "$ASSETS/wh
 # export M4_BASE_DEPS="/自己的基础库"
 # export M4_ORT_DEPS="/自己的ORT库"
 ```
-仅确认缺库时：
+## 复用原环境，不新增安装机制
+
+原安装器不是python -m venv：它用pip --target把基础依赖放在`<工程>/lib/m4`，ONNX扩展放在`<工程>/lib/m4_onnx`。本工具默认复用这两处；若它们是软链接，保留链接并使用其真实目标。已有其他兼容Python3.8环境，可通过M4_BASE_DEPS/M4_ORT_DEPS指定其包目录，再以preflight实际验证；仅激活venv不改变此入口使用ROS系统/usr/bin/python3的方式。仓库另有lib/venv/env.bash给M0传感器加载sensor_python，不能据此认为已含YOLO/ORT，不替换该环境。
+
+已有库先运行后文preflight，检查失败停止并核对实际版本/路径，不自动升级、卸载或重装。需要时原安装器的`--check`只检查本工程目录，不安装；外部自有库应使用preflight。
+
+只有确认相应目标目录不存在、也不是任何软链接，且没有其他可复用兼容库时，才允许使用现有原安装器（不是新增一套安装器）：
 ```bash
-bash "$TOOLS/install-isolated.sh" --install-new-runtime --wheelhouse "$ASSETS/wheelhouse"
-unset M4_BASE_DEPS M4_ORT_DEPS
+# 基础层已存在就跳过；若目录或软链接存在，下面检查会停止，禁止强行继续。
+test ! -e "$REPO/lib/m4" && test ! -L "$REPO/lib/m4" || { echo '已有基础环境：只检查，不重新安装'; exit 2; }
+bash "$REPO/scripts/冲突库下载/install_m4_deps.sh"
+# ONNX补充层已存在就跳过；仅缺补充层时只执行本段，不重装基础层。
+test ! -e "$REPO/lib/m4_onnx" && test ! -L "$REPO/lib/m4_onnx" || { echo '已有ONNX环境：只检查，不重新安装'; exit 2; }
+bash "$REPO/scripts/冲突库下载/install_m4_onnx_deps.sh" --wheelhouse "$ASSETS/wheelhouse"
 ```
-包装器复用仓库既有[基础安装器](../../冲突库下载/install_m4_deps.sh)和[ONNX安装器](../../冲突库下载/install_m4_onnx_deps.sh)，不在仓库复制；只在全新runtime.pending.*安装并成功后发布runtime。拒绝已有runtime或链接、错版/缺失wheel，不卸载旧库。原节点优先工程lib/m4，BASE与其真实位置冲突时明确拒绝，避免静默错版加载。
+本工程缺库时创建的仍是原约定lib/m4与lib/m4_onnx，不创建工具runtime。原节点优先工程lib/m4，BASE与其真实位置冲突时明确拒绝，避免静默错版加载。
+
+**删除风险核查**：原基础安装器安装模式会rm -rf目标lib/m4内numpy、numpy.libs、numpy-*.dist-info以及cv2/opencv_python相关文件，`--uninstall`会rm -rf整个目标lib/m4。不要对已有目录或链接运行安装/卸载。ONNX原安装器无rm -rf且会拒绝已存在目标，但对失效软链接的防护仍须以上test -L检查。本PR不修改这些既有脚本，不执行任何删除或安装。
 
 只有新工程首次需要构建，已有成功构建跳过：
 ```bash
