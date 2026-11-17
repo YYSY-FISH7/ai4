@@ -3,7 +3,7 @@ set -eo pipefail
 KIT=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 [[ $# -ge 1 && -d "$1" ]] || { echo '请提供队友实际ai4工程目录' >&2; return 2; }
 REPO=$(realpath -e -- "$1")
-MODEL=${M4_MODEL:-"$KIT/model/yolo11s-drone.onnx"}
+MODEL=${M4_MODEL:-"$REPO/lib/m4_onnx/model/yolo11s-drone.onnx"}
 BASE=${M4_BASE_DEPS:-"$REPO/lib/m4"}
 ORT=${M4_ORT_DEPS:-"$REPO/lib/m4_onnx"}
 [[ -f "$MODEL" ]] || { echo "模型缺失：$MODEL；请取得完整交接包，不使用COCO替代" >&2; return 2; }

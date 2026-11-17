@@ -1,5 +1,5 @@
 {
-  "status": "BINARY_ASSETS_NOT_PUBLISHED",
+  "status": "MODEL_RELEASE_AVAILABLE_WHEELS_INTERNAL",
   "source_revision": "59acc6295776a6f88336072e010b380ef3c30b65",
   "download_url": null,
   "files": [
@@ -43,5 +43,6 @@
       "bytes": 294924,
       "sha256": "83e6e54e93d2b696a92cad6e6efc924f3850f82b52e1563778dfab8b355101b0"
     }
-  ]
+  ],
+  "model_download_url": "https://github.com/YYSY-FISH7/ai4/releases/download/m4-yolo11s-onnx-20261117/yolo11s-drone.onnx"
 }

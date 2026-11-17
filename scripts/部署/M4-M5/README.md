@@ -6,7 +6,7 @@
 
 Ubuntu20.04 x86_64、Python3.8、ROS Noetic、cv_bridge、Catkin及共享包声明的mavros_msgs等系统前置。仅依赖消息不意味着启动飞控。本工具不执行apt/sudo，不覆盖系统Python/ROS。
 
-内部包`M4-M5-团队完整交付-PR25.zip`已由成员负责发群；接收时先用同名.sha256校验外层，解压后按包内SHA256SUMS校验组件，再解压内层资源ZIP并核验。模型、7wheel、完整许可原文均在内部资源包，不公开上传。本目录[资源清单](resources/RESOURCE_MANIFEST.json)记录其大小/SHA，未发布任何新Release。内部包内旧源码快照不等于本PR分支，应使用当前分支/合并后的团队源码运行本工具。
+内部包`M4-M5-团队完整交付-PR25.zip`已由成员负责发群；接收时先用同名.sha256校验外层，解压后按包内SHA256SUMS校验组件，再解压内层资源ZIP并核验。原模型另有Release单文件下载入口；7wheel与完整许可原文保留在内部资源包，依赖安装仍复用原流程。本目录[资源清单](resources/RESOURCE_MANIFEST.json)记录其大小/SHA，模型Release地址与校验值见下文。内部包内旧源码快照不等于本PR分支，应使用当前分支/合并后的团队源码运行本工具。
 
 M4基础层及ONNX补充层的**唯一权威依赖清单**为仓库已有的[冲突库汇总.md（M4与M4 ONNX补充段）](../../冲突库下载/冲突库汇总.md)。版本、安装方式及后续变更均以该文件为准；本目录不另建requirements或40包清单。基础依赖首次安装仍需联网，约2GB磁盘，不是完全离线包。
 
@@ -18,8 +18,8 @@ cd /自己的实际ai4工程
 REPO="$PWD"
 TOOLS="$REPO/scripts/部署/M4-M5"
 ASSETS="/自己的实际解压目录/assets/m4-resource-kit"
-export M4_MODEL="$ASSETS/model/yolo11s-drone.onnx"
-python3 "$TOOLS/check-resources.py" --model "$M4_MODEL" --wheelhouse "$ASSETS/wheelhouse"
+# 默认模型位置，无需设置M4_MODEL；只有复用其他位置的正确原件时才覆盖：
+# export M4_MODEL="/自己的已有原模型路径/yolo11s-drone.onnx"
 # 已有独立库则设置这两项，并跳过下面的安装：
 # export M4_BASE_DEPS="/自己的基础库"
 # export M4_ORT_DEPS="/自己的ORT库"
@@ -53,6 +53,16 @@ bash "$REPO/scripts/冲突库下载/install_m4_onnx_deps.sh" --wheelhouse "$ASSE
 本工程缺库时创建的仍是原约定lib/m4与lib/m4_onnx，不创建工具runtime。原节点优先工程lib/m4，BASE与其真实位置冲突时明确拒绝，避免静默错版加载。
 
 **删除风险核查**：原基础安装器安装模式会rm -rf目标lib/m4内numpy、numpy.libs、numpy-*.dist-info以及cv2/opencv_python相关文件，`--uninstall`会rm -rf整个目标lib/m4。不要对已有目录或链接运行安装/卸载。ONNX原安装器无rm -rf且会拒绝已存在目标，但对失效软链接的防护仍须以上test -L检查。本PR不修改这些既有脚本，不执行任何删除或安装。
+
+## 单独下载模型，不安装或重建依赖
+
+先完成原依赖的复用/检查；有lib/m4和lib/m4_onnx且兼容后执行：
+```bash
+bash "$REPO/scripts/冲突库下载/install_m4_onnx_deps.sh" --download-model
+```
+下载到`$REPO/lib/m4_onnx/model/yolo11s-drone.onnx`，SHA与37746458字节验收原件一致才发布。正确原件存在则跳过，错误文件、失效模型链接或并发写入均不覆盖。下载失败清除本次临时片段；不执行pip、不修改原依赖。支持lib/m4_onnx指向已有库的软链接，模型写在该库的model子目录。
+
+默认下载地址为个人Fork Release `m4-yolo11s-onnx-20261117`的原ONNX附件。也可用`--download-model --model-url HTTPS_URL`或M4_MODEL_URL指定团队镜像；仍强制同一大小和SHA，不能替换模型。源码、wheel和全部依赖无需重新下载；内部ZIP保留作备用。模型许可与来源仍见MODEL_SOURCE_LICENSE.md，不修改原AGPL元数据。
 
 只有新工程首次需要构建，已有成功构建跳过：
 ```bash

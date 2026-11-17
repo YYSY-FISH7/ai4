@@ -2,7 +2,7 @@
 
 原模型：https://huggingface.co/sapoepsilon/yolov11s-drone-detector 。已核验内容对应revision `58897d6d6fadda9dfec979fd5dd7ad9040e73365`；历史下载命令是否显式固定revision未记录。
 
-原微调best.pt：19160211字节，SHA `337390e1018eaf815474c02e172a224425095466d4a5cd2dbd11301b0aa01b78`。原ONNX：37746458字节，SHA `320ec090ff91a333116d120479f2ad2a9f97a1893e5826e99cf2ad7fd2ca1bd7`。类别0=drone。模型和七wheel只通过内部ZIP交接，本目录不含二进制。
+原微调best.pt：19160211字节，SHA `337390e1018eaf815474c02e172a224425095466d4a5cd2dbd11301b0aa01b78`。原ONNX：37746458字节，SHA `320ec090ff91a333116d120479f2ad2a9f97a1893e5826e99cf2ad7fd2ca1bd7`。类别0=drone。原模型经用户确认作为个人Fork Release附件提供，七wheel仍可从内部ZIP交接；本目录不提交二进制。模型固定下载：https://github.com/YYSY-FISH7/ai4/releases/download/m4-yolo11s-onnx-20261117/yolo11s-drone.onnx 。
 
 基础权重：模型作者称为Ultralytics yolo11s.pt；其准确下载版本、SHA和完整训练过程待作者确认，不能用COCO yolov8n.pt冒充训练基础。
 
